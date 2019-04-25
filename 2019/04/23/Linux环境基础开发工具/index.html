@@ -628,17 +628,19 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/23/进程概念/">
+                <a href="/2019/04/23/进程控制/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="进程概念">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="进程控制">
                         
-                        <span class="card-title">进程概念</span>
+                        <span class="card-title">进程控制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜</div>
+                    <div class="summary">进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
+123#include&lt;unistd.h&gt;pid_t fork(void);返回值：子进程中返回0，父进程返回子进程id，出错返回-1
+fork之前父</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23

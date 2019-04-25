@@ -4,10 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="进程控制, haote216">
-    <meta name="description" content="进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
-123#include&amp;lt;unistd.h&amp;gt;pid_t fork(void);返回值：子进程中返回0，父进程返回子进程id，出错返回-1
-fork之前父">
+    <meta name="keywords" content="多态, haote216">
+    <meta name="description" content="多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
+也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
+2.多态的实现在继承中构成多态的俩个条件：
+调用函数的对象必须是指针或者引用；被调用的函数必须是虚">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@ fork之前父">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>进程控制 | haote216</title>
+    <title>多态 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -265,13 +266,13 @@ fork之前父">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        进程控制
+                        多态
                     </div>
                 </div>
             </div>
@@ -363,8 +364,8 @@ fork之前父">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/进程/" target="_blank">
-                                <span class="chip bg-color">进程</span>
+                            <a href="/tags/概念/" target="_blank">
+                                <span class="chip bg-color">概念</span>
                             </a>
                         
                     </div>
@@ -375,8 +376,8 @@ fork之前父">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                C++
                             </a>
                         
                     </div>
@@ -387,7 +388,7 @@ fork之前父">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-23
+                    2019-04-25
                 </div>
 
                 
@@ -403,64 +404,43 @@ fork之前父">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h3><h4 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h4><p>fork函数：创建新进程，新进程为子进程，而原进程为父进程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">pid_t fork(void);</span><br><span class="line">返回值：子进程中返回0，父进程返回子进程id，出错返回-1</span><br></pre></td></tr></table></figure>
-<p>fork之前父进程独立执行，fork之后，父子俩个执行流分别执行。注意，fork之后，是父进程先执行还是子进程先执行呢？其实这也不是确定的，先执行哪个取决于内核所使用的调度算法，谁先执行完全由调度器执行。有的操作系统最先开始执行的是子进程，有的是最先执行父进程，但是整体思想都是一样的，无论先执行谁，一般情况下，一个进程不会一口气执行到结束。</p>
-<p>为什么只有一个变量id来接收俩个返回值？</p>
-<p>因为看起来只有1个，但其实在返回的时候已经变为俩个。因为fork之后的代码已经在父子各自的逻辑空间中运行了，因为后续代码是共享的，所以当然可以看到同一个id变量，又因为父子进程的数据是相互独立的，所以同一个id最后映射到不同的物理内存。所以fork之后才能用if语句进行分流。fork之后if和else的逻辑是同时被执行的。</p>
-<p>时间片轮转调度算法是一种最古老，最简单，最公平且使用最广的算法。每个进程被分配一个时间段，称作它的时间片，即该进程允许运行的时间。如果在时间片结束时进程还在运行，则CPU将被剥夺并分配给另一个进程。如果进程在时间片结束前阻塞或结束，则CPU当即进行切换。调度程序所要做的就是维护一张就绪进程列表，当进程用完它的时间片后，它被移到队列的末尾。</p>
-<p>写时拷贝（写时复制）技术：内核只为新生成的子进程创建虚拟空间结构，它们来复制于父进程的虚拟究竟结构，但是不为这些段分配物理内存，它们共享父进程的物理空间，当父子进程中有更改相应段的行为发生时，再为子进程相应的段分配物理空间。</p>
-<p>fork()的实际开销就是复制父进程的页表以及给子进程创建惟一的进程描述符。</p>
-<p>vfork：也是用来创建子进程的，但是子进程先运行</p>
-<p>​         vfork用来创建一个子进程，而子进程和父进程共享地址空间，父子进程除了PCB不同，剩下的所有都相同。而fork出来的子进程具有独立地址空间。</p>
-<p>​         vfork保证子进程先运行，在子进程调用exec或exit之后父进程才可能被调度运行。vfork的做法更加简单粗暴，内核连子进程的虚拟地址空间也不创建了，直接共享了父进程的虚拟空间，当然了，这种做法就顺水推舟的共享了父进程的物理空间。</p>
-<h4 id="进程终止"><a href="#进程终止" class="headerlink" title="进程终止"></a>进程终止</h4><p>echo $?：最近一次进程的退出码</p>
-<p>进程退出场景：代码运行完毕，结果正确；代码运行完毕，结果不正确；代码异常终止；</p>
-<p>退出方法：</p>
-<p>1）正常退出：return、exit、_exit</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exit:</span><br><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">void exit(int status);</span><br><span class="line">参数status定义了进程的终止状态。exit(0)表示正常退出当前进程，exit(1)表示非正常退出当前进程。父进程通过wait来获取该值。</span><br><span class="line">过程：</span><br><span class="line">1.执行用户通过atexit或on_exit定义的清理函数。</span><br><span class="line">2.关闭所有打开的流，所有的缓存数据均被写入。</span><br><span class="line">3.调用_exit函数。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">_exit:</span><br><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">void _exit(int status);</span><br><span class="line">过程：</span><br><span class="line">直接使进程停止运行，关闭进程所有的文件描述符，清除其使用的内存空间，并销毁其在内核中的各种数据结构，但不会刷新流（stdin 、stdout、stderr……）。</span><br></pre></td></tr></table></figure>
-<p>2）异常退出：ctrl + c，信号终止。</p>
-<h4 id="进程等待"><a href="#进程等待" class="headerlink" title="进程等待"></a>进程等待</h4><p>输出型参数：输出型参数就是让函数把函数内部把数据输出到函数的外部的。</p>
-<p>阻塞式：子进程还没有退出，父进程一直等待，不能去回收子进程，在这个期间，父进程没有被调度。只要把父进程挂起（进程状态设为非R状态）就可以了</p>
-<p>非阻塞式：子进程还没有退出，父进程直接返回。</p>
-<p>（基于非阻塞）轮询：周期性的检测子进程。（循环的非阻塞式等待）</p>
-<p>阻塞式IO：</p>
-<p>IO即input/output，阻塞式IO指的是“一旦输入/输出工作没有完成，则程序阻塞，直到输入/输出工作完成”。在目前，我们从书本上学到的语法用的基本都是阻塞式IO。比如c语言的stdio.h库的所有函数（包含scanf(),getchar(),gets()等函数）。最简单的例子：c语言的scanf()函数——当你scanf()要求输入两个数字时，你只输入一个数字，它也不会让你继续执行接下来的代码的。</p>
-<p>非阻塞式IO：</p>
-<p>非阻塞式IO其实也并非完全非阻塞，通常都是通过设置超时来读取数据的。未超时之前，程序阻塞在读写函数上；超时后，结束本次读取，将已读到的数据返回。通过不断循环读取，就能够读到完整数据了。如果多次连续超时读到空数据的话，则可以断开。C语言的Socket可以使用setsockopt()来设置recv()超时（通常也就Socket需要考虑超时）。</p>
-<h5 id="进程等待的必要性："><a href="#进程等待的必要性：" class="headerlink" title="进程等待的必要性："></a>进程等待的必要性：</h5><p>子进程退出，父进程如果不管，就可能造成“僵尸进程”，僵尸进程不回收会造成内存泄漏。</p>
-<p>僵尸进程杀不死只能通过wait的方式来等待回收。</p>
-<p>子进程运行完退出，父进程通过进程等待，回收子进程资源（避免内存泄漏），获取子进程退出信息。</p>
-<p>当父进程一旦等子进程，子进程没有就绪时，只要把父进程挂起就可以了，挂起就是把进程状态设置成非R状态就可以了。进程阻塞问题可以类比于理发店顾客排队等待理发问题。</p>
-<p>许多进程在等待，实际上是许多进程的PCB在等待，只要把进程们的PCB用链表连起来，以队列的方式组织好，将来要唤醒哪个就从队列中操作。</p>
-<p>可以更改进程状态来决定进程运行还是不运行。</p>
-<p>进程如果异常退出一般都是由于受到了信号的干扰。</p>
-<p>一个进程运行期间，没有受到一个信号：说明至少跑完了。</p>
-<p>一个进程运行期间，没有受到一个信号，而且退出码为0：代码正常跑完，结果正确。</p>
-<p>一个进程运行期间，没有受到一个信号，而且退出码为非0：代码正常跑完，结果不正确。</p>
-<p>一个进程退出了，收到了一个9号信号，且退出码为1：进程代码都没跑完，结果不具备参考价值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wait()函数：</span><br><span class="line"></span><br><span class="line">#include&lt;sys/types.h&gt;</span><br><span class="line">#include&lt;sys/wait.h&gt;</span><br><span class="line"></span><br><span class="line">pid_t wait(int* status);</span><br><span class="line">返回值：成功返回被等待进程pid，失败返回-1</span><br><span class="line">参数：输出型参数，获取子进程退出状态，不关心可以设置成为NULL</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">waitpid()函数:</span><br><span class="line"></span><br><span class="line">pid_t waitpid(pid_t pid, int* status, int options);</span><br><span class="line"></span><br><span class="line">返回值：</span><br><span class="line">	当正常返回的时候waitpid返回收集到的子进程的进程PID；</span><br><span class="line">	如果设置了选项WNOHANG，而调用中waitpid发现没有已退出的子进程可收集，则返回0；</span><br><span class="line">	如果调用中出错，则返回-1，这时errno会被设置成相应的值以指示错误所在。</span><br><span class="line">参数：</span><br><span class="line">	pid:</span><br><span class="line">		pid=-1，等待任意一个子进程。与wait等效。</span><br><span class="line">		pid&gt;0，等待其进程ID与pid相等的子进程。</span><br><span class="line">	status:</span><br><span class="line">		status包含的信息包含2部分：退出码、是否收到信号</span><br><span class="line">		WIFEXITED(status):若为正常终止子进程返回的状态，则为真。（查看进程是否是正常退出）</span><br><span class="line">		WEXITSTATUS（status）：若WIFEXITED非零，提取子进程退出码（查看进程的退出码）</span><br><span class="line">	options：</span><br><span class="line">		WNOHANG：若pid指定的子进程没有结束，则waitpid（）函数返回0，不予以等待。若正常结束，则返回该子进程的ID。（非阻塞）</span><br></pre></td></tr></table></figure>
-<p>wait和waitpid，都有一个status参数，该参数是一个输出型参数，由操作系统填充。如果传递NULL，表示不关心进程的退出状态信息，否则操作系统会根据该参数，将子进程的退出信息反馈给父进程。status不能简单的当做整形来看待，可以当作位图来看待。</p>
-<p>​                    15                           8 7                          0 </p>
-<p>正常终止：   退出状态               |                    0</p>
-<p>被信号所杀：未用            core dump       终止信号</p>
-<p>高8位表示子进程退出的退出码</p>
-<p>低8位表示该进程有没有信号</p>
-<p>退出码： 0xFF &amp; (status &gt;&gt; 8)</p>
-<p>退出信号：status &amp; 0x7F</p>
-<p>位操作移植性太差：系统给出了俩个宏</p>
-<p>进程等待的作用：</p>
-<p>1.回收子进程的僵尸状态</p>
-<p>2.获得子进程的退出码</p>
-<h4 id="进程程序替换"><a href="#进程程序替换" class="headerlink" title="进程程序替换"></a>进程程序替换</h4><p>如何让已经跑起来的程序去执行另一个新的程序</p>
-<h5 id="替换函数"><a href="#替换函数" class="headerlink" title="替换函数"></a>替换函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int execl(const char *path, const char *arg, ...);</span><br><span class="line">int execlp(const char *file, const char *arg, ...);</span><br><span class="line">int execle(const char *path, const char *arg, ... ,char *const envp[]);</span><br><span class="line">int execv(const char *path, char *const argv[]);</span><br><span class="line">int execvp(const char *file, char *const argv[]);</span><br><span class="line">int execve(const char *path, char *const argv[], char *const envp[]);</span><br></pre></td></tr></table></figure>
-<p>这些函数如果调用成功则加载新的程序，从启动代码开始执行，不再返回。如果调用出错返回-1。所以exec函数只有出错的返回值，没有成功的返回值。</p>
-<p>l(list)：参数采用列表。  v(vector)：参数采用数组。</p>
-<p>p(path)：有p自动搜索环境变量PATH。   e(env)：表示自己维护环境变量。</p>
-<p>事实上，只有execve是真正的系统调用，其他5个函数最终都调用了execve。所以execve在man手册第2节，其他函数在man手册第3节。</p>
-<p>程序替换的必要性：不想让子进程运行父进程的代码，想运行别的新的程序。</p>
+                <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h4><p>多态就是不同的对象完成某个动作，产生不同的状态。</p>
+<p>也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。</p>
+<h4 id="2-多态的实现"><a href="#2-多态的实现" class="headerlink" title="2.多态的实现"></a>2.多态的实现</h4><p>在继承中构成多态的俩个条件：</p>
+<p>调用函数的对象必须是指针或者引用；被调用的函数必须是虚函数，且完成了虚函数的重写。</p>
+<p>虚函数：就是在类的成员函数的前面加上virtual。    只有成员函数才能做虚函数，全局函数、静态函数都不可以。</p>
+<p>虚函数的重写：派生类中有一个跟基类完全相同（函数名、参数、返回值）的虚函数，称子类的虚函数重写了基类的虚函数，也叫做虚函数的覆盖。</p>
+<p>虚函数的协变：虚函数重写有一个例外，重写的虚函数的返回值可以不同，但必须是基类指针和派生类指针或者基类引用和派生类引用。</p>
+<p>析构函数的重写：基类的析构函数最好写成虚函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数重载</th>
+<th>俩个函数在同一作用域，函数名、参数相同。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重写(覆盖)</td>
+<td>俩个函数分别在基类和派生类的作用域，函数名、参数、返回值都必须相同（协变例外），俩个函数必须是虚函数。</td>
+</tr>
+<tr>
+<td>隐藏（重定义）</td>
+<td>俩个函数分别在基类和派生类的作用域，函数名相同，俩个基类和派生类的同名函数不构成重写就是隐藏。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3.抽象类"></a>3.抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类（接口类），抽象类不能实例化出对象，派生类继承后也不能实例化出对象，必须重写纯虚函数，这也体现出了接口继承。</p>
+<h4 id="4-C-11-override、final"><a href="#4-C-11-override、final" class="headerlink" title="4.C++11  override、final"></a>4.C++11  override、final</h4><p>final：被final修饰的纯虚函数不能被派生类重写。</p>
+<p>override：修饰派生类虚函数强制完成重写，如果没有重写就会编译报错。</p>
+<p>建议：派生类的纯虚函数搭配上override上使用。</p>
+<h4 id="5-多态的原理"><a href="#5-多态的原理" class="headerlink" title="5.多态的原理"></a>5.多态的原理</h4><p>// 这里常考一道笔试题：sizeof(Base)是多少？<br>class Base<br>{<br>public:<br>    virtual void Func1()<br>    {<br>        cout &lt;&lt; “Func1()” &lt;&lt; endl;<br>    }<br>private:<br>    int _b = 1;<br>};</p>
+<p>b成员，还有一个_vfptr放在对象的前面，叫做虚函数表指针。一个虚函数的类中至少都有一个虚函数表指针，因为虚函数的地址要被放在虚函数表中，虚函数表也叫虚表</p>
+<p>//派生类对象也有虚表指针，其虚表指针一部分存的也是继承下来的，另外一部分存的是自己的。如果派生类中有虚函数的重写，基类对象的虚表和派生类对象的虚表也是不一样的，重写是语法层的叫法，覆盖是原理层的叫法。<br>//虚函数表的本质是存一个虚函数指针的指针数组，这个数组最后放了一个nullptr。<br>//虚表存的是虚函数指针，虚函数和普通函数都时存在代码段的，而且，对象中存的是虚表指针，虚表也是存在代码段的。</p>
+<p>满足多态以后的函数调用，是运行起来以后到对象中去找的。不满足多态的函数调用是编译时就确认好的。也就是说，多态是动态绑定。</p>
+<p>静态绑定（前期绑定、早绑定）：在程序编译期间确定了程序的行为，也称为静态多态，例如：函数重载。</p>
+<p>动态绑定（后期绑定、晚绑定）：在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也成为动态多态。</p>
+<h4 id="6-单继承和多继承关系的虚函数表"><a href="#6-单继承和多继承关系的虚函数表" class="headerlink" title="6.单继承和多继承关系的虚函数表"></a>6.单继承和多继承关系的虚函数表</h4><p>多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中。</p>
 
             </div>
             <hr>
@@ -601,7 +581,7 @@ fork之前父">
                     </span>
                     <a href="http://yoursite.com" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/23/进程控制/" class="b-link-green">进程控制</a>
+                    <a href="/2019/04/25/多态/" class="b-link-green">多态</a>
                 </p>
             </div>
         </div>
@@ -624,40 +604,45 @@ fork之前父">
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/23/进程概念/">
+                <a href="/2019/04/25/多态/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="进程概念">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
                         
-                        <span class="card-title">进程概念</span>
+                        <span class="card-title">多态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜</div>
+                    <div class="summary">多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
+也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
+2.多态的实现在继承中构成多态的俩个条件：
+调用函数的对象必须是指针或者引用；被调用的函数必须是虚</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/进程/" target="_blank">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/概念/" target="_blank">
+                        <span class="chip bg-color">概念</span>
                     </a>
                     
                 </div>
@@ -671,20 +656,17 @@ fork之前父">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/23/Linux环境基础开发工具/">
+                <a href="/2019/04/23/进程概念/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux环境基础开发工具">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="进程概念">
                         
-                        <span class="card-title">Linux环境基础开发工具</span>
+                        <span class="card-title">进程概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">vim：编辑器vim三种模式命令模式（command mode）插入模式（insert mode）末行模式（last line mode）
-vim正常模式命令集：
-hjkl：左下上右
-yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
+                    <div class="summary">ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
