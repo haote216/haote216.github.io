@@ -4,16 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="继承, haote216">
-    <meta name="description" content="继承1.继承的概念继承是面向对象程序设计使代码可以复用的最重要的手段，它允许程序员在保持原有类特性的基础上进行扩展，产生新的类，称为派生类。
-继承后父类的成员都变成子类的一部分。
-继承基类成员访问方式的变化
-
-
-
-
-public继承
-pro">
+    <meta name="keywords" content="stelen、sizeof, haote216">
+    <meta name="description" content="今天看C++的string类，然后模拟实现的时候，发现了这样的一道题，主要是区别sizeof和strlen。刚开始完，和答案一对，发现其实错了好多。
+下面给大家区分区分
+    char a1[] = &amp;quot;\0&amp;quot;;
+   ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +16,7 @@ pro">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>继承 | haote216</title>
+    <title>stelen、sizeof | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -204,6 +199,10 @@ pro">
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -271,13 +270,13 @@ pro">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        继承
+                        stelen、sizeof
                     </div>
                 </div>
             </div>
@@ -369,8 +368,8 @@ pro">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/概念/" target="_blank">
-                                <span class="chip bg-color">概念</span>
+                            <a href="/tags/strlen/" target="_blank">
+                                <span class="chip bg-color">strlen</span>
                             </a>
                         
                     </div>
@@ -382,7 +381,7 @@ pro">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
                             <a href="/categories/C/" class="post-category" target="_blank">
-                                C++
+                                C
                             </a>
                         
                     </div>
@@ -393,7 +392,7 @@ pro">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-21
+                    2019-04-13
                 </div>
 
                 
@@ -409,63 +408,32 @@ pro">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h4 id="1-继承的概念"><a href="#1-继承的概念" class="headerlink" title="1.继承的概念"></a>1.继承的概念</h4><p>继承是面向对象程序设计使代码可以复用的最重要的手段，它允许程序员在保持原有类特性的基础上进行扩展，产生新的类，称为派生类。</p>
-<p>继承后父类的成员都变成子类的一部分。</p>
-<p>继承基类成员访问方式的变化</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>public继承</th>
-<th>protected继承</th>
-<th>private继承</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>基类的public成员</td>
-<td>派生类的public成员</td>
-<td>派生类的protected成员</td>
-<td>派生类的private成员</td>
-</tr>
-<tr>
-<td>基类的protected成员</td>
-<td>派生类的protected成员</td>
-<td>派生类的protected成员</td>
-<td>派生类的private成员</td>
-</tr>
-<tr>
-<td>基类的private成员</td>
-<td>在派生类中不可见</td>
-<td>在派生类中不可见</td>
-<td>在派生类中不可见</td>
-</tr>
-</tbody>
-</table>
-<p>方式总结：基类的私有成员在派生类中都是不可见的。基类的公有和保护成员在派生类中的访问方式是Min（成员在基类的访问限定符，继承方式）</p>
-<h4 id="2-基类和派生类对象赋值转换"><a href="#2-基类和派生类对象赋值转换" class="headerlink" title="2.基类和派生类对象赋值转换"></a>2.基类和派生类对象赋值转换</h4><p>派生类对象可以赋值给 基类的对象 / 基类的指针 / 基类的引用，称为切片、切割。</p>
-<p>基类的指针可以通过强制类型转化赋值给派生类的指针。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pp = &amp;sobj                   // 指针指向派生类对象</span><br><span class="line">Student* ps1 = (Student*)pp; // 这种情况转换时可以的。</span><br><span class="line">ps1-&gt;_No = 10;</span><br><span class="line"></span><br><span class="line">pp = &amp;pobj;                  // 指针指向基类对象</span><br><span class="line">Student* ps2 = (Student*)pp; //编译没问题，运行就会出错，存在越界访问的问题。</span><br><span class="line">ps2-&gt;_No = 10;</span><br></pre></td></tr></table></figure>
-<h4 id="3-继承中的作用域"><a href="#3-继承中的作用域" class="headerlink" title="3.继承中的作用域"></a>3.继承中的作用域</h4><p>子类和父类中有同名成员，子类成员将屏蔽父类对同名成员的直接访问，这种情况叫做隐藏，也叫重定义。但是可以通过基类::基类成员这种方式显式访问。如果是成员函数隐藏，只需要成员函数名相同就构成隐藏。</p>
-<p>不在同一作用域的成员函数不构成函数重载，所以只能是隐藏，成员函数名相同就隐藏。</p>
-<h4 id="4-派生类的默认成员函数"><a href="#4-派生类的默认成员函数" class="headerlink" title="4.派生类的默认成员函数"></a>4.派生类的默认成员函数</h4><p>派生类的构造函数必须调用基类的构造函数初始化基类的那一部分成员。如果基类没有默认的构造函数，则必须在派生类构造函数的初始化列表阶段显示调用。</p>
-<p>派生类的拷贝构造函数必须调用基类的拷贝构造完成基类的拷贝初始化。</p>
-<p>派生类的operator=必须要调用基类的operator=完成基类的复制。</p>
-<p>派生类对象初始化先调用基类构造再调派生类构造。</p>
-<p>派生类对象析构清理先调用派生类析构再调基类的析构。</p>
-<p>面试题：如何实现一个不能继承的类？</p>
-<p>答：将基类的构造函数设置成私有的，派生类得不到基类的构造函数，无法继承；使用关键字final（C++11）。</p>
-<h4 id="5-继承与友元"><a href="#5-继承与友元" class="headerlink" title="5.继承与友元"></a>5.继承与友元</h4><p>友元不能继承。</p>
-<h4 id="6-继承与静态成员"><a href="#6-继承与静态成员" class="headerlink" title="6.继承与静态成员"></a>6.继承与静态成员</h4><p>基类定义了一个static静态成员，则整个继承体系里面只有一个这样的成员。无论派生出多少个子类，都只有一个static成员实例 。</p>
-<h4 id="7-复杂的菱形继承-钻石继承与菱形虚拟继承"><a href="#7-复杂的菱形继承-钻石继承与菱形虚拟继承" class="headerlink" title="7.复杂的菱形继承/钻石继承与菱形虚拟继承"></a>7.复杂的菱形继承/钻石继承与菱形虚拟继承</h4><p>单继承：一个子类只有一个直接父类时，称单继承。</p>
-<p>多继承：一个子类有俩个或以上直接父类时，称多继承。</p>
-<p>菱形继承：菱形继承是多继承的一种特殊情况，但是有数据冗余和二义性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a._name = &quot;haote&quot;;              //二义性</span><br><span class="line">a.Student::_name = &quot;haote1&quot;; 	</span><br><span class="line">a.Teacher::_name = &quot;haote2&quot;;	//显示指定父类可以解决二义性，但是无法解决数据冗余</span><br></pre></td></tr></table></figure>
-<p>虚拟继承（解决菱形继承问题）：D对象中将A放到的了对象组成的最下面，这个A同时属于B和C，那么B和C如何去找到公共的A呢？这里是通过了B和C的两个指针，指向的一张表。这两个表叫虚基表，这两个指针叫虚基表指针。虚基表中存的偏移量。通过偏移量可以找到下面的A。</p>
-<h4 id="8-继承和组合（目的：复用）"><a href="#8-继承和组合（目的：复用）" class="headerlink" title="8.继承和组合（目的：复用）"></a>8.继承和组合（目的：复用）</h4><p>C++缺陷：语法复杂。有多继承就会有菱形继承，有菱形继承就会有菱形虚拟继承，底层实现会很复杂，但是后面的语言比如Java就没有。</p>
-<p>公有继承是is–a的关系，每个派生类对象都是一个基类对象。</p>
-<p>组合是has–a的关系，假设B组合了A，每个B对象中都有一个A对象。</p>
-<p>优先使用对象组合，而不是类继承。组合的耦合度低，代码维护性好。但是有些关系适合继承，另外多态也要使用继承。</p>
+                <p>今天看C++的string类，然后模拟实现的时候，发现了这样的一道题，主要是区别sizeof和strlen。刚开始完，和答案一对，发现其实错了好多。</p>
+<p>下面给大家区分区分</p>
+<pre><code>    char a1[] = &quot;\0&quot;;
+    cout &lt;&lt; sizeof(a1) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; strlen(a1) &lt;&lt; &quot; &quot;;
+
+    char a2[] = &quot;\\0&quot;;
+    cout &lt;&lt; sizeof(a2) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; strlen(a2) &lt;&lt; &quot; &quot;;
+
+    char a3[] = &quot;0000&quot;;
+    cout &lt;&lt; sizeof(a3) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; strlen(a3) &lt;&lt; &quot; &quot;;
+
+    char a4[] = &quot;\0000&quot;;
+    cout &lt;&lt; sizeof(a4) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; strlen(a4) &lt;&lt; &quot; &quot;;
+
+    char a5[] = &quot;\0 000&quot;;
+    cout &lt;&lt; sizeof(a5) &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; strlen(a5) &lt;&lt; &quot; &quot;;
+</code></pre><p>​    a1的sizeof是2，strlen是0；sizeof求的是变量或者对象、类型所占内存的大小。a1第一个字符是\0，字符串结尾还有一个字符’\0’。所以有俩个字符，sizeof是2。strlen求的是字符串的长度，但是碰到’\0’就结束了。所以strlen是0；</p>
+<p>​    a2是\ \ 0，第一个斜杠0是防止\0发生转义，所以第一个字符是\ ，第二个字符是0；所以sizeof是3，strlen是2；</p>
+<p>​    a3很简单，sizeof是5，strlen是4；</p>
+<p>​    a4前面的\000是转义字符，代表的是’\0’，所以内存中存的是’\0’,’0’,’\0’，所以sizeof是3，strlen是0；</p>
+<p>​    a5的字符在内存的存储是’\0’,’ ‘,’0’,’0’,’0’,’\0’。所以sizeof是6，strlen是0。</p>
 
             </div>
             <hr>
@@ -604,9 +572,9 @@ pro">
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/21/继承/" class="b-link-green">继承</a>
+                    <a href="/2019/04/13/stelen-sizeof/" class="b-link-green">stelen、sizeof</a>
                 </p>
             </div>
         </div>
@@ -631,55 +599,7 @@ pro">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/23/Linux环境基础开发工具/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux环境基础开发工具">
-                        
-                        <span class="card-title">Linux环境基础开发工具</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">vim：编辑器vim三种模式命令模式（command mode）插入模式（insert mode）末行模式（last line mode）
-vim正常模式命令集：
-hjkl：左下上右
-yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/进程/" target="_blank">
-                        <span class="chip bg-color">进程</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/04/16/类的6个默认成员函数/">
+                <a href="/2019/04/16/lei-de-6-ge-mo-ren-cheng-yuan-han-shu/">
                     <div class="card-image">
                         
                         
@@ -689,11 +609,12 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">类的6个默认成员函数：构造函数12345678910111213141516构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用</div>
+                    <div class="summary">类的6个默认成员函数：构造函数构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用一次。
+构造函数的主要任务并不是开辟空间创建对</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -711,6 +632,55 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
                     
                     <a href="/tags/概念/" target="_blank">
                         <span class="chip bg-color">概念</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/12/jin-cheng-xin-hao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="进程信号">
+                        
+                        <span class="card-title">进程信号</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">信号信号的基本概念用户、内核、进程向目标进程通知某些事件发生的机制。
+进程能够处理信号的前提条件是得能够认识信号。
+进程收到信号之后，有可能并不会立即处理，而是在合适的时候。
+信号的产生对进程而言是异步的。
+处理信号的3种方法：执行默认动作</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/进程/" target="_blank">
+                        <span class="chip bg-color">进程</span>
                     </a>
                     
                 </div>
@@ -778,9 +748,7 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -793,6 +761,11 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -816,6 +789,10 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

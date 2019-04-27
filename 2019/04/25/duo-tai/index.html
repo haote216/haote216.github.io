@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="缺省参数、函数重载、引用、C++11, haote216">
-    <meta name="description" content="命名空间：12345printf(&amp;quot;%d\n&amp;quot;,a);         //访问最近定义的aprintf(&amp;quot;%d\n&amp;quot;,::a);       //访问全局域的aprintf(&amp;quot;%d\n&amp;q">
+    <meta name="keywords" content="多态, haote216">
+    <meta name="description" content="多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
+也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
+2.多态的实现在继承中构成多态的俩个条件：
+调用函数的对象必须是指针或者引用；被调用的函数必须是虚">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>缺省参数、函数重载、引用、C++11 | haote216</title>
+    <title>多态 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -196,6 +199,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -269,7 +276,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        缺省参数、函数重载、引用、C++11
+                        多态
                     </div>
                 </div>
             </div>
@@ -385,7 +392,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-09
+                    2019-04-25
                 </div>
 
                 
@@ -401,18 +408,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="命名空间："><a href="#命名空间：" class="headerlink" title="命名空间："></a>命名空间：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;%d\n&quot;,a);         //访问最近定义的a</span><br><span class="line">printf(&quot;%d\n&quot;,::a);       //访问全局域的a</span><br><span class="line">printf(&quot;%d\n&quot;,my::a);     //访问my这个命名空间的a</span><br><span class="line">printf(&quot;%d\n&quot;,your::a);   //访问your这个命名空间的a</span><br><span class="line">using namespace std;   //std  C++库的命名空间</span><br></pre></td></tr></table></figure>
-<h4 id="缺省参数："><a href="#缺省参数：" class="headerlink" title="缺省参数："></a>缺省参数：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">缺省参数是声明或定义函数时为函数的参数指定一个默认值。在调用该函数时，如果没有指定实参则采用该默认值，否则使用指定的实参。</span><br><span class="line">半缺省参数必须从右往左依次给出，不能间隔着给。</span><br><span class="line">缺省参数不能在函数声明和定义中同时出现，那么编译器就无法确定到底该用哪个缺省值。</span><br></pre></td></tr></table></figure>
-<h4 id="函数重载："><a href="#函数重载：" class="headerlink" title="函数重载："></a>函数重载：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这些同名函数的形参列表（参数个数 或 参数类型 或 顺序）必须不同，和返回值类型无关。</span><br><span class="line">为什么C语言不支持函数重载，而C++支持函数重载？</span><br><span class="line">C语言的名字修饰规则非常简单，只是在函数名字前面添加了下划线。</span><br><span class="line">C++修饰规则，被重新修饰的名字中包含了：函数名字和参数类型，这样就保证了名字在底层的全局唯一性</span><br></pre></td></tr></table></figure>
-<h4 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">给变量取一个别名，不会为引用开辟新的内存空间，它和它引用的变量共用同一块内存空间。</span><br><span class="line">类型 &amp; 引用变量名=引用实体</span><br><span class="line">int &amp; ra =a;            </span><br><span class="line"></span><br><span class="line">引用类型必须和引用实体是同种类型。</span><br><span class="line">引用在定义时必须初始化。</span><br><span class="line">一个变量可以有多个引用。</span><br><span class="line">引用一旦引用一个实体，再不能引用其他实体。</span><br><span class="line"></span><br><span class="line">引用的使用场景：</span><br><span class="line">1.做参数</span><br><span class="line">2.做返回值</span><br><span class="line">   做返回值时，传引用能够不用再去开辟一块新的内存空间，如果返回一个结构体或者特别大的空间时，比较节约内存。</span><br><span class="line">   </span><br><span class="line">   做返回值时，离开函数作用域后，其栈上空间已经返回到系统，因此不能用栈上的空间作为引用类型返回。如果以引用类型返回，返回值的生命周期必须不受函数的限制（即比函数生命周期长）。</span><br></pre></td></tr></table></figure>
-<h5 id="常引用："><a href="#常引用：" class="headerlink" title="常引用："></a>常引用：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const int a=10;</span><br><span class="line">      int &amp;ra=a;     （错误）a为常量，不能被修改</span><br><span class="line">const int&amp; ra=a;     （正确）必须加const，a为常量。</span><br><span class="line"></span><br><span class="line">      int &amp;b=10；    （错误）</span><br><span class="line">const int &amp;b=10;     （正确）  </span><br><span class="line"></span><br><span class="line">      int c = 20；</span><br><span class="line">const int &amp;d = c；    （正确）都不能被修改</span><br><span class="line">  </span><br><span class="line">     int  e = 20;</span><br><span class="line">    double f = e;     (正确)发生了隐式类型的转化，是相近类型。e把数据给临时变量，临时变量                             把数据再给f，而临时变量具有常性</span><br><span class="line">   double&amp; f = e;     (错误）</span><br><span class="line">const double&amp; f = e; （正确）这里的f不是e的别名，而是那个临时变量的别名</span><br></pre></td></tr></table></figure>
-<h5 id="引用和指针的区别（重点）："><a href="#引用和指针的区别（重点）：" class="headerlink" title="引用和指针的区别（重点）："></a>引用和指针的区别（重点）：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.引用在定义时必须初始化，指针没有要求</span><br><span class="line">2.引用在初始化时引用一个实体后，就不能再引用其他实体，而指针可以在任何时候指向任何一个同类型实体。</span><br><span class="line">3.没有NULL引用，但有NULL指针。</span><br><span class="line">4.在sizeof中含义不同：引用结果为引用类型的大小，但指针始终是地址空间所占字节个数（32位平台下占4个字节）。</span><br><span class="line">5.引用自加即引用的实体增加1，指针自加即指针向后偏移一个类型的大小。</span><br><span class="line">6.有多级指针，但是没有多级引用。</span><br><span class="line">7.访问实体方式不同，指针需要显式解引用，引用编译器自己处理。</span><br><span class="line">8.引用比指针使用起来相对更安全。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在性能上，传指针和传引用的效率几乎相同。</span><br><span class="line"></span><br><span class="line">在语法层面上，引用就是个别名，没有独立空间。</span><br><span class="line">在底层实现上，引用实际是有空间的，因为引用是按照指针方式来实现的。</span><br></pre></td></tr></table></figure>
-<h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">以inline修饰的函数叫做内联函数，编译时C++编译器在调用内联函数的地方展开，没有函数压栈的开销，内联函数提升程序运行的效率。</span><br><span class="line"></span><br><span class="line">1.内联是一种以空间换时间的做法，省去调用函数额外开销。所以代码很长或者有循环/递归的函数不适宜使用作为内联函数。</span><br><span class="line">2.inline对编译器而言只是一个建议，编译器会自动优化，编译器也可以会忽略掉内联。</span><br><span class="line">3.inline不建议声明和定义分离，分离会导致链接错误。因为linline会展开，就没有函数地址了，链接就会找不到。</span><br></pre></td></tr></table></figure>
-<h5 id="面试题：宏的优缺点"><a href="#面试题：宏的优缺点" class="headerlink" title="面试题：宏的优缺点"></a>面试题：宏的优缺点</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">宏：</span><br><span class="line">优点：1.增强代码的复用性</span><br><span class="line">     2.提高性能</span><br><span class="line">缺点：1.不方便调试</span><br><span class="line">     2.导致代码可维护性差、可读性差</span><br><span class="line">     3.没有类型安全的检查，不安全</span><br><span class="line">     </span><br><span class="line">C++用const替换宏常量</span><br><span class="line">   用内联函数替换宏函数</span><br></pre></td></tr></table></figure>
-<h4 id="auto关键字（C-11"><a href="#auto关键字（C-11" class="headerlink" title="auto关键字（C++11)"></a>auto关键字（C++11)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">auto不再是一个存储类型指示符，而是作为一个新的类型指示符来指示编译器，auto声明的变量必须由编译器在编译时期推导而得。</span><br><span class="line">int a = 10;</span><br><span class="line">auto b = a;   //整型</span><br><span class="line">auto c = &apos;a&apos;; //字符型</span><br><span class="line">auto e；      //无法通过编译，使用auto定义变量时必须对其进行初始化</span><br><span class="line">auto并非是一种“类型”的声明，而是一个类型声明时的“占位符”，编译器在编译期会将auto替换为变</span><br><span class="line">量实际的类型。</span><br><span class="line">用auto声明指针类型时，用auto和auto*没有任何区别，但用auto声明引用类型时则必须加&amp;。</span><br><span class="line">当在同一行声明多个变量时，这些变量必须是相同的类型，否则编译器将会报错，因为编译器实际只对第一个类型进行推导，然后用推导出来的类型定义其他变量。</span><br><span class="line">auto不能推导的场景：</span><br><span class="line">1.auto不能作为函数的参数</span><br><span class="line">2.auto不能直接用来声明数组</span><br><span class="line">3.auto不能定义类的非静态成员变量</span><br><span class="line">4.实例化模板时不能使用auto作为模板参数</span><br><span class="line">5.为了避免与C++98中的auto发生混淆，C++11只保留了auto作为类型指示符的用法</span><br><span class="line">6.auto在实际中最常见的优势用法就是跟以后会讲到的C++11提供的新式for循环，还有lambda表达式等进行配合使用</span><br></pre></td></tr></table></figure>
-<h4 id="基于范围的for循环（C-11）"><a href="#基于范围的for循环（C-11）" class="headerlink" title="基于范围的for循环（C++11）"></a>基于范围的for循环（C++11）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for循环后的括号由冒号“ ：”分为两部分：第一部分是范围内用于迭代的变量，第二部分则表示被迭代的范围。</span><br></pre></td></tr></table></figure>
-<h4 id="指针空值nullptr-C-11"><a href="#指针空值nullptr-C-11" class="headerlink" title="指针空值nullptr(C++11)"></a>指针空值nullptr(C++11)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nullptr代表一个指针空值常量，nullptr是有类型的，其类型为nullptr_t，仅仅可以被隐式转化为指针类型</span><br><span class="line">typedef decltype(nullptr) nullptr_t;</span><br><span class="line">注意：</span><br><span class="line">1. 在使用nullptr表示指针空值时，不需要包含头文件，因为nullptr是C++11作为新关键字引入的。</span><br><span class="line">2. 在C++11中，sizeof(nullptr) 与 sizeof((void*)0)所占的字节数相同。</span><br><span class="line">3. 为了提高代码的健壮性，在后续表示指针空值时建议最好使用nullptr。</span><br></pre></td></tr></table></figure>
+                <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h4><p>多态就是不同的对象完成某个动作，产生不同的状态。</p>
+<p>也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。</p>
+<h4 id="2-多态的实现"><a href="#2-多态的实现" class="headerlink" title="2.多态的实现"></a>2.多态的实现</h4><p>在继承中构成多态的俩个条件：</p>
+<p>调用函数的对象必须是指针或者引用；被调用的函数必须是虚函数，且完成了虚函数的重写。</p>
+<p>虚函数：就是在类的成员函数的前面加上virtual。    只有成员函数才能做虚函数，全局函数、静态函数都不可以。</p>
+<p>虚函数的重写：派生类中有一个跟基类完全相同（函数名、参数、返回值）的虚函数，称子类的虚函数重写了基类的虚函数，也叫做虚函数的覆盖。</p>
+<p>虚函数的协变：虚函数重写有一个例外，重写的虚函数的返回值可以不同，但必须是基类指针和派生类指针或者基类引用和派生类引用。</p>
+<p>析构函数的重写：基类的析构函数最好写成虚函数。</p>
+<table>
+<thead>
+<tr>
+<th>函数重载</th>
+<th>俩个函数在同一作用域，函数名、参数相同。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>重写(覆盖)</td>
+<td>俩个函数分别在基类和派生类的作用域，函数名、参数、返回值都必须相同（协变例外），俩个函数必须是虚函数。</td>
+</tr>
+<tr>
+<td>隐藏（重定义）</td>
+<td>俩个函数分别在基类和派生类的作用域，函数名相同，俩个基类和派生类的同名函数不构成重写就是隐藏。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3.抽象类"></a>3.抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类（接口类），抽象类不能实例化出对象，派生类继承后也不能实例化出对象，必须重写纯虚函数，这也体现出了接口继承。</p>
+<h4 id="4-C-11-override、final"><a href="#4-C-11-override、final" class="headerlink" title="4.C++11  override、final"></a>4.C++11  override、final</h4><p>final：被final修饰的纯虚函数不能被派生类重写。</p>
+<p>override：修饰派生类虚函数强制完成重写，如果没有重写就会编译报错。</p>
+<p>建议：派生类的纯虚函数搭配上override上使用。</p>
+<h4 id="5-多态的原理"><a href="#5-多态的原理" class="headerlink" title="5.多态的原理"></a>5.多态的原理</h4><p>// 这里常考一道笔试题：sizeof(Base)是多少？<br>class Base<br>{<br>public:<br>    virtual void Func1()<br>    {<br>        cout &lt;&lt; “Func1()” &lt;&lt; endl;<br>    }<br>private:<br>    int _b = 1;<br>};</p>
+<p>b成员，还有一个_vfptr放在对象的前面，叫做虚函数表指针。一个虚函数的类中至少都有一个虚函数表指针，因为虚函数的地址要被放在虚函数表中，虚函数表也叫虚表</p>
+<p>//派生类对象也有虚表指针，其虚表指针一部分存的也是继承下来的，另外一部分存的是自己的。如果派生类中有虚函数的重写，基类对象的虚表和派生类对象的虚表也是不一样的，重写是语法层的叫法，覆盖是原理层的叫法。<br>//虚函数表的本质是存一个虚函数指针的指针数组，这个数组最后放了一个nullptr。<br>//虚表存的是虚函数指针，虚函数和普通函数都时存在代码段的，而且，对象中存的是虚表指针，虚表也是存在代码段的。</p>
+<p>满足多态以后的函数调用，是运行起来以后到对象中去找的。不满足多态的函数调用是编译时就确认好的。也就是说，多态是动态绑定。</p>
+<p>静态绑定（前期绑定、早绑定）：在程序编译期间确定了程序的行为，也称为静态多态，例如：函数重载。</p>
+<p>动态绑定（后期绑定、晚绑定）：在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也成为动态多态。</p>
+<h4 id="6-单继承和多继承关系的虚函数表"><a href="#6-单继承和多继承关系的虚函数表" class="headerlink" title="6.单继承和多继承关系的虚函数表"></a>6.单继承和多继承关系的虚函数表</h4><p>多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中。</p>
 
             </div>
             <hr>
@@ -551,9 +583,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/09/缺省参数、函数重载、引用、C-11/" class="b-link-green">缺省参数、函数重载、引用、C++11</a>
+                    <a href="/2019/04/25/duo-tai/" class="b-link-green">多态</a>
                 </p>
             </div>
         </div>
@@ -576,44 +608,45 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/10/Linux常见指令1/">
+                <a href="/2019/04/25/duo-tai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux常见指令1">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
                         
-                        <span class="card-title">Linux常见指令1</span>
+                        <span class="card-title">多态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">. 表示当前目录
-.. 表示上级目录
-/  单独使用表示根目录 ，路径当中使用表示分隔符
-相对路径：cd ../day02/   相当于当前文件的路径。
-绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索</div>
+                    <div class="summary">多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
+也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
+2.多态的实现在继承中构成多态的俩个条件：
+调用函数的对象必须是指针或者引用；被调用的函数必须是虚</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/指令/" target="_blank">
-                        <span class="chip bg-color">指令</span>
+                    <a href="/tags/概念/" target="_blank">
+                        <span class="chip bg-color">概念</span>
                     </a>
                     
                 </div>
@@ -627,20 +660,20 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/08/CPU密集型、IO密集型/">
+                <a href="/2019/04/23/jin-cheng-gai-nian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CPU密集型、IO密集型">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="进程概念">
                         
-                        <span class="card-title">CPU密集型、IO密集型</span>
+                        <span class="card-title">进程概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">什么是CPU密集型、IO密集型？以及俩的区别？IO密集型（I/O bound）IO密集型指的是系统的CPU性能相对硬盘、内存要好很多，此时的系统运作，大部分都是CPU在等I/O（硬盘/内存）的读写操作，对CPU的利用、占有率较差，没有充分的</div>
+                    <div class="summary">ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-08
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
                             </span>
                         <span class="publish-author">
                             
@@ -657,8 +690,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CPU/" target="_blank">
-                        <span class="chip bg-color">CPU</span>
+                    <a href="/tags/进程/" target="_blank">
+                        <span class="chip bg-color">进程</span>
                     </a>
                     
                 </div>
@@ -726,9 +759,7 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -741,6 +772,11 @@
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -764,6 +800,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

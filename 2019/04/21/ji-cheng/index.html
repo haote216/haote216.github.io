@@ -4,11 +4,16 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="多态, haote216">
-    <meta name="description" content="多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
-也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
-2.多态的实现在继承中构成多态的俩个条件：
-调用函数的对象必须是指针或者引用；被调用的函数必须是虚">
+    <meta name="keywords" content="继承, haote216">
+    <meta name="description" content="继承1.继承的概念继承是面向对象程序设计使代码可以复用的最重要的手段，它允许程序员在保持原有类特性的基础上进行扩展，产生新的类，称为派生类。
+继承后父类的成员都变成子类的一部分。
+继承基类成员访问方式的变化
+
+
+
+
+public继承
+pro">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>多态 | haote216</title>
+    <title>继承 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -199,6 +204,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -266,13 +275,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        多态
+                        继承
                     </div>
                 </div>
             </div>
@@ -388,7 +397,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-25
+                    2019-04-21
                 </div>
 
                 
@@ -404,43 +413,71 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h4><p>多态就是不同的对象完成某个动作，产生不同的状态。</p>
-<p>也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。</p>
-<h4 id="2-多态的实现"><a href="#2-多态的实现" class="headerlink" title="2.多态的实现"></a>2.多态的实现</h4><p>在继承中构成多态的俩个条件：</p>
-<p>调用函数的对象必须是指针或者引用；被调用的函数必须是虚函数，且完成了虚函数的重写。</p>
-<p>虚函数：就是在类的成员函数的前面加上virtual。    只有成员函数才能做虚函数，全局函数、静态函数都不可以。</p>
-<p>虚函数的重写：派生类中有一个跟基类完全相同（函数名、参数、返回值）的虚函数，称子类的虚函数重写了基类的虚函数，也叫做虚函数的覆盖。</p>
-<p>虚函数的协变：虚函数重写有一个例外，重写的虚函数的返回值可以不同，但必须是基类指针和派生类指针或者基类引用和派生类引用。</p>
-<p>析构函数的重写：基类的析构函数最好写成虚函数。</p>
+                <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h4 id="1-继承的概念"><a href="#1-继承的概念" class="headerlink" title="1.继承的概念"></a>1.继承的概念</h4><p>继承是面向对象程序设计使代码可以复用的最重要的手段，它允许程序员在保持原有类特性的基础上进行扩展，产生新的类，称为派生类。</p>
+<p>继承后父类的成员都变成子类的一部分。</p>
+<p>继承基类成员访问方式的变化</p>
 <table>
 <thead>
 <tr>
-<th>函数重载</th>
-<th>俩个函数在同一作用域，函数名、参数相同。</th>
+<th></th>
+<th>public继承</th>
+<th>protected继承</th>
+<th>private继承</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>重写(覆盖)</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名、参数、返回值都必须相同（协变例外），俩个函数必须是虚函数。</td>
+<td>基类的public成员</td>
+<td>派生类的public成员</td>
+<td>派生类的protected成员</td>
+<td>派生类的private成员</td>
 </tr>
 <tr>
-<td>隐藏（重定义）</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名相同，俩个基类和派生类的同名函数不构成重写就是隐藏。</td>
+<td>基类的protected成员</td>
+<td>派生类的protected成员</td>
+<td>派生类的protected成员</td>
+<td>派生类的private成员</td>
+</tr>
+<tr>
+<td>基类的private成员</td>
+<td>在派生类中不可见</td>
+<td>在派生类中不可见</td>
+<td>在派生类中不可见</td>
 </tr>
 </tbody>
 </table>
-<h4 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3.抽象类"></a>3.抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类（接口类），抽象类不能实例化出对象，派生类继承后也不能实例化出对象，必须重写纯虚函数，这也体现出了接口继承。</p>
-<h4 id="4-C-11-override、final"><a href="#4-C-11-override、final" class="headerlink" title="4.C++11  override、final"></a>4.C++11  override、final</h4><p>final：被final修饰的纯虚函数不能被派生类重写。</p>
-<p>override：修饰派生类虚函数强制完成重写，如果没有重写就会编译报错。</p>
-<p>建议：派生类的纯虚函数搭配上override上使用。</p>
-<h4 id="5-多态的原理"><a href="#5-多态的原理" class="headerlink" title="5.多态的原理"></a>5.多态的原理</h4><p>// 这里常考一道笔试题：sizeof(Base)是多少？<br>class Base<br>{<br>public:<br>    virtual void Func1()<br>    {<br>        cout &lt;&lt; “Func1()” &lt;&lt; endl;<br>    }<br>private:<br>    int _b = 1;<br>};</p>
-<p>b成员，还有一个_vfptr放在对象的前面，叫做虚函数表指针。一个虚函数的类中至少都有一个虚函数表指针，因为虚函数的地址要被放在虚函数表中，虚函数表也叫虚表</p>
-<p>//派生类对象也有虚表指针，其虚表指针一部分存的也是继承下来的，另外一部分存的是自己的。如果派生类中有虚函数的重写，基类对象的虚表和派生类对象的虚表也是不一样的，重写是语法层的叫法，覆盖是原理层的叫法。<br>//虚函数表的本质是存一个虚函数指针的指针数组，这个数组最后放了一个nullptr。<br>//虚表存的是虚函数指针，虚函数和普通函数都时存在代码段的，而且，对象中存的是虚表指针，虚表也是存在代码段的。</p>
-<p>满足多态以后的函数调用，是运行起来以后到对象中去找的。不满足多态的函数调用是编译时就确认好的。也就是说，多态是动态绑定。</p>
-<p>静态绑定（前期绑定、早绑定）：在程序编译期间确定了程序的行为，也称为静态多态，例如：函数重载。</p>
-<p>动态绑定（后期绑定、晚绑定）：在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也成为动态多态。</p>
-<h4 id="6-单继承和多继承关系的虚函数表"><a href="#6-单继承和多继承关系的虚函数表" class="headerlink" title="6.单继承和多继承关系的虚函数表"></a>6.单继承和多继承关系的虚函数表</h4><p>多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中。</p>
+<p>方式总结：基类的私有成员在派生类中都是不可见的。基类的公有和保护成员在派生类中的访问方式是Min（成员在基类的访问限定符，继承方式）</p>
+<h4 id="2-基类和派生类对象赋值转换"><a href="#2-基类和派生类对象赋值转换" class="headerlink" title="2.基类和派生类对象赋值转换"></a>2.基类和派生类对象赋值转换</h4><p>派生类对象可以赋值给 基类的对象 / 基类的指针 / 基类的引用，称为切片、切割。</p>
+<p>基类的指针可以通过强制类型转化赋值给派生类的指针。</p>
+<pre><code>pp = &amp;sobj                   // 指针指向派生类对象
+Student* ps1 = (Student*)pp; // 这种情况转换时可以的。
+ps1-&gt;_No = 10;
+
+pp = &amp;pobj;                  // 指针指向基类对象
+Student* ps2 = (Student*)pp; //编译没问题，运行就会出错，存在越界访问的问题。
+ps2-&gt;_No = 10;
+</code></pre><h4 id="3-继承中的作用域"><a href="#3-继承中的作用域" class="headerlink" title="3.继承中的作用域"></a>3.继承中的作用域</h4><p>子类和父类中有同名成员，子类成员将屏蔽父类对同名成员的直接访问，这种情况叫做隐藏，也叫重定义。但是可以通过基类::基类成员这种方式显式访问。如果是成员函数隐藏，只需要成员函数名相同就构成隐藏。</p>
+<p>不在同一作用域的成员函数不构成函数重载，所以只能是隐藏，成员函数名相同就隐藏。</p>
+<h4 id="4-派生类的默认成员函数"><a href="#4-派生类的默认成员函数" class="headerlink" title="4.派生类的默认成员函数"></a>4.派生类的默认成员函数</h4><p>派生类的构造函数必须调用基类的构造函数初始化基类的那一部分成员。如果基类没有默认的构造函数，则必须在派生类构造函数的初始化列表阶段显示调用。</p>
+<p>派生类的拷贝构造函数必须调用基类的拷贝构造完成基类的拷贝初始化。</p>
+<p>派生类的operator=必须要调用基类的operator=完成基类的复制。</p>
+<p>派生类对象初始化先调用基类构造再调派生类构造。</p>
+<p>派生类对象析构清理先调用派生类析构再调基类的析构。</p>
+<p>面试题：如何实现一个不能继承的类？</p>
+<p>答：将基类的构造函数设置成私有的，派生类得不到基类的构造函数，无法继承；使用关键字final（C++11）。</p>
+<h4 id="5-继承与友元"><a href="#5-继承与友元" class="headerlink" title="5.继承与友元"></a>5.继承与友元</h4><p>友元不能继承。</p>
+<h4 id="6-继承与静态成员"><a href="#6-继承与静态成员" class="headerlink" title="6.继承与静态成员"></a>6.继承与静态成员</h4><p>基类定义了一个static静态成员，则整个继承体系里面只有一个这样的成员。无论派生出多少个子类，都只有一个static成员实例 。</p>
+<h4 id="7-复杂的菱形继承-钻石继承与菱形虚拟继承"><a href="#7-复杂的菱形继承-钻石继承与菱形虚拟继承" class="headerlink" title="7.复杂的菱形继承/钻石继承与菱形虚拟继承"></a>7.复杂的菱形继承/钻石继承与菱形虚拟继承</h4><p>单继承：一个子类只有一个直接父类时，称单继承。</p>
+<p>多继承：一个子类有俩个或以上直接父类时，称多继承。</p>
+<p>菱形继承：菱形继承是多继承的一种特殊情况，但是有数据冗余和二义性。</p>
+<pre><code>a._name = &quot;haote&quot;;              //二义性
+a.Student::_name = &quot;haote1&quot;;     
+a.Teacher::_name = &quot;haote2&quot;;    //显示指定父类可以解决二义性，但是无法解决数据冗余
+</code></pre><p>虚拟继承（解决菱形继承问题）：D对象中将A放到的了对象组成的最下面，这个A同时属于B和C，那么B和C如何去找到公共的A呢？这里是通过了B和C的两个指针，指向的一张表。这两个表叫虚基表，这两个指针叫虚基表指针。虚基表中存的偏移量。通过偏移量可以找到下面的A。</p>
+<h4 id="8-继承和组合（目的：复用）"><a href="#8-继承和组合（目的：复用）" class="headerlink" title="8.继承和组合（目的：复用）"></a>8.继承和组合（目的：复用）</h4><p>C++缺陷：语法复杂。有多继承就会有菱形继承，有菱形继承就会有菱形虚拟继承，底层实现会很复杂，但是后面的语言比如Java就没有。</p>
+<p>公有继承是is–a的关系，每个派生类对象都是一个基类对象。</p>
+<p>组合是has–a的关系，假设B组合了A，每个B对象中都有一个A对象。</p>
+<p>优先使用对象组合，而不是类继承。组合的耦合度低，代码维护性好。但是有些关系适合继承，另外多态也要使用继承。</p>
 
             </div>
             <hr>
@@ -579,9 +616,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/25/多态/" class="b-link-green">多态</a>
+                    <a href="/2019/04/21/ji-cheng/" class="b-link-green">继承</a>
                 </p>
             </div>
         </div>
@@ -604,73 +641,26 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/25/多态/">
+                <a href="/2019/04/23/linux-huan-jing-ji-chu-kai-fa-gong-ju/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux环境基础开发工具">
                         
-                        <span class="card-title">多态</span>
+                        <span class="card-title">Linux环境基础开发工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
-也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
-2.多态的实现在继承中构成多态的俩个条件：
-调用函数的对象必须是指针或者引用；被调用的函数必须是虚</div>
+                    <div class="summary">vim：编辑器vim三种模式命令模式（command mode）插入模式（insert mode）末行模式（last line mode）
+vim正常模式命令集：
+hjkl：左下上右
+yy：复制 10yy:把光标所在行及其下面行共10行都复</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                    C++
-                                </a>
-                            
-                            
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
                         </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/概念/" target="_blank">
-                        <span class="chip bg-color">概念</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/04/23/进程概念/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="进程概念">
-                        
-                        <span class="card-title">进程概念</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -688,6 +678,52 @@
                     
                     <a href="/tags/进程/" target="_blank">
                         <span class="chip bg-color">进程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/16/lei-de-6-ge-mo-ren-cheng-yuan-han-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="类的6个默认成员函数">
+                        
+                        <span class="card-title">类的6个默认成员函数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">类的6个默认成员函数：构造函数构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用一次。
+构造函数的主要任务并不是开辟空间创建对</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/概念/" target="_blank">
+                        <span class="chip bg-color">概念</span>
                     </a>
                     
                 </div>
@@ -755,9 +791,7 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -770,6 +804,11 @@
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -793,6 +832,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

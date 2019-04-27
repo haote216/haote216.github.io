@@ -4,12 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux常见指令1, haote216">
-    <meta name="description" content=". 表示当前目录
-.. 表示上级目录
-/  单独使用表示根目录 ，路径当中使用表示分隔符
-相对路径：cd ../day02/   相当于当前文件的路径。
-绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索">
+    <meta name="keywords" content="进程概念, haote216">
+    <meta name="description" content="ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。    ps aux：显示所有的进程    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)grep：是一种强大的文本搜索工具，全面搜">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Linux常见指令1 | haote216</title>
+    <title>进程概念 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -200,6 +196,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -267,13 +267,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Linux常见指令1
+                        进程概念
                     </div>
                 </div>
             </div>
@@ -365,8 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/指令/" target="_blank">
-                                <span class="chip bg-color">指令</span>
+                            <a href="/tags/进程/" target="_blank">
+                                <span class="chip bg-color">进程</span>
                             </a>
                         
                     </div>
@@ -389,7 +389,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-10
+                    2019-04-23
                 </div>
 
                 
@@ -405,50 +405,141 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>. 表示当前目录</p>
-<p>.. 表示上级目录</p>
-<p>/  单独使用表示根目录 ，路径当中使用表示分隔符</p>
-<p>相对路径：cd ../day02/   相当于当前文件的路径。</p>
-<p>绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索文件的路径，绝对路径只有1条。</p>
-<p>文件=属性+内容</p>
-<p>属性{大小、创建时间、修改时间、属性修改时间、创建者、权限、格式、类型}</p>
-<p>inode:索引节点，在linux中把文件的属性全放在一起，是文件属性（是数据）</p>
-<p>文件的ACM时间代表的什么含义？<br>Access time:文件最后访问时间<br>Modify time:文件最后修改时间<br>Change time:对文件Inode信息最后修改时间</p>
-<p>ls：列出该目录下的所有子目录与文件</p>
-<p>  -a:列出目录下的所有文件，包括以.开头的隐含文件</p>
-<p>  -l:列出文件的详细信息</p>
-<p>  -i输出文件的i节点的索引信息    inode编号</p>
-<p>cd ：改变工作目录。将当前工作目录改变到指定的目录下</p>
-<p>  -:返回最近访问目录</p>
-<p>  ~:进入用户家目录</p>
-<p>pwd：显示用户当前所在的目录</p>
-<p>touch：创建普通文件,也可更改文档和时间</p>
-<p>  -a:访问时间</p>
-<p>  -c:创建时间</p>
-<p>  -m:变动时间</p>
-<p>mkdir:创建目录</p>
-<p>   -p:即一次可以建立多个目录</p>
-<p>tree：自动给以树形的形式列出当前目录的文件和文件夹，不加任何参数，它会自动列表当前目录下面所有深度级别的文件和目录</p>
-<p>rmdir:删除空目录</p>
-<p>  -p:当子目录被删除后如果父目录也变成空目录的话，就连带父目录一起删除。</p>
-<p>rm:删除文件或目录</p>
-<p>   -f:即使文件属性为只读（即写保护），也直接删除</p>
-<p>   -r:删除目录</p>
-<p>   -rf:强制删除</p>
-<p>man:访问Linux手册页</p>
-<p>cp:复制文件或目录</p>
-<p>-f:强制复制文件或目录，不论目的文件或目录是否已经存在</p>
-<p>-R:拷贝目录，将制定目录下的文件及子目录一并处理</p>
-<p>echo:重定向         &gt; :输出重定向</p>
-<p>mv:移动文件或重命名</p>
-<p>将rm改造成mv：     alias 别名</p>
-<p>cat/tac:查看目标文件的内容，把文件内容正序/倒序显示出来</p>
-<p>-b:对非空输出行编号</p>
-<p>-n:对输出的所有行编号</p>
-<p>-s:不输出多行空行</p>
-<p>more:默认把当前显示器填满     </p>
-<p> -n:对输出的所有行编号</p>
-<p>  q:退出more</p>
+                <p>ps：提供了进程的一次性的查看，它提供的查看结果并不是动态连续的。<br>    ps aux：显示所有的进程<br>    ps -l：将目前属于您自己这次登入的PID与相关信息列示出來(只与自己的bash有关)<br>grep：是一种强大的文本搜索工具，全面搜索正则表达式并把匹配的行打印出来<br>top：打开Linux下的任务管理器指令（对进程时间监控）            q退出</p>
+<p>/proc：proc文件系统，在Linux中有额外的机制可以为内核和内核模块将信息发送给进程– /proc 文件系统。最初设计的目的是允许更方便的对进程信息进行访问</p>
+<p>cwd：当前进程的工作目录</p>
+<p>exe：当前进程对应的可执行文件的目录</p>
+<pre><code>进程控制kill：向目标进程发信号           
+
+        kill -l：查寻可以给进程发的信号的指令
+        kill -9 PID：终止进程
+        kill -19 PID：暂停进程
+</code></pre><p>./test &amp;：把test这个程序放在后台执行</p>
+<p>​    并发：在一个CPU下多个进程进行切换，在一个时间段内，多个任务都得到推进叫做并发。</p>
+<p>​    并行：在多CPU体系下，在一个时刻下，多个进程都在运行的情况叫做并行。</p>
+<p>​    IO密集型：（I/O bound）:任务大量进行对I/O设备（硬盘/内存）进行读写操作。</p>
+<p>​    CPU密集型：（CPU bound）:任务大量要求CPU进行计算、逻辑判断等功能，对CPU占有率高。</p>
+<p>计算机存储器：1.内部存储器（内存）：易失性存储介质，速度快</p>
+<p>​                           2.外部存储器（主要是磁盘）</p>
+<p>​                                                   1》硬盘：永久性存储介质</p>
+<p>​                                                   2》软盘：</p>
+<p>编译好的程序是在计算机硬盘上存在的一个二进制文件。</p>
+<h5 id="冯·诺依曼体系结构"><a href="#冯·诺依曼体系结构" class="headerlink" title="冯·诺依曼体系结构"></a>冯·诺依曼体系结构</h5><p>CPU集成俩个硬件，运算器和控制器。</p>
+<p>输入或者输出设备，统称为外设。</p>
+<p>这里的存储器指的是内存。</p>
+<p>在数据层面上，CPU只能对内存进行读写，不能访问外设。</p>
+<p>处理速度：CPU&gt;&gt;内存&gt;&gt;外设</p>
+<p>离CPU越近的存储介质速度越快，离CPU越远的存储介质速度越慢。</p>
+<p>寄存器—-》缓存—-》内存—-》硬盘—-》网盘</p>
+<p>所有设备只能直接和内存打交道。</p>
+<p>为什么硬盘上的程序文件要被加载到内存去运行？</p>
+<p>答：CPU不能直接和硬盘接触，只能去内存中读取数据。</p>
+<h4 id="操作系统Operator-System-OS"><a href="#操作系统Operator-System-OS" class="headerlink" title="操作系统Operator System(OS)"></a>操作系统Operator System(OS)</h4><h6 id="任何计算机系统都包含一个基本的程序集合，称为操作系统。"><a href="#任何计算机系统都包含一个基本的程序集合，称为操作系统。" class="headerlink" title="任何计算机系统都包含一个基本的程序集合，称为操作系统。"></a>任何计算机系统都包含一个基本的程序集合，称为操作系统。</h6><p>操作系统搭建在一堆硬件上，对硬件进行调度管理协调，然后让硬件跑起来。</p>
+<p>但是操作系统和硬件之间并不是直接管理的关系，中间还有一套驱动，驱动一般都是对应的厂商提供的。</p>
+<p>1.内核（进程管理、内存管理、文件管理、驱动管理）</p>
+<p>2.外壳（函数库、shell）</p>
+<h6 id="设计OS目的"><a href="#设计OS目的" class="headerlink" title="设计OS目的"></a>设计OS目的</h6><p>与硬件交互，管理所有的软硬件资源；为用户程序提供一个良好的执行环境。</p>
+<h6 id="系统调用和库函数"><a href="#系统调用和库函数" class="headerlink" title="系统调用和库函数"></a>系统调用和库函数</h6><p>操作系统会对外会表现为一个整体，但是会暴露自己的部分接口，让用户使用，这部分由操作系统提供的接口，叫做系统调用。</p>
+<p>系统调用在使用上，对用户要求比较高，所以有的开发者对系统调用就行了封装，从而形成了第三方库。</p>
+<h4 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h4><p>进程包含代码、数据、PCB、虚拟地址空间、页表</p>
+<p>进程是程序的一个执行实例，正在执行的程序。担当分配系统资源（CPU时间，内存）的实体。</p>
+<h6 id="描述进程PCB"><a href="#描述进程PCB" class="headerlink" title="描述进程PCB"></a>描述进程PCB</h6><p>进程信息被放在一个叫做进程控制块的数据结构中，可以理解为进程属性的集合，称为PCB，Linux下的PCB：task_struct。PCB包含了目标进程的所有信息。</p>
+<p>task_struct是PCB的一种，是Linux内核的一种数据结构，它会被装载到RAM（内存）里并包含着进程的信息。</p>
+<p>task_struct内容分类：</p>
+<p>标识符PID：描述本进程的唯一标识符，用来区别其他进程。类似于学号</p>
+<p>状态：任务状态，退出代码，退出信号</p>
+<p>​          r状态    s状态</p>
+<p>​          在系统中，r状态仅仅表明该进程允许被放在CPU里去运行</p>
+<p>​          再搞一条链表，只放r状态的进程的PCB，按优先级排好，叫做调度队列</p>
+<p>优先级：相对于其他进程的优先级。系统进程数目众多，而CPU资源只有少量甚至一个，所以进程之间是具有竞争属性的。为了高效完成任务，更合理竞争相关资源，便具有了优先级。</p>
+<p>程序计数器： 保存了将要取出的下一条指令的内存地址。在指令取出之后，程序计数器就被更新以便指向后继的指令。</p>
+<p>​        计算机怎么知道代码执行到哪一步呢？</p>
+<pre><code>     CPU寄存器当中包括了一个重要的寄存器（PC指针：保存着当前正在执行指令的下一条指令的地址），也就是这里的程序计数器。所以CPU要读取指令时，找PC指针，拿着PC指针里面的地址去找，读取了指令后，这个PC指针默认地址向下移。
+</code></pre><p>​                时间片：任何一个进程只要在CPU上运行，超过一定的时间范围后，强制从CPU上剥离下来。</p>
+<p>是一个进程占有CPU资源的基本单位。</p>
+<p>​        在单CPU的体系环境下，任何一个时刻只有一个进程在运行，但是，在一个时间段内，可以看到多个进程在运行。事实上，由于一台计算机只有一个CPU，所以永远不可能真正地同时运行多个任务。这些进程看起来像同时运行的，实则是轮番穿插地运行，由于时间片通常很短很短，所以用户不会感觉到。</p>
+<p>上下文数据：把一个进程运行时CPU上寄存器上的数据叫做上下文数据。进程1的上下文数据存放在PCB中。进程1/进程2/进程3：叫做进程间切换。进程间切换必须要保存/恢复硬件上下文数据。</p>
+<p>内存指针：PCB里能找到目标进程的代码和数据。</p>
+<p>I/O状态信息：包括显示的I/O请求，分配给进程的I/O设备和被进程使用的文件列表。</p>
+<p>记账信息：包括处理器时间总和，使用的时钟数总和，时间限制，记账号等。</p>
+<p>getpid()：获取进程PID的函数  头文件：sys/types.h     unistd.h</p>
+<p>getppid()：获取父进程PID的函数               一个进程对应的父进程的PID号是唯一的。</p>
+<p>​                                                                        父进程是bash命令行解释器</p>
+<p>fork：通过系统调用创建进程（通过代码创建进程，从进程中创建进程）</p>
+<p>​    fork创建出来的子进程PCB是以父进程为模板的，父子进程代码共享，但是数据是私有的。</p>
+<p>​        fork调用之后，有俩个进程要执行return语句。执行后，有俩个返回值，给父进程返回子进程的PID，给子进程返回0。</p>
+<p>​        进程运行时具有独立性，体现在PCB不同、数据不同、代码不同。一个进程崩溃了不会影响别的进程。进程之间不相关，父子进程之间照样不相关。即使父子进程之间代码共享，一旦程序跑起来成为进程之后，都不能修改代码，都是只读的。</p>
+<p>​        fork之后通常要用if分流：返回值&lt;0，创建失败。返回值==0，子进程工作。返回值&gt;0，父进程工作。</p>
+<h5 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h5><p>R：运行状态，并不意味着程序一定在运行中，它表明程序要么在运行中要么在运行队列里。</p>
+<p>S：睡眠状态，意味着进程在等待事件完成，重点是这个进程可以被终止，可以被杀掉。</p>
+<p>D：磁盘休眠状态（深度休眠状态），在这个状态的进程通常会等待IO的结束，不可以被中断，防止被杀掉。</p>
+<p>Z：僵尸状态</p>
+<p>T：停止状态</p>
+<p>X：死亡状态</p>
+<h6 id="僵尸进程："><a href="#僵尸进程：" class="headerlink" title="僵尸进程："></a>僵尸进程：</h6><p>当子进程退出但不会立即释放子进程的PCB，会保存一段时间，并且会一直在等待父进程读取退出码。这段时间进程是僵尸状态。</p>
+<p>僵尸进程会以终止状态保持在进程表中。</p>
+<p>僵尸进程危害：</p>
+<p>父进程一直不读取，那么子进程一直处于僵尸状态。</p>
+<p>用数据维护退出状态，也属于进程基本信息，所以也保存在task_struct中，僵尸状态一直不退出，PCB一直都要维护。</p>
+<h6 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h6><p>父进程先退出，子进程就称为“孤儿进程”。</p>
+<p>孤儿进程被1号init进程（约等于系统）领养，当然要有inti进程（系统）回收。</p>
+<h5 id="进程优先级"><a href="#进程优先级" class="headerlink" title="进程优先级"></a>进程优先级</h5><p>UID：代表执行者的身份</p>
+<p>PID：代表这个进程的标识符</p>
+<p>PPID：代表这个进程的父进程的标识符</p>
+<p>PRI：代表这个进程的优先级，值越小越早被执行</p>
+<p>NI：代表这个进程的nice值，表示进程可被执行的优先级的修正数值</p>
+<p>PRI(new)=PRI(old)+nice</p>
+<p>nice -n -5 ./test：开始执行程序就指定nice值</p>
+<p>renice -5 -p 5200：PID为5200的进程nice设为-5</p>
+<p>top进入后按”r”—&gt;输入进程PID—&gt;输入nice值：更改已存在的nice</p>
+<h5 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h5><p>操作系统中用来指定操作系统运行环境的一些参数。在链接的时候通常就是环境变量帮助编译器查找动态静态库。在系统当中，环境变量通常具有全局特性</p>
+<p>PATH：用来搜索可执行程序的路径</p>
+<p>​        bin目录下存放着可执行文件，比如bin下的ls，如果想把自己的可执行文件例如myproc放到bin目录下，可以是可以，但不推荐，容易造成系统默认命令污染。</p>
+<p>​    可以把当前路径加到环境变量PATH中去，用冒号做分隔符。PATH=$PATH：要被可执行的路径</p>
+<p>HOME：当前用户的主工作目录，root用户和普通用户的HOME是不一样的。</p>
+<p>HISTSIZE：保存历史命令记录的条数。</p>
+<p>SHELL：当前Shell，它的值通常是/bin/bash。</p>
+<p>查看环境变量：echo $环境变量名</p>
+<p>获取环境变量：</p>
+<ol>
+<li><p>environ：系统提供的一个二级指针，就是指向环境变量表的一个指针，环境变量表就是一个个指向环境变量的指针的数组（字符指针数组），这个数组最后一个元素是空，每个指针指向一个以‘\0’结尾的环境字符串，</p>
+</li>
+<li><p>getenv();  </p>
+<pre><code>int main(int argc,char* argv[],char* env[])
+{
+    printf(&quot;%s\n&quot;,getenv(&quot;PATH&quot;));
+    printf(&quot;%s\n&quot;,getenv(&quot;SHELL&quot;));
+}
+</code></pre><p>获取PATH和SHELL环境变量的路径。</p>
+<p>3.putenv();</p>
+</li>
+</ol>
+<p>​    设置环境变量；</p>
+<p>export MYENY=”10000000000000000”</p>
+<p>环境变量可以由父进程传给子进程</p>
+<h4 id="程序地址空间"><a href="#程序地址空间" class="headerlink" title="程序地址空间"></a>程序地址空间</h4><p>写时拷贝：指的是俩个任务可以同时自由读取内存，但任意一个任务试图对内存进行修改时，内存就会复制一份提供给修改方单独使用，以免影响到其他的任务使用。</p>
+<p>内核只为新生成的子进程创建虚拟空间结构，它们复制于父进程的虚拟空间结构，但是不为这些段分配物理内存，它们共享父进程的物理空间，当父子进程中有更改相应的段的行为发生时，再为子进程相应的段分配物理空间。</p>
+<p>系统调用：</p>
+<p>fork：复制当前进程</p>
+<p>exec：使用新的可执行映像覆盖当前可执行映像</p>
+<p>clone：创建子进程并从指定位置开始执行</p>
+<p>fork出来子进程后，父进程和子进程谁先运行？</p>
+<p>答：用户不知道，是由系统决定的。</p>
+<p>   I am child，pid：3275，g_val：300，&amp;g_val：0x80497c8</p>
+<p>I am parent，pid：3274，g_val：100，&amp;g_val：0x80497c8</p>
+<p>此时父子进程对应的地址相同，但这个地址绝不是真正地物理内存地址。并且对应的物理内存地址绝不相同。</p>
+<p>我们在C/C++语言所看到的地址，全部都是虚拟地址！物理地址，用户一般看不到，由操作系统（OS）统一管理。</p>
+<p>虚拟地址空间：</p>
+<p>父子进程如何做到代码共享？</p>
+<p>答：父进程通过页表访问物理内存地址上的代码，子进程也通过页表访问物理内存上的代码</p>
+<p>虚拟地址空间的作用：</p>
+<p>1.让每个进程拥有了相同、独立内存空间，相互之间不会干扰。</p>
+<p>2.读写内存更安全。由于系统和MMU的限制，使得进程无法操作到其他进程的数据。</p>
+<p>3.不连续的物理空间可以映射成连续的虚拟地址空间。</p>
+<p>4.进程分配的内存空间只有在实际使用时，才会触发缺页异常来分配实际物理空间，从而最大程度减少了内存空间的浪费。</p>
+<p>共享的本质：不同的进程取地址通过页表映射到相同的物理内存。</p>
+<p>私有的本质：不同的进程取地址通过页表映射到不同的物理内存。</p>
+<h5 id="内核进程调度队列："><a href="#内核进程调度队列：" class="headerlink" title="内核进程调度队列："></a>内核进程调度队列：</h5><p>linux内核2.6所采用的调度算法的时间复杂度是O（1）；</p>
 
             </div>
             <hr>
@@ -587,9 +678,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/10/Linux常见指令1/" class="b-link-green">Linux常见指令1</a>
+                    <a href="/2019/04/23/jin-cheng-gai-nian/" class="b-link-green">进程概念</a>
                 </p>
             </div>
         </div>
@@ -614,70 +705,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/12/进程信号/">
+                <a href="/2019/04/25/duo-tai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="进程信号">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
                         
-                        <span class="card-title">进程信号</span>
+                        <span class="card-title">多态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">信号信号的基本概念用户、内核、进程向目标进程通知某些事件发生的机制。
-进程能够处理信号的前提条件是得能够认识信号。
-进程收到信号之后，有可能并不会立即处理，而是在合适的时候。
-信号的产生对进程而言是异步的。
-处理信号的3种方法：执行默认动作</div>
+                    <div class="summary">多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
+也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
+2.多态的实现在继承中构成多态的俩个条件：
+调用函数的对象必须是指针或者引用；被调用的函数必须是虚</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/进程/" target="_blank">
-                        <span class="chip bg-color">进程</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/04/09/缺省参数、函数重载、引用、C-11/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="缺省参数、函数重载、引用、C++11">
-                        
-                        <span class="card-title">缺省参数、函数重载、引用、C++11</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">命名空间：12345printf(&quot;%d\n&quot;,a);         //访问最近定义的aprintf(&quot;%d\n&quot;,::a);       //访问全局域的aprintf(&quot;%d\n&q</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-09
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -695,6 +740,55 @@
                     
                     <a href="/tags/概念/" target="_blank">
                         <span class="chip bg-color">概念</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/23/jin-cheng-kong-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="进程控制">
+                        
+                        <span class="card-title">进程控制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
+#include&lt;unistd.h&gt;
+pid_t fork(void);
+返回值：子进程中返回0，父进程返回子进程id，出错返回-1
+fork之前父进</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/进程/" target="_blank">
+                        <span class="chip bg-color">进程</span>
                     </a>
                     
                 </div>
@@ -762,9 +856,7 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -777,6 +869,11 @@
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -800,6 +897,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CPU密集型、IO密集型, haote216">
-    <meta name="description" content="什么是CPU密集型、IO密集型？以及俩的区别？IO密集型（I/O bound）IO密集型指的是系统的CPU性能相对硬盘、内存要好很多，此时的系统运作，大部分都是CPU在等I/O（硬盘/内存）的读写操作，对CPU的利用、占有率较差，没有充分的">
+    <meta name="keywords" content="缺省参数、函数重载、引用、C++11, haote216">
+    <meta name="description" content="命名空间：printf(&amp;quot;%d\n&amp;quot;,a);         //访问最近定义的a
+printf(&amp;quot;%d\n&amp;quot;,::a);       //访问全局域的a
+printf(&amp;quot;%d\n&amp;quot">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>CPU密集型、IO密集型 | haote216</title>
+    <title>缺省参数、函数重载、引用、C++11 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -196,6 +198,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -263,13 +269,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CPU密集型、IO密集型
+                        缺省参数、函数重载、引用、C++11
                     </div>
                 </div>
             </div>
@@ -361,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CPU/" target="_blank">
-                                <span class="chip bg-color">CPU</span>
+                            <a href="/tags/概念/" target="_blank">
+                                <span class="chip bg-color">概念</span>
                             </a>
                         
                     </div>
@@ -373,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                C++
                             </a>
                         
                     </div>
@@ -385,7 +391,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-08
+                    2019-04-09
                 </div>
 
                 
@@ -401,14 +407,98 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="什么是CPU密集型、IO密集型？以及俩的区别？"><a href="#什么是CPU密集型、IO密集型？以及俩的区别？" class="headerlink" title="什么是CPU密集型、IO密集型？以及俩的区别？"></a>什么是CPU密集型、IO密集型？以及俩的区别？</h3><h4 id="IO密集型（I-O-bound）"><a href="#IO密集型（I-O-bound）" class="headerlink" title="IO密集型（I/O bound）"></a>IO密集型（I/O bound）</h4><p>IO密集型指的是系统的CPU性能相对硬盘、内存要好很多，此时的系统运作，大部分都是CPU在等I/O（硬盘/内存）的读写操作，对CPU的利用、占有率较差，没有充分的利用处理器能力。</p>
-<h4 id="CPU密集型"><a href="#CPU密集型" class="headerlink" title="CPU密集型"></a>CPU密集型</h4><p>CPU密集型也叫计算密集型，指的是系统的硬盘、内存性能相对CPU要好很多，此时系统大部分时间都在用来计算、逻辑判断等CPU动作。CPU密集型的程序一般而言CPU占用率很高，可能是因为任务本身不太需要访问I/O设备，也可能是因为程序是多线程实现因此屏蔽掉了等待I/O的时间。</p>
-<h4 id="CPU密集型-vs-IO密集型"><a href="#CPU密集型-vs-IO密集型" class="headerlink" title="CPU密集型 vs IO密集型"></a>CPU密集型 vs IO密集型</h4><p>可以把任务分为计算密集型和IO密集型。</p>
-<p>计算密集型任务的特点是要进行大量的计算，消耗CPU资源，比如计算圆周率、对视频进行高清解码等等，全靠CPU的运算能力。这种计算密集型任务虽然也可以用多任务完成，但是任务越多，花在任务切换的时间就越多，CPU执行任务的效率就越低，所以，要最高效地利用CPU，计算密集型任务同时进行的数量应当等于CPU的核心数。</p>
-<p>计算密集型任务由于主要消耗CPU资源，因此，代码运行效率至关重要。Python这样的脚本语言运行效率很低，完全不适合计算密集型任务。对于计算密集型任务，最好用C语言编写。</p>
-<p>第二种任务的类型是IO密集型，涉及到网络、磁盘IO的任务都是IO密集型任务，这类任务的特点是CPU消耗很少，任务的大部分时间都在等待IO操作完成（因为IO的速度远远低于CPU和内存的速度）。对于IO密集型任务，任务越多，CPU效率越高，但也有一个限度。常见的大部分任务都是IO密集型任务，比如Web应用。</p>
-<p>IO密集型任务执行期间，99%的时间都花在IO上，花在CPU上的时间很少，因此，用运行速度极快的C语言替换用Python这样运行速度极低的脚本语言，完全无法提升运行效率。对于IO密集型任务，最合适的语言就是开发效率最高（代码量最少）的语言，脚本语言是首选，C语言最差。</p>
-<h5 id="总之，计算密集型程序适合C语言多线程，I-O密集型适合脚本语言开发的多线程。"><a href="#总之，计算密集型程序适合C语言多线程，I-O密集型适合脚本语言开发的多线程。" class="headerlink" title="总之，计算密集型程序适合C语言多线程，I/O密集型适合脚本语言开发的多线程。"></a>总之，计算密集型程序适合C语言多线程，I/O密集型适合脚本语言开发的多线程。</h5>
+                <h4 id="命名空间："><a href="#命名空间：" class="headerlink" title="命名空间："></a>命名空间：</h4><pre><code>printf(&quot;%d\n&quot;,a);         //访问最近定义的a
+printf(&quot;%d\n&quot;,::a);       //访问全局域的a
+printf(&quot;%d\n&quot;,my::a);     //访问my这个命名空间的a
+printf(&quot;%d\n&quot;,your::a);   //访问your这个命名空间的a
+using namespace std;   //std  C++库的命名空间
+</code></pre><h4 id="缺省参数："><a href="#缺省参数：" class="headerlink" title="缺省参数："></a>缺省参数：</h4><pre><code>缺省参数是声明或定义函数时为函数的参数指定一个默认值。在调用该函数时，如果没有指定实参则采用该默认值，否则使用指定的实参。
+半缺省参数必须从右往左依次给出，不能间隔着给。
+缺省参数不能在函数声明和定义中同时出现，那么编译器就无法确定到底该用哪个缺省值。
+</code></pre><h4 id="函数重载："><a href="#函数重载：" class="headerlink" title="函数重载："></a>函数重载：</h4><pre><code>这些同名函数的形参列表（参数个数 或 参数类型 或 顺序）必须不同，和返回值类型无关。
+为什么C语言不支持函数重载，而C++支持函数重载？
+C语言的名字修饰规则非常简单，只是在函数名字前面添加了下划线。
+C++修饰规则，被重新修饰的名字中包含了：函数名字和参数类型，这样就保证了名字在底层的全局唯一性
+</code></pre><h4 id="引用："><a href="#引用：" class="headerlink" title="引用："></a>引用：</h4><pre><code>给变量取一个别名，不会为引用开辟新的内存空间，它和它引用的变量共用同一块内存空间。
+类型 &amp; 引用变量名=引用实体
+int &amp; ra =a;            
+
+引用类型必须和引用实体是同种类型。
+引用在定义时必须初始化。
+一个变量可以有多个引用。
+引用一旦引用一个实体，再不能引用其他实体。
+
+引用的使用场景：
+1.做参数
+2.做返回值
+   做返回值时，传引用能够不用再去开辟一块新的内存空间，如果返回一个结构体或者特别大的空间时，比较节约内存。
+
+   做返回值时，离开函数作用域后，其栈上空间已经返回到系统，因此不能用栈上的空间作为引用类型返回。如果以引用类型返回，返回值的生命周期必须不受函数的限制（即比函数生命周期长）。
+
+</code></pre><h5 id="常引用："><a href="#常引用：" class="headerlink" title="常引用："></a>常引用：</h5><pre><code>const int a=10;
+      int &amp;ra=a;     （错误）a为常量，不能被修改
+const int&amp; ra=a;     （正确）必须加const，a为常量。
+
+      int &amp;b=10；    （错误）
+const int &amp;b=10;     （正确）  
+
+      int c = 20；
+const int &amp;d = c；    （正确）都不能被修改
+
+     int  e = 20;
+    double f = e;     (正确)发生了隐式类型的转化，是相近类型。e把数据给临时变量，临时变量                             把数据再给f，而临时变量具有常性
+   double&amp; f = e;     (错误）
+const double&amp; f = e; （正确）这里的f不是e的别名，而是那个临时变量的别名
+</code></pre><h5 id="引用和指针的区别（重点）："><a href="#引用和指针的区别（重点）：" class="headerlink" title="引用和指针的区别（重点）："></a>引用和指针的区别（重点）：</h5><pre><code>1.引用在定义时必须初始化，指针没有要求
+2.引用在初始化时引用一个实体后，就不能再引用其他实体，而指针可以在任何时候指向任何一个同类型实体。
+3.没有NULL引用，但有NULL指针。
+4.在sizeof中含义不同：引用结果为引用类型的大小，但指针始终是地址空间所占字节个数（32位平台下占4个字节）。
+5.引用自加即引用的实体增加1，指针自加即指针向后偏移一个类型的大小。
+6.有多级指针，但是没有多级引用。
+7.访问实体方式不同，指针需要显式解引用，引用编译器自己处理。
+8.引用比指针使用起来相对更安全。
+</code></pre><pre><code>在性能上，传指针和传引用的效率几乎相同。
+
+在语法层面上，引用就是个别名，没有独立空间。
+在底层实现上，引用实际是有空间的，因为引用是按照指针方式来实现的。
+</code></pre><h4 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h4><pre><code>以inline修饰的函数叫做内联函数，编译时C++编译器在调用内联函数的地方展开，没有函数压栈的开销，内联函数提升程序运行的效率。
+
+1.内联是一种以空间换时间的做法，省去调用函数额外开销。所以代码很长或者有循环/递归的函数不适宜使用作为内联函数。
+2.inline对编译器而言只是一个建议，编译器会自动优化，编译器也可以会忽略掉内联。
+3.inline不建议声明和定义分离，分离会导致链接错误。因为linline会展开，就没有函数地址了，链接就会找不到。
+</code></pre><h5 id="面试题：宏的优缺点"><a href="#面试题：宏的优缺点" class="headerlink" title="面试题：宏的优缺点"></a>面试题：宏的优缺点</h5><pre><code>宏：
+优点：1.增强代码的复用性
+     2.提高性能
+缺点：1.不方便调试
+     2.导致代码可维护性差、可读性差
+     3.没有类型安全的检查，不安全
+
+C++用const替换宏常量
+   用内联函数替换宏函数
+</code></pre><h4 id="auto关键字（C-11"><a href="#auto关键字（C-11" class="headerlink" title="auto关键字（C++11)"></a>auto关键字（C++11)</h4><pre><code>auto不再是一个存储类型指示符，而是作为一个新的类型指示符来指示编译器，auto声明的变量必须由编译器在编译时期推导而得。
+int a = 10;
+auto b = a;   //整型
+auto c = &#39;a&#39;; //字符型
+auto e；      //无法通过编译，使用auto定义变量时必须对其进行初始化
+auto并非是一种“类型”的声明，而是一个类型声明时的“占位符”，编译器在编译期会将auto替换为变
+量实际的类型。
+用auto声明指针类型时，用auto和auto*没有任何区别，但用auto声明引用类型时则必须加&amp;。
+当在同一行声明多个变量时，这些变量必须是相同的类型，否则编译器将会报错，因为编译器实际只对第一个类型进行推导，然后用推导出来的类型定义其他变量。
+auto不能推导的场景：
+1.auto不能作为函数的参数
+2.auto不能直接用来声明数组
+3.auto不能定义类的非静态成员变量
+4.实例化模板时不能使用auto作为模板参数
+5.为了避免与C++98中的auto发生混淆，C++11只保留了auto作为类型指示符的用法
+6.auto在实际中最常见的优势用法就是跟以后会讲到的C++11提供的新式for循环，还有lambda表达式等进行配合使用
+</code></pre><h4 id="基于范围的for循环（C-11）"><a href="#基于范围的for循环（C-11）" class="headerlink" title="基于范围的for循环（C++11）"></a>基于范围的for循环（C++11）</h4><pre><code>for循环后的括号由冒号“ ：”分为两部分：第一部分是范围内用于迭代的变量，第二部分则表示被迭代的范围。
+</code></pre><h4 id="指针空值nullptr-C-11"><a href="#指针空值nullptr-C-11" class="headerlink" title="指针空值nullptr(C++11)"></a>指针空值nullptr(C++11)</h4><pre><code>nullptr代表一个指针空值常量，nullptr是有类型的，其类型为nullptr_t，仅仅可以被隐式转化为指针类型
+typedef decltype(nullptr) nullptr_t;
+注意：
+1. 在使用nullptr表示指针空值时，不需要包含头文件，因为nullptr是C++11作为新关键字引入的。
+2. 在C++11中，sizeof(nullptr) 与 sizeof((void*)0)所占的字节数相同。
+3. 为了提高代码的健壮性，在后续表示指针空值时建议最好使用nullptr。
+</code></pre>
             </div>
             <hr>
 
@@ -546,9 +636,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/08/CPU密集型、IO密集型/" class="b-link-green">CPU密集型、IO密集型</a>
+                    <a href="/2019/04/09/que-sheng-can-shu-han-shu-chong-zai-yin-yong-c-11/" class="b-link-green">缺省参数、函数重载、引用、C++11</a>
                 </p>
             </div>
         </div>
@@ -573,27 +663,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/09/缺省参数、函数重载、引用、C-11/">
+                <a href="/2019/04/10/linux-chang-jian-zhi-ling-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="缺省参数、函数重载、引用、C++11">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Linux常见指令1">
                         
-                        <span class="card-title">缺省参数、函数重载、引用、C++11</span>
+                        <span class="card-title">Linux常见指令1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">命名空间：12345printf(&quot;%d\n&quot;,a);         //访问最近定义的aprintf(&quot;%d\n&quot;,::a);       //访问全局域的aprintf(&quot;%d\n&q</div>
+                    <div class="summary">. 表示当前目录
+.. 表示上级目录
+/  单独使用表示根目录 ，路径当中使用表示分隔符
+相对路径：cd ../day02/   相当于当前文件的路径。
+绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-09
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-10
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                    C++
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
                                 </a>
                             
                             
@@ -603,8 +697,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/概念/" target="_blank">
-                        <span class="chip bg-color">概念</span>
+                    <a href="/tags/指令/" target="_blank">
+                        <span class="chip bg-color">指令</span>
                     </a>
                     
                 </div>
@@ -615,10 +709,10 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/08/CPU密集型、IO密集型/">
+                <a href="/2019/04/08/cpu-mi-ji-xing-io-mi-ji-xing/">
                     <div class="card-image">
                         
                         
@@ -645,7 +739,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -718,9 +811,7 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -733,6 +824,11 @@
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -756,6 +852,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

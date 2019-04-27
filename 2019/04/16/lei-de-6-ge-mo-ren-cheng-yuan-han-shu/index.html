@@ -5,7 +5,8 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="类的6个默认成员函数, haote216">
-    <meta name="description" content="类的6个默认成员函数：构造函数12345678910111213141516构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用">
+    <meta name="description" content="类的6个默认成员函数：构造函数构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用一次。
+构造函数的主要任务并不是开辟空间创建对">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -196,6 +197,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -401,21 +406,130 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="类的6个默认成员函数："><a href="#类的6个默认成员函数：" class="headerlink" title="类的6个默认成员函数："></a>类的6个默认成员函数：</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><strong>构造函数</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用一次。</span><br><span class="line">构造函数的主要任务并不是开辟空间创建对象，而是初始化对象。</span><br><span class="line"></span><br><span class="line">特征：</span><br><span class="line">1.函数名与类名相同</span><br><span class="line">2.无返回值</span><br><span class="line">3.对象实例化时编译器自动调用对应的构造函数</span><br><span class="line">4.构造函数可以重载</span><br><span class="line">5.如果类中没有显示定义构造函数，则C++编译器就会自动生成一个无参的默认构造函数，一旦用户显示定义编译器将不再生成。如果用户定义了含有参数的构造函数，却定义了没有参数的类对象，此时编译器不会再生成一个默认的构造函数，抛出没有合适的默认构造函数可用。</span><br><span class="line"></span><br><span class="line">无参的构造函数和全缺省的构造函数都称为默认构造函数，并且默认构造函数只能有一个。注意：无参</span><br><span class="line">构造函数、全缺省构造函数、我们没写编译器默认生成的构造函数，都可以认为是默认成员函数。</span><br><span class="line"></span><br><span class="line">1.基本类型（内置类型）：int/char...</span><br><span class="line">2.自定义类型：class/struct定义的类型...</span><br><span class="line">默认生成的构造函数，对1不做处理，对2调用无参默认构造函数</span><br></pre></td></tr></table></figure>
-<h4 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">析构函数:与构造函数功能相反，析构函数不是完成对象的销毁，局部变量（在栈上）销毁工作是由编译器完成的。而对象在销毁时会自动调用析构函数，完成类的一些资源清理工作（比如在堆上动态开辟的资源）。</span><br><span class="line"></span><br><span class="line">特性：</span><br><span class="line">1.析构函数名是在类名前加上字符~</span><br><span class="line">2.无参数无返回值</span><br><span class="line">3.一个类有且只有一个析构函数。若未显示定义，系统会自动生成默认的析构函数</span><br><span class="line">4.对象生命周期结束时，C++编译系统自动调用析构函数</span><br><span class="line"></span><br><span class="line">析构函数调用的时候，是按反着的顺序析构的。比如先构造了类对象d1,d2,d3。析构的时候先析构d3，再析构d2，最后析构d1。因为对象是在函数的栈帧上的，要符合后进先出。</span><br><span class="line">析构函数对内置类型（基本类型）不做什么事情，但是对自定义类型还是会调用自定义类型的析构函数。</span><br></pre></td></tr></table></figure>
-<h4 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a><strong>拷贝构造函数</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">拷贝构造函数：只有单个形参，该形参是对本类类型对象的引用（一般常用const修饰，用来保护，不能发生改变），在用已存在的类类型对象创建新对象时由编译器自动调用。</span><br><span class="line"></span><br><span class="line">Date d1;</span><br><span class="line">Date d2 = d1;//这个也是拷贝构造函数</span><br><span class="line"></span><br><span class="line">特征：</span><br><span class="line">1.拷贝构造函数是构造函数的一个重载形式</span><br><span class="line">2.拷贝构造函数的参数只有一个且必须使用引用传参，使用传值方式会引发无穷递归调用</span><br><span class="line">3.若未显示定义，系统默认的拷贝构造函数。默认的拷贝构造函数对象按内存存储按字节序完成拷贝，这种拷贝叫浅拷贝，或者值拷贝</span><br><span class="line"></span><br><span class="line">面试题：</span><br><span class="line">拷贝构造为什么有时候不使用默认的拷贝构造函数？</span><br><span class="line">如果在顺序表中使用浅拷贝，析构函数有free指针，先拷贝构造一个类对象，在free的时候，会把这个指针指向的空间释放俩次，导致程序崩溃。应使用深拷贝。所以不是任何时候都使用浅拷贝，日期这种类就可以用浅拷贝。</span><br><span class="line">将编译器生成的默认拷贝构造函数以及赋值运算符重载称之为浅拷贝方式，即值的拷贝。因此如果一个类中涉及到资源管理，不能使用编译器生成的默认拷贝构造函数以及赋值运算符重载。</span><br></pre></td></tr></table></figure>
-<h4 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a><strong>运算符重载</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">运算符重载：返回值类型 operator操作符 （参数列表）</span><br><span class="line">              bool operator==(const Date&amp; d1,const Date&amp; d2)</span><br><span class="line">注意：</span><br><span class="line">1.不能通过连接其他符号来创建新的操作符：比如operator@</span><br><span class="line">2.重载操作符必须有一个类类型或者枚举类型的操作数</span><br><span class="line">3.用于内置类型的操作符，其含义不能改变，例如：内置的整型+ ，不能改变其含义</span><br><span class="line">4.作为类成员的重载函数，其形参看起来比操作数数目少1，成员函数的操作符有一个默认的形参this，限定为第一个形参</span><br><span class="line">5. .* :: sizeof ?: .注意以上5个运算符不能重载。</span><br><span class="line"></span><br><span class="line">     d2 =d1;是运算符的重载，把d1的值赋值给d2</span><br><span class="line">data d3 =d1;不是，调用的是拷贝构造函数，拷贝构造一个新对象d3</span><br><span class="line"></span><br><span class="line">为了防止自己给自己赋值：</span><br><span class="line">void operator =(const Date&amp; d)</span><br><span class="line">&#123;</span><br><span class="line">	if(this != &amp;d)</span><br><span class="line">	&#123;</span><br><span class="line">          _year = d._year;</span><br><span class="line">        _month = d._month;</span><br><span class="line">        _day = d._day;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">连续赋值：</span><br><span class="line">Date&amp; operator=(const Date&amp; d)</span><br><span class="line">&#123;</span><br><span class="line">    if(this != &amp;d)</span><br><span class="line">    &#123;</span><br><span class="line">        _year = d._year;</span><br><span class="line">        _month = d._month;</span><br><span class="line">        _day = d._day;</span><br><span class="line">    &#125;</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br><span class="line">d3 = d2 = d1;   //d3 = (d2.operator=(&amp;d2,d1)) </span><br><span class="line"></span><br><span class="line">赋值运算符主要有4点：</span><br><span class="line">1.参数类型</span><br><span class="line">2.返回值</span><br><span class="line">3.检测是否自己给自己赋值</span><br><span class="line">4.返回*this</span><br><span class="line">5.一个类如果没有显示定义赋值运算符重载，编译器也会生成一个，完成对象按字节序的值拷贝</span><br></pre></td></tr></table></figure>
-<h5 id="const成员"><a href="#const成员" class="headerlink" title="const成员"></a>const成员</h5><p>这里说点题外话</p>
+                <h3 id="类的6个默认成员函数："><a href="#类的6个默认成员函数：" class="headerlink" title="类的6个默认成员函数："></a>类的6个默认成员函数：</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><strong>构造函数</strong></h4><pre><code>构造函数：主要完成初始化。是一个特殊的成员函数，名字和类名相同，创建类类型对象时由编译器自动调用，保证每个数据成员都有一个合适的初始值，并且在对象的生命周期内只调用一次。
+构造函数的主要任务并不是开辟空间创建对象，而是初始化对象。
+
+特征：
+1.函数名与类名相同
+2.无返回值
+3.对象实例化时编译器自动调用对应的构造函数
+4.构造函数可以重载
+5.如果类中没有显示定义构造函数，则C++编译器就会自动生成一个无参的默认构造函数，一旦用户显示定义编译器将不再生成。如果用户定义了含有参数的构造函数，却定义了没有参数的类对象，此时编译器不会再生成一个默认的构造函数，抛出没有合适的默认构造函数可用。
+
+无参的构造函数和全缺省的构造函数都称为默认构造函数，并且默认构造函数只能有一个。注意：无参
+构造函数、全缺省构造函数、我们没写编译器默认生成的构造函数，都可以认为是默认成员函数。
+
+1.基本类型（内置类型）：int/char...
+2.自定义类型：class/struct定义的类型...
+默认生成的构造函数，对1不做处理，对2调用无参默认构造函数
+</code></pre><h4 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h4><pre><code>析构函数:与构造函数功能相反，析构函数不是完成对象的销毁，局部变量（在栈上）销毁工作是由编译器完成的。而对象在销毁时会自动调用析构函数，完成类的一些资源清理工作（比如在堆上动态开辟的资源）。
+
+特性：
+1.析构函数名是在类名前加上字符~
+2.无参数无返回值
+3.一个类有且只有一个析构函数。若未显示定义，系统会自动生成默认的析构函数
+4.对象生命周期结束时，C++编译系统自动调用析构函数
+
+析构函数调用的时候，是按反着的顺序析构的。比如先构造了类对象d1,d2,d3。析构的时候先析构d3，再析构d2，最后析构d1。因为对象是在函数的栈帧上的，要符合后进先出。
+析构函数对内置类型（基本类型）不做什么事情，但是对自定义类型还是会调用自定义类型的析构函数。
+</code></pre><h4 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a><strong>拷贝构造函数</strong></h4><pre><code>拷贝构造函数：只有单个形参，该形参是对本类类型对象的引用（一般常用const修饰，用来保护，不能发生改变），在用已存在的类类型对象创建新对象时由编译器自动调用。
+
+Date d1;
+Date d2 = d1;//这个也是拷贝构造函数
+
+特征：
+1.拷贝构造函数是构造函数的一个重载形式
+2.拷贝构造函数的参数只有一个且必须使用引用传参，使用传值方式会引发无穷递归调用
+3.若未显示定义，系统默认的拷贝构造函数。默认的拷贝构造函数对象按内存存储按字节序完成拷贝，这种拷贝叫浅拷贝，或者值拷贝
+
+面试题：
+拷贝构造为什么有时候不使用默认的拷贝构造函数？
+如果在顺序表中使用浅拷贝，析构函数有free指针，先拷贝构造一个类对象，在free的时候，会把这个指针指向的空间释放俩次，导致程序崩溃。应使用深拷贝。所以不是任何时候都使用浅拷贝，日期这种类就可以用浅拷贝。
+将编译器生成的默认拷贝构造函数以及赋值运算符重载称之为浅拷贝方式，即值的拷贝。因此如果一个类中涉及到资源管理，不能使用编译器生成的默认拷贝构造函数以及赋值运算符重载。
+</code></pre><h4 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a><strong>运算符重载</strong></h4><pre><code>运算符重载：返回值类型 operator操作符 （参数列表）
+              bool operator==(const Date&amp; d1,const Date&amp; d2)
+注意：
+1.不能通过连接其他符号来创建新的操作符：比如operator@
+2.重载操作符必须有一个类类型或者枚举类型的操作数
+3.用于内置类型的操作符，其含义不能改变，例如：内置的整型+ ，不能改变其含义
+4.作为类成员的重载函数，其形参看起来比操作数数目少1，成员函数的操作符有一个默认的形参this，限定为第一个形参
+5. .* :: sizeof ?: .注意以上5个运算符不能重载。
+
+     d2 =d1;是运算符的重载，把d1的值赋值给d2
+data d3 =d1;不是，调用的是拷贝构造函数，拷贝构造一个新对象d3
+
+为了防止自己给自己赋值：
+void operator =(const Date&amp; d)
+{
+    if(this != &amp;d)
+    {
+          _year = d._year;
+        _month = d._month;
+        _day = d._day;
+    }
+}
+
+连续赋值：
+Date&amp; operator=(const Date&amp; d)
+{
+    if(this != &amp;d)
+    {
+        _year = d._year;
+        _month = d._month;
+        _day = d._day;
+    }
+    return *this;
+}
+d3 = d2 = d1;   //d3 = (d2.operator=(&amp;d2,d1)) 
+
+赋值运算符主要有4点：
+1.参数类型
+2.返回值
+3.检测是否自己给自己赋值
+4.返回*this
+5.一个类如果没有显示定义赋值运算符重载，编译器也会生成一个，完成对象按字节序的值拷贝
+</code></pre><h5 id="const成员"><a href="#const成员" class="headerlink" title="const成员"></a>const成员</h5><p>这里说点题外话</p>
 <p>1.用const 修饰函数的参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">如果参数作输出用，不论是传引用传指针，都不能加const，否则该参数失去输出功能。const只能修饰输入参数。</span><br><span class="line"></span><br><span class="line">如果参数采用指针传递，加const可以防止意外修改指针，起到保护作用。</span><br><span class="line"></span><br><span class="line">如果输入参数采用值传递，由于函数将自动产生临时变量用于复制该参数，该输入参数本来就无需const保护，所以不加const修饰，不管这个参数是内置类型还是自定义类型。</span><br><span class="line"></span><br><span class="line">对于自定义类型的参数而言，函数体内将产生自定义类型的临时变量用于复制参数，而临时对象的构造、复制、析构过程都会消耗时间，为了提高效率，可以采用传引用，不需要产生临时变量，为了防止改变参数，所以此时加上const。是否将void Fun(int x)改写成void Fun(const int&amp; x)，完全没必要，因为内置类型的参数不存在构造、析构过程，复制很快，传值和传引用效率几乎相同。</span><br><span class="line"></span><br><span class="line">总结：对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const 引用传递”，目的是提高效率。例如将voidFunc(A a) 改为void Func(const A &amp;a)。</span><br><span class="line">     对于内部数据类型的输入参数，不要将“值传递”的方式改为“const引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如void Func(int x) 不应该改为voidFunc(const int &amp;x)。</span><br></pre></td></tr></table></figure>
-<p>2.用const修饰函数的返回值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果给以“指针传递”方式的函数返回值加const修饰，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加const 修饰的同类型指针。例如函数const char *GetString(void);如下语句将出现编译错误：char *str = GetString();正确的用法是const char *str =GetString();如果函数返回值采用“值传递方式”，由于函数会把返回值复制到外部临时的存储单元中，加const修饰没有任何价值。例如不要把函数int GetInt(void) 写成const int GetInt(void)。同理不要把函数AGetA(void) 写成const A GetA(void)，其中A 为用户自定义的数据类型。如果返回值不是内部数据类型，将函数AGetA(void) 改写为const A &amp;GetA(void)的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。d1 = d2 = d3</span><br></pre></td></tr></table></figure>
-<p>3.const修饰类的成员函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">将const修饰的类成员函数称之为const成员函数，const修饰类成员函数，实际修饰该成员函数隐含的this指针，this指针指向的内存空间的值不能发生变化，表明在该成员函数中不能对类的任何成员进行修改。</span><br><span class="line"></span><br><span class="line">值得注意的是，如果类中存在指针类型的数据成员即便是const，函数只能保证不修改该指针的值，并不能保证不修改指针指向的对象，const对象的成员是不可修改的,然而const对象通过指针维护的对象却是可以修改的。</span><br><span class="line"></span><br><span class="line">const成员函数可以被对应的具有相同形参列表的非const成员函数重载</span><br><span class="line"></span><br><span class="line">const成员函数不可以修改对象的数据,不管对象是否具有const性质.它在编译时,以是否修改成员数据为依据,进行检查</span><br><span class="line"></span><br><span class="line">然而加上mutable修饰符的数据成员,对于任何情况下通过任何手段都可修改,自然此时的const成员函数是可以修改它的</span><br></pre></td></tr></table></figure>
-<h5 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.const对象可以调用非const成员函数吗？</span><br><span class="line">不可以</span><br><span class="line">2.非const对象可以调用const成员函数吗？</span><br><span class="line">可以的，非const对象可以访问任意的成员函数，包括const成员函数。</span><br><span class="line">3.const成员函数内可以调用其它的非const成员函数吗？</span><br><span class="line">不可以。</span><br><span class="line">4.非const成员函数内可以调用其它的const成员函数吗？</span><br><span class="line">可以。</span><br></pre></td></tr></table></figure>
-<h4 id="取地址及const取地址操作符重载"><a href="#取地址及const取地址操作符重载" class="headerlink" title="取地址及const取地址操作符重载"></a>取地址及const取地址操作符重载</h4><p>这两个默认成员函数一般不用重新定义 ，编译器默认会生成。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Date* operator&amp;()</span><br><span class="line">&#123;</span><br><span class="line">	return this ;</span><br><span class="line">&#125;</span><br><span class="line">const Date* operator&amp;()const</span><br><span class="line">&#123;</span><br><span class="line">	return this ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>推荐一篇很不错的文章，对理解const有很大的帮助。</p>
+<pre><code>如果参数作输出用，不论是传引用传指针，都不能加const，否则该参数失去输出功能。const只能修饰输入参数。
+
+如果参数采用指针传递，加const可以防止意外修改指针，起到保护作用。
+
+如果输入参数采用值传递，由于函数将自动产生临时变量用于复制该参数，该输入参数本来就无需const保护，所以不加const修饰，不管这个参数是内置类型还是自定义类型。
+
+对于自定义类型的参数而言，函数体内将产生自定义类型的临时变量用于复制参数，而临时对象的构造、复制、析构过程都会消耗时间，为了提高效率，可以采用传引用，不需要产生临时变量，为了防止改变参数，所以此时加上const。是否将void Fun(int x)改写成void Fun(const int&amp; x)，完全没必要，因为内置类型的参数不存在构造、析构过程，复制很快，传值和传引用效率几乎相同。
+
+总结：对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const 引用传递”，目的是提高效率。例如将voidFunc(A a) 改为void Func(const A &amp;a)。
+     对于内部数据类型的输入参数，不要将“值传递”的方式改为“const引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如void Func(int x) 不应该改为voidFunc(const int &amp;x)。
+</code></pre><p>2.用const修饰函数的返回值</p>
+<pre><code>如果给以“指针传递”方式的函数返回值加const修饰，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加const 修饰的同类型指针。例如函数const char *GetString(void);如下语句将出现编译错误：char *str = GetString();正确的用法是const char *str =GetString();如果函数返回值采用“值传递方式”，由于函数会把返回值复制到外部临时的存储单元中，加const修饰没有任何价值。例如不要把函数int GetInt(void) 写成const int GetInt(void)。同理不要把函数AGetA(void) 写成const A GetA(void)，其中A 为用户自定义的数据类型。如果返回值不是内部数据类型，将函数AGetA(void) 改写为const A &amp;GetA(void)的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。d1 = d2 = d3
+</code></pre><p>3.const修饰类的成员函数</p>
+<pre><code>将const修饰的类成员函数称之为const成员函数，const修饰类成员函数，实际修饰该成员函数隐含的this指针，this指针指向的内存空间的值不能发生变化，表明在该成员函数中不能对类的任何成员进行修改。
+
+值得注意的是，如果类中存在指针类型的数据成员即便是const，函数只能保证不修改该指针的值，并不能保证不修改指针指向的对象，const对象的成员是不可修改的,然而const对象通过指针维护的对象却是可以修改的。
+
+const成员函数可以被对应的具有相同形参列表的非const成员函数重载
+
+const成员函数不可以修改对象的数据,不管对象是否具有const性质.它在编译时,以是否修改成员数据为依据,进行检查
+
+然而加上mutable修饰符的数据成员,对于任何情况下通过任何手段都可修改,自然此时的const成员函数是可以修改它的
+</code></pre><h5 id="面试题："><a href="#面试题：" class="headerlink" title="面试题："></a>面试题：</h5><pre><code>1.const对象可以调用非const成员函数吗？
+不可以
+2.非const对象可以调用const成员函数吗？
+可以的，非const对象可以访问任意的成员函数，包括const成员函数。
+3.const成员函数内可以调用其它的非const成员函数吗？
+不可以。
+4.非const成员函数内可以调用其它的const成员函数吗？
+可以。
+</code></pre><h4 id="取地址及const取地址操作符重载"><a href="#取地址及const取地址操作符重载" class="headerlink" title="取地址及const取地址操作符重载"></a>取地址及const取地址操作符重载</h4><p>这两个默认成员函数一般不用重新定义 ，编译器默认会生成。</p>
+<pre><code>Date* operator&amp;()
+{
+    return this ;
+}
+const Date* operator&amp;()const
+{
+    return this ;
+}
+</code></pre><p>推荐一篇很不错的文章，对理解const有很大的帮助。</p>
 <p>C++ const修饰成员函数：<a href="https://blog.csdn.net/zheng19880607/article/details/23883437" target="_blank" rel="noopener">https://blog.csdn.net/zheng19880607/article/details/23883437</a></p>
 
             </div>
@@ -555,9 +669,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/16/类的6个默认成员函数/" class="b-link-green">类的6个默认成员函数</a>
+                    <a href="/2019/04/16/lei-de-6-ge-mo-ren-cheng-yuan-han-shu/" class="b-link-green">类的6个默认成员函数</a>
                 </p>
             </div>
         </div>
@@ -582,7 +696,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/21/继承/">
+                <a href="/2019/04/21/ji-cheng/">
                     <div class="card-image">
                         
                         
@@ -635,7 +749,7 @@ pro</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/13/stelen、sizeof/">
+                <a href="/2019/04/13/stelen-sizeof/">
                     <div class="card-image">
                         
                         
@@ -647,7 +761,8 @@ pro</div>
                 <div class="card-content article-content">
                     <div class="summary">今天看C++的string类，然后模拟实现的时候，发现了这样的一道题，主要是区别sizeof和strlen。刚开始完，和答案一对，发现其实错了好多。
 下面给大家区分区分
-12345678910111213141516171819char a</div>
+    char a1[] = &quot;\0&quot;;
+   </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
@@ -736,9 +851,7 @@ pro</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -751,6 +864,11 @@ pro</div>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -774,6 +892,10 @@ pro</div>
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

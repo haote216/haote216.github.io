@@ -4,11 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux环境基础开发工具, haote216">
-    <meta name="description" content="vim：编辑器vim三种模式命令模式（command mode）插入模式（insert mode）末行模式（last line mode）
-vim正常模式命令集：
-hjkl：左下上右
-yy：复制 10yy:把光标所在行及其下面行共10行都复">
+    <meta name="keywords" content="Linux常见指令1, haote216">
+    <meta name="description" content=". 表示当前目录
+.. 表示上级目录
+/  单独使用表示根目录 ，路径当中使用表示分隔符
+相对路径：cd ../day02/   相当于当前文件的路径。
+绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +17,7 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Linux环境基础开发工具 | haote216</title>
+    <title>Linux常见指令1 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -199,6 +200,10 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -266,13 +271,13 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Linux环境基础开发工具
+                        Linux常见指令1
                     </div>
                 </div>
             </div>
@@ -364,8 +369,8 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/进程/" target="_blank">
-                                <span class="chip bg-color">进程</span>
+                            <a href="/tags/指令/" target="_blank">
+                                <span class="chip bg-color">指令</span>
                             </a>
                         
                     </div>
@@ -388,7 +393,7 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-23
+                    2019-04-10
                 </div>
 
                 
@@ -404,65 +409,50 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="vim：编辑器"><a href="#vim：编辑器" class="headerlink" title="vim：编辑器"></a>vim：编辑器</h4><p>vim三种模式<br>命令模式（command mode）<br>插入模式（insert mode）<br>末行模式（last line mode）</p>
-<p>vim正常模式命令集：</p>
-<p>hjkl：左下上右</p>
-<p>yy：复制<br> 10yy:把光标所在行及其下面行共10行都复制<br> yy10:把光标所在行复制10次</p>
-<p>dd：剪贴<br> 3dd：把光标所在行及其下面俩行都剪贴</p>
-<p>p：粘贴<br>u：撤销上一步操作<br>ctrl + r:恢复撤销</p>
-<p>shift + ~:切换大小写</p>
-<p>x:删除光标右侧的字符<br>     nx：删除光标右侧指定个数的字符<br>X：删除光标左侧的字符<br>    nX:删除光标左侧指定个数的字符</p>
-<p>w：按单词向后移动光标<br>b：按单词向前移动光标</p>
-<p>r+替换的字符：把光标处的字符替换成想要替换的字符<br>   3r+替换的字符：依次同时替换3个字符<br>R：替换模式<br>从光标处的字符依次往后被替换</p>
-<p>shift + :    :进入末行模式<br>/main   :从上到下查找main<br>（或者?main）:表示从下到上查找main<br>结果出来后再按n：匹配的关键字的下一个</p>
-<p>在末行模式下，vs test1.c同时分屏操作当前文件和test1.c</p>
-<p>ctrl + w + h:光标移动到左侧的文件<br>ctrl + w + l:光标移动到右侧的文件</p>
-<h4 id="gcc-g-：编译器"><a href="#gcc-g-：编译器" class="headerlink" title="gcc/g++：编译器"></a>gcc/g++：编译器</h4><p>gcc进行程序翻译<br>1.程序的预处理      gcc -E test.c -o test.i<br>2.编译                     gcc -S test.i -o test.s<br>3.汇编                     gcc -c test.s -o test.o<br>4.链接                     gcc test.o -o test<br>  执行                     ./test</p>
-<p>gcc test.c -o test</p>
-<p>动态链接：动态链接就是，在生成可执行程序的时候，只是引用的未定义的符号作了标识，到加载到内存中的时候才进行符号重定位。基本思想是把程序按照模块拆分成各个相对独立部分，在程序运行时才将它们链接在一起形成一个完整的程序，而不是像静态链接一样把所有程序模块都链接成一个单独的可执行文件。 假设现在有两个程序program1.o和program2.o，这两者共用同一个库lib.o,假设首先运行程序program1，系统首先加载program1.o，当系统发现program1.o中用到了lib.o，即program1.o依赖于lib.o，那么系统接着加载lib.o，如果program1.o和lib.o还依赖于其他目标文件，则依次全部加载到内存中。当program2运行时，同样的加载program2.o，然后发现program2.o依赖于lib.o，但是此时lib.o已经存在于内存中，这个时候就不再进行重新加载，而是将内存中已经存在的lib.o映射到program2的虚拟地址空间中，从而进行链接（这个链接过程和静态链接类似）形成可执行程序。</p>
-<p>动态链接的优缺点：节省空间，效率相对高，对库的依赖性特别强（比如库的版本更新）</p>
-<p>静态链接和动态链接两者最大的区别就在于链接的时机不一样，静态链接是在形成可执行程序前，而动态链接的进行则是在程序执行时</p>
-<p>静态链接：静态链接就是，在生成可执行程序的时候，把目标文件.o 和 静态库 .a ，使用 ld 链接器，链接生成一个可执行程序。这是在程序加载前就完成的动作。</p>
-<p>静态链接的优缺点：独立性、可移植性特别强，浪费空间，程序大小相对大，效率相对低</p>
-<p>gcc在进行程序编译时默认链接的方式是动态链接。<br>ldd：查看文件的链接属性<br>gcc test.c -o test_static -static：修改test.c文件的链接属性为静态链接。<br>在Linux下，静态库的后缀为“.a”，动态库的后缀为“.so”</p>
-<h4 id="gdb：调试工具"><a href="#gdb：调试工具" class="headerlink" title="gdb：调试工具"></a>gdb：调试工具</h4><p>程序的发布方式有两种，debug模式和release模式。Linux gcc/g++编译出来的二进制程序，默认是release模式。要使用gdb调试，必须在源代码生成二进制程序的时候，加上-g。例gcc test.c -o test_debug -g。</p>
-<p>gdb test.c：进入gdb的交互式命令行模式</p>
-<p>quit：退出</p>
-<p>list / l 行号：显示文件代码，接着上次的位置往下列，每次列10行<br>list / l 函数名：列出某个函数的源代码</p>
-<p>b 行号 ：在某一行设置断点<br>info b ：查看断点<br>d n：删除序号为n的断点<br>disable 1：关闭序列号为1的断点<br>enable 1： 开启序列号为1的断点</p>
-<p>c：从当前位置开始连续而非单步执行程序<br>r：运行程序<br>n：单条执行<br>s：进入函数调用内部</p>
-<p>p 变量：打印变量值<br>p &amp;变量：打印变量的地址<br>until 行号：跳转到行号的有意义行<br>finish：执行到当前函数返回，然后停下来等待命令</p>
-<p>display变量：常显示<br>undisplay n：取消序列号为n的常显示</p>
-<p>set var i=40:修改循环变量i的值为40<br>bt：查看各级函数调用</p>
-<h4 id="Makefile：自动化构建工程"><a href="#Makefile：自动化构建工程" class="headerlink" title="Makefile：自动化构建工程"></a>Makefile：自动化构建工程</h4><p>src：查看源代码</p>
-<p>创建一个Makefile文件（依赖关系和依赖方法）</p>
-<p>hello:hello.c                         //生成的可执行文件：依赖的源文件<br>    gcc -o hello hello.c              // makefile的依赖方法必须以TAB键开头</p>
-<p>.PHONY:clean                          //.PHONY是定义伪目标，伪目标的特点是总是被执行<br>clean:<br>    rm -f hello</p>
-<p>hello:hello.o<br>    gcc hello.o -o hello<br>hello.o:hello.s<br>    gcc -c hello.s -o hello.o<br>hello.s:hello.i<br>    gcc -S hello.i -o hello.s<br>hello.i:hello.c<br>    gcc -E hello.c -o hello.i</p>
-<p>.PHNOY:clean<br>clean:<br>    rm -f hello.i hello.s hello.o hello</p>
-<p>make</p>
-<p>make clean</p>
-<p>makefile根据文件的修改时间判定一个源文件是否被修改过，进而决定是否需要被重新编译。</p>
-<p>.PHONY起的作用时告诉makefile不要看文件修改时间，直接编译。</p>
-<p>makefile带来的好处就是“自动化编译”，写好之后，只需要一个make命令，整个工程就完全自动编译，极大地提高了软件开发的效率。</p>
-<p>\n： 换行</p>
-<p>\r：  回车</p>
-<p>ls &gt; makefile     把ls的结果写到makefile里面去</p>
-<p>C函数如printf函数在输出时默认shell将数据输出到标准输出，如显示器。</p>
-<p>而printf输出时并不是把消息直接打到显示器上，而是先写至自己的输出缓冲区。</p>
-<p>而该缓冲区按行刷新（遇到\n，就把包括\n在内之前的所有字符串全部显示出来）。</p>
-<p>fflush:清除读写缓冲区</p>
-<p>stdin：终端的标准输入</p>
-<p>stdout：终端的标准输出</p>
-<p>stderr：终端的标准错误输出</p>
-<h6 id="Linux下第一个小程序：进度条"><a href="#Linux下第一个小程序：进度条" class="headerlink" title="Linux下第一个小程序：进度条"></a>Linux下第一个小程序：进度条</h6><p>#include&lt;stdio.h&gt;</p>
-<p>#include&lt;unistd.h&gt;<br>int main()<br>{<br>    int i=0;<br>    char bar[102]={‘\0’};<br>    const  char* lable=”|/-\“;<br>    while(i &lt;= 100)<br>    {<br>        bar[i]=’#’;<br>        printf(“[%-100s][%d%%][%c]\r”,bar,i,lable[i%4]);<br>        fflush(stdout);<br>        i++;<br>        usleep(50000);<br>    }<br>    printf(“\n”);<br>    return 0;<br>}</p>
-<p>linux下三种安装方式：源码/rpm/yum</p>
-<h4 id="yum：软件安装"><a href="#yum：软件安装" class="headerlink" title="yum：软件安装"></a>yum：软件安装</h4><p>yum需要处于联网状态才能正常工作</p>
-<p>x86_64表示64位系统的安装包，i686表示32位系统的安装包</p>
-<p>el7表示的是centos7/redhat7      el6表示centos6/redhat6</p>
-<p>sudo yum install gcc.x86_64  安装软件</p>
-<p>sudo yum remove gcc.x86_64   卸载软件</p>
+                <p>. 表示当前目录</p>
+<p>.. 表示上级目录</p>
+<p>/  单独使用表示根目录 ，路径当中使用表示分隔符</p>
+<p>相对路径：cd ../day02/   相当于当前文件的路径。</p>
+<p>绝对路径：cd /home/haote216/linux/   从/开始从上到下去检索文件的路径，绝对路径只有1条。</p>
+<p>文件=属性+内容</p>
+<p>属性{大小、创建时间、修改时间、属性修改时间、创建者、权限、格式、类型}</p>
+<p>inode:索引节点，在linux中把文件的属性全放在一起，是文件属性（是数据）</p>
+<p>文件的ACM时间代表的什么含义？<br>Access time:文件最后访问时间<br>Modify time:文件最后修改时间<br>Change time:对文件Inode信息最后修改时间</p>
+<p>ls：列出该目录下的所有子目录与文件</p>
+<p>  -a:列出目录下的所有文件，包括以.开头的隐含文件</p>
+<p>  -l:列出文件的详细信息</p>
+<p>  -i输出文件的i节点的索引信息    inode编号</p>
+<p>cd ：改变工作目录。将当前工作目录改变到指定的目录下</p>
+<p>  -:返回最近访问目录</p>
+<p>  ~:进入用户家目录</p>
+<p>pwd：显示用户当前所在的目录</p>
+<p>touch：创建普通文件,也可更改文档和时间</p>
+<p>  -a:访问时间</p>
+<p>  -c:创建时间</p>
+<p>  -m:变动时间</p>
+<p>mkdir:创建目录</p>
+<p>   -p:即一次可以建立多个目录</p>
+<p>tree：自动给以树形的形式列出当前目录的文件和文件夹，不加任何参数，它会自动列表当前目录下面所有深度级别的文件和目录</p>
+<p>rmdir:删除空目录</p>
+<p>  -p:当子目录被删除后如果父目录也变成空目录的话，就连带父目录一起删除。</p>
+<p>rm:删除文件或目录</p>
+<p>   -f:即使文件属性为只读（即写保护），也直接删除</p>
+<p>   -r:删除目录</p>
+<p>   -rf:强制删除</p>
+<p>man:访问Linux手册页</p>
+<p>cp:复制文件或目录</p>
+<p>-f:强制复制文件或目录，不论目的文件或目录是否已经存在</p>
+<p>-R:拷贝目录，将制定目录下的文件及子目录一并处理</p>
+<p>echo:重定向         &gt; :输出重定向</p>
+<p>mv:移动文件或重命名</p>
+<p>将rm改造成mv：     alias 别名</p>
+<p>cat/tac:查看目标文件的内容，把文件内容正序/倒序显示出来</p>
+<p>-b:对非空输出行编号</p>
+<p>-n:对输出的所有行编号</p>
+<p>-s:不输出多行空行</p>
+<p>more:默认把当前显示器填满     </p>
+<p> -n:对输出的所有行编号</p>
+<p>  q:退出more</p>
 
             </div>
             <hr>
@@ -601,9 +591,9 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/23/Linux环境基础开发工具/" class="b-link-green">Linux环境基础开发工具</a>
+                    <a href="/2019/04/10/linux-chang-jian-zhi-ling-1/" class="b-link-green">Linux常见指令1</a>
                 </p>
             </div>
         </div>
@@ -628,22 +618,24 @@ yy：复制 10yy:把光标所在行及其下面行共10行都复">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/23/进程控制/">
+                <a href="/2019/04/12/jin-cheng-xin-hao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="进程控制">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="进程信号">
                         
-                        <span class="card-title">进程控制</span>
+                        <span class="card-title">进程信号</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
-123#include&lt;unistd.h&gt;pid_t fork(void);返回值：子进程中返回0，父进程返回子进程id，出错返回-1
-fork之前父</div>
+                    <div class="summary">信号信号的基本概念用户、内核、进程向目标进程通知某些事件发生的机制。
+进程能够处理信号的前提条件是得能够认识信号。
+进程收到信号之后，有可能并不会立即处理，而是在合适的时候。
+信号的产生对进程而言是异步的。
+处理信号的3种方法：执行默认动作</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-12
                         </span>
                         <span class="publish-author">
                             
@@ -675,28 +667,22 @@ fork之前父</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/21/继承/">
+                <a href="/2019/04/09/que-sheng-can-shu-han-shu-chong-zai-yin-yong-c-11/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="继承">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="缺省参数、函数重载、引用、C++11">
                         
-                        <span class="card-title">继承</span>
+                        <span class="card-title">缺省参数、函数重载、引用、C++11</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">继承1.继承的概念继承是面向对象程序设计使代码可以复用的最重要的手段，它允许程序员在保持原有类特性的基础上进行扩展，产生新的类，称为派生类。
-继承后父类的成员都变成子类的一部分。
-继承基类成员访问方式的变化
-
-
-
-
-public继承
-pro</div>
+                    <div class="summary">命名空间：printf(&quot;%d\n&quot;,a);         //访问最近定义的a
+printf(&quot;%d\n&quot;,::a);       //访问全局域的a
+printf(&quot;%d\n&quot</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-09
                             </span>
                         <span class="publish-author">
                             
@@ -782,9 +768,7 @@ pro</div>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -797,6 +781,11 @@ pro</div>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -820,6 +809,10 @@ pro</div>
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>

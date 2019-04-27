@@ -200,6 +200,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
 </div>
 
@@ -437,10 +441,23 @@
 <p>ulimit -n：查看进程可以打开的最大文件描述符的数量。</p>
 <p>ulimit -u：用户最大可用的进程数</p>
 <p>线上服务器一般不会把core dumped打开，要不自启动一次写一次core文件，一晚上硬盘就会被写满。</p>
-<h5 id="4-调用系统函数向进程发信号"><a href="#4-调用系统函数向进程发信号" class="headerlink" title="4.调用系统函数向进程发信号"></a>4.调用系统函数向进程发信号</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;signal.h&gt;</span><br><span class="line"></span><br><span class="line">int kill(pid_t pid, int signo);</span><br><span class="line">int raise(int signo);</span><br><span class="line">这俩个函数都是成功返回0，错误返回-1。</span><br><span class="line">kill函数是给一个指定的进程发送信号，raise函数是给当前进程发送信号。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">void abort(void);   </span><br><span class="line">abort函数使当前进程接收到SIGABRT信号而异常终止。</span><br><span class="line">就像exit函数一样，abort函数总是会成功的，所以没有返回值。</span><br></pre></td></tr></table></figure>
-<h5 id="5-由软件条件产生信号"><a href="#5-由软件条件产生信号" class="headerlink" title="5.由软件条件产生信号"></a>5.由软件条件产生信号</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">unsigned int alarm(unsigned int seconds);</span><br><span class="line">调用alarm函数可以设定一个闹钟，也就是告诉内核在seconds秒之后给当前进程发SIGALRM信号，该信号的默认处理动作是终止当前进程。</span><br><span class="line">函数返回值是0或者是以前设定的闹钟时间还余下的秒数。</span><br></pre></td></tr></table></figure>
-<h4 id="阻塞信号"><a href="#阻塞信号" class="headerlink" title="阻塞信号"></a>阻塞信号</h4><h5 id="1-信号其他相关常见概念"><a href="#1-信号其他相关常见概念" class="headerlink" title="1.信号其他相关常见概念"></a>1.信号其他相关常见概念</h5><p>实际执行信号的处理动作称为信号递达（Delivery）。</p>
+<h5 id="4-调用系统函数向进程发信号"><a href="#4-调用系统函数向进程发信号" class="headerlink" title="4.调用系统函数向进程发信号"></a>4.调用系统函数向进程发信号</h5><pre><code>#include&lt;signal.h&gt;
+
+int kill(pid_t pid, int signo);
+int raise(int signo);
+这俩个函数都是成功返回0，错误返回-1。
+kill函数是给一个指定的进程发送信号，raise函数是给当前进程发送信号。
+</code></pre><pre><code>#include&lt;stdlib.h&gt;
+
+void abort(void);   
+abort函数使当前进程接收到SIGABRT信号而异常终止。
+就像exit函数一样，abort函数总是会成功的，所以没有返回值。
+</code></pre><h5 id="5-由软件条件产生信号"><a href="#5-由软件条件产生信号" class="headerlink" title="5.由软件条件产生信号"></a>5.由软件条件产生信号</h5><pre><code>#include&lt;unistd.h&gt;
+
+unsigned int alarm(unsigned int seconds);
+调用alarm函数可以设定一个闹钟，也就是告诉内核在seconds秒之后给当前进程发SIGALRM信号，该信号的默认处理动作是终止当前进程。
+函数返回值是0或者是以前设定的闹钟时间还余下的秒数。
+</code></pre><h4 id="阻塞信号"><a href="#阻塞信号" class="headerlink" title="阻塞信号"></a>阻塞信号</h4><h5 id="1-信号其他相关常见概念"><a href="#1-信号其他相关常见概念" class="headerlink" title="1.信号其他相关常见概念"></a>1.信号其他相关常见概念</h5><p>实际执行信号的处理动作称为信号递达（Delivery）。</p>
 <p>信号从产生到递达之间的状态，称为信号未决（Pending）。</p>
 <p>进程可以选择阻塞（Block）某个信号。</p>
 <p>被阻塞的信号产生时将保持在未决状态，直到进程解除对此信号的阻塞，才执行递达的动作。</p>
@@ -450,10 +467,21 @@
 <h5 id="3-sigset-t"><a href="#3-sigset-t" class="headerlink" title="3.sigset_t"></a>3.sigset_t</h5><p>未决和阻塞标志可以用相同的数据类型sigset_t来存储，sigset_t称为信号集，这个类型可以表示每个信号的是否被阻塞，是否处于未决状态。</p>
 <p>阻塞信号集（信号屏蔽字）、未决信号集</p>
 <h5 id="4-信号集操作函数"><a href="#4-信号集操作函数" class="headerlink" title="4.信号集操作函数"></a>4.信号集操作函数</h5><p>sigset_t类型对于每种信号用一个bit表示有效或者无效状态，至于这个类型内部如何存储这些bit则依赖于系统，我们是不知道的，使用者只能调用信号集操作函数来操作sigset_t变量，而不是对它的内部数据做任何解释，比如printf直接打印sigest_t是没有意义的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;signal.h&gt;</span><br><span class="line"></span><br><span class="line">int sigemptyset(sigset_t *set);    </span><br><span class="line">//初始化set所指向的信号集，使其中所有信号的对应bit清零，表示该信号集不包含任何有效信号。</span><br><span class="line">int sigfillset(sigset_t *set);</span><br><span class="line">//初始化set所指向的信号集，使其中所有信号的对应bit置为1，表示该信号集的有效信号包括系统支持的所有信号。</span><br><span class="line">int sigaddset(sigset_t *set, int signo);</span><br><span class="line">int sigdelset(sigset_t *set, int signo);</span><br><span class="line">int sigismember(const sigset_t *set, int signo);</span><br><span class="line">前四个函数都是成功返回0，出错返回-1。sigismember是一个布尔函数，用于判断一个信号集的有效信号中是否包含某种信号，若包含则返回1，不包含返回0，出错返回-1。</span><br></pre></td></tr></table></figure>
-<p>在使用sigest_t类型的变量之前，一定要调用sigemptyset或sigfillset做初始化，使信号集处于确定的状态。初始化sigset_t变量之后就可以再调用sigaddest和sigdelset在该信号集中添加或删除某种有效信号。</p>
-<h5 id="5-sigprocmask"><a href="#5-sigprocmask" class="headerlink" title="5.sigprocmask"></a>5.sigprocmask</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;signal.h&gt;</span><br><span class="line">int sigprocmask(int how,const sigest_t *set, sigset_t *oset);</span><br><span class="line">返回值：成功返回0，出错返回-1。</span><br></pre></td></tr></table></figure>
-<p>读取或更改进程的信号屏蔽字（阻塞信号集）。</p>
+<pre><code>#include&lt;signal.h&gt;
+
+int sigemptyset(sigset_t *set);    
+//初始化set所指向的信号集，使其中所有信号的对应bit清零，表示该信号集不包含任何有效信号。
+int sigfillset(sigset_t *set);
+//初始化set所指向的信号集，使其中所有信号的对应bit置为1，表示该信号集的有效信号包括系统支持的所有信号。
+int sigaddset(sigset_t *set, int signo);
+int sigdelset(sigset_t *set, int signo);
+int sigismember(const sigset_t *set, int signo);
+前四个函数都是成功返回0，出错返回-1。sigismember是一个布尔函数，用于判断一个信号集的有效信号中是否包含某种信号，若包含则返回1，不包含返回0，出错返回-1。
+</code></pre><p>在使用sigest_t类型的变量之前，一定要调用sigemptyset或sigfillset做初始化，使信号集处于确定的状态。初始化sigset_t变量之后就可以再调用sigaddest和sigdelset在该信号集中添加或删除某种有效信号。</p>
+<h5 id="5-sigprocmask"><a href="#5-sigprocmask" class="headerlink" title="5.sigprocmask"></a>5.sigprocmask</h5><pre><code>#include&lt;signal.h&gt;
+int sigprocmask(int how,const sigest_t *set, sigset_t *oset);
+返回值：成功返回0，出错返回-1。
+</code></pre><p>读取或更改进程的信号屏蔽字（阻塞信号集）。</p>
 <p>如果set是非空指针，则更改进程的信号屏蔽字，参数how指示如何更改。如果oset是非空指针，则读取进程的当前信号屏蔽字通过oset参数传出。如果俩个都是oset都是非空指针，则先将原来的信号屏蔽字备份到oset里，然后根据set和how参数更改信号屏蔽字。假设当前的信号屏蔽字为mask，下标说明了how参数的可选值。</p>
 <table>
 <thead>
@@ -475,8 +503,10 @@
 </tbody>
 </table>
 <p>如果调用sigprocmask解除了对当前若干个未决信号的阻塞，则在sigprocmask返回前，至少将其中一个信号递达。</p>
-<h5 id="6-sigpending"><a href="#6-sigpending" class="headerlink" title="6.sigpending"></a>6.sigpending</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;signal.h&gt;</span><br><span class="line">sigpending();</span><br><span class="line">读取当前进程的未决信号集，通过set参数传出。调用成功则返回0，出错则返回-1。</span><br></pre></td></tr></table></figure>
-<h4 id="捕捉信号"><a href="#捕捉信号" class="headerlink" title="捕捉信号"></a>捕捉信号</h4><h5 id="1-内核如何实现信号的捕捉"><a href="#1-内核如何实现信号的捕捉" class="headerlink" title="1.内核如何实现信号的捕捉"></a>1.内核如何实现信号的捕捉</h5><p>如果信号的处理动作是用户自定义函数，在信号递达时就调用这个函数，这称为捕捉信号。</p>
+<h5 id="6-sigpending"><a href="#6-sigpending" class="headerlink" title="6.sigpending"></a>6.sigpending</h5><pre><code>#include&lt;signal.h&gt;
+sigpending();
+读取当前进程的未决信号集，通过set参数传出。调用成功则返回0，出错则返回-1。
+</code></pre><h4 id="捕捉信号"><a href="#捕捉信号" class="headerlink" title="捕捉信号"></a>捕捉信号</h4><h5 id="1-内核如何实现信号的捕捉"><a href="#1-内核如何实现信号的捕捉" class="headerlink" title="1.内核如何实现信号的捕捉"></a>1.内核如何实现信号的捕捉</h5><p>如果信号的处理动作是用户自定义函数，在信号递达时就调用这个函数，这称为捕捉信号。</p>
 <p>1）在执行某条指令时，因为中断、异常或者系统调用进入内核。（用户态）</p>
 <p>2）内核处理完异常准备回用户模式之前，先处理当前进程中可以递送的信号。（内核态）</p>
 <p>3）如果信号的处理动作是自定义的信号处理函数，则回到用户模式执行信号处理函数，而不是回到主控制流程。（内核态）</p>
@@ -484,10 +514,31 @@
 <p>5）返回用户模式，从上次被中断的地方继续向下执行。（内核态）</p>
 <p>信号的处理是进程从内核态切回到用户态时，开始进行处理。</p>
 <p>系统调用或中断异常时，才会进入到内核态。内核态的权限要比用户态的权限大。</p>
-<h5 id="2-sigaction"><a href="#2-sigaction" class="headerlink" title="2.sigaction"></a>2.sigaction</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;signal.h&gt;</span><br><span class="line">int sigaction(int signo, const struct sigaction *act, struct sigaction *oact)</span><br><span class="line"></span><br><span class="line">sigaction函数可以读取和修改指定信号相关联的处理动作。</span><br><span class="line"></span><br><span class="line">参数：</span><br><span class="line">	signo：指定信号的编号。</span><br><span class="line">	若act非空，根据act修改该信号的处理动作。</span><br><span class="line">	若oact非空，则通过oact传出该信号原来的处理动作。</span><br><span class="line">	act 和 ocat指向 sigaction结构体：</span><br><span class="line">struct sigaction&#123;void *sa_handler,...,sigset_t sa_mask,...&#125;</span><br><span class="line">	将sa_handler赋值为常数SIG_IGN传给sigaction表示忽略信号。</span><br><span class="line">	                 常数SIG_DEL         表示执行系统默认动作；</span><br><span class="line">	                 函数指针         表示用自定义函数捕捉信号。</span><br><span class="line">	如果调用信号处理函数时，除了当前信号被自动屏蔽，还希望屏蔽另外一些信号，使用sa_mask可以屏蔽多个信号。</span><br><span class="line">返回值：</span><br><span class="line">	调用成功返回0，出错返回-1。</span><br></pre></td></tr></table></figure>
-<p>当某个信号的处理函数被调用时，内核自动将当前信号加入进程的信号屏蔽字，当信号处理函数返回时自动回复原来的信号屏蔽字。这样就保证了在处理某个信号时，如果这种信号再次产生，那么它会被阻塞到当前处理结束为止。</p>
-<h5 id="3-pause"><a href="#3-pause" class="headerlink" title="3.pause"></a>3.pause</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;unistd.h&gt;</span><br><span class="line">int pause(void);</span><br><span class="line">pause函数使调用进程挂起直到有信号递达。</span><br><span class="line">如果信号的处理动作是终止，则进程终止，pause函数没有机会返回。</span><br><span class="line">如果信号的处理动作是忽略，则进程继续处于挂起状态，pause不返回。</span><br><span class="line">如果信号的处理动作是捕捉，则调用信号处理函数，pause返回-1，error设置为EINTR，错误码EINTR表示被信号中断。所以，pause只有出错的返回值。</span><br></pre></td></tr></table></figure>
-<p>pause要返回的2个前提条件：</p>
+<h5 id="2-sigaction"><a href="#2-sigaction" class="headerlink" title="2.sigaction"></a>2.sigaction</h5><pre><code>#include&lt;signal.h&gt;
+int sigaction(int signo, const struct sigaction *act, struct sigaction *oact)
+
+sigaction函数可以读取和修改指定信号相关联的处理动作。
+
+参数：
+    signo：指定信号的编号。
+    若act非空，根据act修改该信号的处理动作。
+    若oact非空，则通过oact传出该信号原来的处理动作。
+    act 和 ocat指向 sigaction结构体：
+struct sigaction{void *sa_handler,...,sigset_t sa_mask,...}
+    将sa_handler赋值为常数SIG_IGN传给sigaction表示忽略信号。
+                     常数SIG_DEL         表示执行系统默认动作；
+                     函数指针         表示用自定义函数捕捉信号。
+    如果调用信号处理函数时，除了当前信号被自动屏蔽，还希望屏蔽另外一些信号，使用sa_mask可以屏蔽多个信号。
+返回值：
+    调用成功返回0，出错返回-1。
+</code></pre><p>当某个信号的处理函数被调用时，内核自动将当前信号加入进程的信号屏蔽字，当信号处理函数返回时自动回复原来的信号屏蔽字。这样就保证了在处理某个信号时，如果这种信号再次产生，那么它会被阻塞到当前处理结束为止。</p>
+<h5 id="3-pause"><a href="#3-pause" class="headerlink" title="3.pause"></a>3.pause</h5><pre><code>#include&lt;unistd.h&gt;
+int pause(void);
+pause函数使调用进程挂起直到有信号递达。
+如果信号的处理动作是终止，则进程终止，pause函数没有机会返回。
+如果信号的处理动作是忽略，则进程继续处于挂起状态，pause不返回。
+如果信号的处理动作是捕捉，则调用信号处理函数，pause返回-1，error设置为EINTR，错误码EINTR表示被信号中断。所以，pause只有出错的返回值。
+</code></pre><p>pause要返回的2个前提条件：</p>
 <p>1.收到信号   2.该信号被捕捉</p>
 <h4 id="可重入函数"><a href="#可重入函数" class="headerlink" title="可重入函数"></a>可重入函数</h4><p>一个函数被多个执行流重复进入的时候叫做可重入。</p>
 <p>不可重入函数：被多个执行流重复进入，导致出错的函数。（一般使用static、全局变量、malloc（free）申请空间、调用标准IO库的函数）</p>
@@ -500,8 +551,10 @@
 <p>从解除信号的屏蔽到pause之间存在间隙，信号仍有可能递达。</p>
 <p>1.屏蔽SIGALRM信号 2.alarm(sec)3.pause（） 4.解除SIGALRM信号的屏蔽</p>
 <p>这样更不行了，pause根本不可能等到SIGALRM信号，已经屏蔽了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sigsuspend：</span><br><span class="line">#include&lt;signal.h&gt;</span><br><span class="line">int sigsuspend(const sigset_t *sigmask);</span><br></pre></td></tr></table></figure>
-<h4 id="SIGCHLD信号"><a href="#SIGCHLD信号" class="headerlink" title="SIGCHLD信号"></a>SIGCHLD信号</h4><p>父进程可以阻塞子进程结束，也可以非阻塞地查询是否有子进程等待清理（轮询）。采用第一种方式，父进程阻塞了就不能处理自己的工作；采用第二种，父进程在处理自己工作的同时还要记得时不时地轮询一下，程序实现复杂。</p>
+<pre><code>sigsuspend：
+#include&lt;signal.h&gt;
+int sigsuspend(const sigset_t *sigmask);
+</code></pre><h4 id="SIGCHLD信号"><a href="#SIGCHLD信号" class="headerlink" title="SIGCHLD信号"></a>SIGCHLD信号</h4><p>父进程可以阻塞子进程结束，也可以非阻塞地查询是否有子进程等待清理（轮询）。采用第一种方式，父进程阻塞了就不能处理自己的工作；采用第二种，父进程在处理自己工作的同时还要记得时不时地轮询一下，程序实现复杂。</p>
 <p>SIGCHLD信号的处理函数,这样父进程只需专心处理⾃自己的工作,不必关心子进程了,子进程 终止时会通知父进程，父进程在信号处理函数中调用wait清理子进程即可。</p>
 
             </div>
@@ -641,9 +694,9 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://yoursite.com" class="b-link-green">haote216</a>
+                    <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/12/进程信号/" class="b-link-green">进程信号</a>
+                    <a href="/2019/04/12/jin-cheng-xin-hao/" class="b-link-green">进程信号</a>
                 </p>
             </div>
         </div>
@@ -668,7 +721,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/13/stelen、sizeof/">
+                <a href="/2019/04/13/stelen-sizeof/">
                     <div class="card-image">
                         
                         
@@ -680,7 +733,8 @@
                 <div class="card-content article-content">
                     <div class="summary">今天看C++的string类，然后模拟实现的时候，发现了这样的一道题，主要是区别sizeof和strlen。刚开始完，和答案一对，发现其实错了好多。
 下面给大家区分区分
-12345678910111213141516171819char a</div>
+    char a1[] = &quot;\0&quot;;
+   </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
@@ -715,7 +769,7 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/10/Linux常见指令1/">
+                <a href="/2019/04/10/linux-chang-jian-zhi-ling-1/">
                     <div class="card-image">
                         
                         
@@ -818,9 +872,7 @@
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            
 
             
 
@@ -833,6 +885,11 @@
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
                 
             
         </div>
@@ -856,6 +913,10 @@
     </a>
 
 
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
 </div>
     </div>
 </footer>
