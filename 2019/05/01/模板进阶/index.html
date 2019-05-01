@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="网络基础（一）, haote216">
-    <meta name="description" content="网络基础（一）协议协议本质上是一种约定，让通信双方彼此遵守。
-两台主机约定好协议就可以了吗？当然不行，主机的生产厂家、操作系统、网络硬件设备…都不一样，这时候约定了一个共同的标准，大家都来遵守，这就是网络协议。
-网络协议为什么要分层？
-答：">
+    <meta name="keywords" content="模板进阶, haote216">
+    <meta name="description" content="模板进阶1.非类型模板参数模板参数分为：类型形参和非类型形参。
+
+类型形参：出现在模板参数列表中，跟在class或者typename之后的参数类型名称。
+非类型形参：用一个常量作为类（函数）模板的一个参数，在类（函数）模板中可将该参数当成常">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网络基础（一） | haote216</title>
+    <title>模板进阶 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +266,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网络基础（一）
+                        模板进阶
                     </div>
                 </div>
             </div>
@@ -376,8 +376,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/网络/" class="post-category" target="_blank">
-                                网络
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                C++
                             </a>
                         
                     </div>
@@ -388,7 +388,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-29
+                    2019-05-01
                 </div>
 
                 
@@ -404,85 +404,103 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="网络基础（一）"><a href="#网络基础（一）" class="headerlink" title="网络基础（一）"></a>网络基础（一）</h3><h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4><p>协议本质上是一种约定，让通信双方彼此遵守。</p>
-<p>两台主机约定好协议就可以了吗？当然不行，主机的生产厂家、操作系统、网络硬件设备…都不一样，这时候约定了一个共同的标准，大家都来遵守，这就是网络协议。</p>
-<h4 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h4><p>为什么要分层？</p>
-<p>答：经过分层之后，每一层可以遵守不同的协议，而且任意一层的变化都不会影响上层或者下层。</p>
-<h5 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h5><p>复杂不实用。</p>
-<table>
-<thead>
-<tr>
-<th>应用层</th>
-<th style="text-align:center">针对特定应用的协议</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>表示层</td>
-<td style="text-align:center">设备固有数据格式和网络标准数据格式的转换。</td>
-</tr>
-<tr>
-<td>会话层</td>
-<td style="text-align:center">通信管理。负责建立和断开通信连接（数据流动的逻辑通路）。管理传输层以下的分层。</td>
-</tr>
-<tr>
-<td>传输层</td>
-<td style="text-align:center">管理两个节点之间的数据传输。负责可靠传输（确保数据被可靠地传送到目标地址）。</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td style="text-align:center">地址管理与路由选择。</td>
-</tr>
-<tr>
-<td>数据链路层</td>
-<td style="text-align:center">互连设备之间传送和识别数据帧。</td>
-</tr>
-<tr>
-<td>物理层</td>
-<td style="text-align:center">以0、1代表电压的高低、灯光的闪灭。界定连接器和网线的规格。</td>
-</tr>
-</tbody>
-</table>
-<h5 id="TCP-IP五层（四层）模型"><a href="#TCP-IP五层（四层）模型" class="headerlink" title="TCP/IP五层（四层）模型"></a>TCP/IP五层（四层）模型</h5><p>TCP/IP是一组协议的代名词，它还包括许多协议，组成了TCP/IP协议簇.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">应用层</th>
-<th style="text-align:center">负责应用程序间沟通，如简单电子邮件传输（SMTP）、文件传输协议（FTP）、网络远程访问协议（Telnet）等. 我们的网络编程主要就是针对应用层。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">传输层</td>
-<td style="text-align:center">负责两台主机之间的数据传输. 如传输控制协议 (TCP), 能够确保数据可靠的从源主机发送到目标主机。</td>
-</tr>
-<tr>
-<td style="text-align:center">网络层</td>
-<td style="text-align:center">负责地址管理和路由选择. 例如在IP协议中, 通过IP地址来标识一台主机, 并通过路由表的方式规划出两台主机之间的数据传输的线路(路由). 路由器工作在网络层。</td>
-</tr>
-<tr>
-<td style="text-align:center">数据链路层</td>
-<td style="text-align:center">负责设备之间的数据帧的传送和识别. 例如网卡设备的驱动、帧同步(就是说从网线上检测到什么信号算作新帧的开始)、冲突检测(如果检测到冲突就自动重发)、数据差错校验等工作. 有以太网、令牌环网, 无线LAN等标准. 交换机(Switch)工作在数据链路层。</td>
-</tr>
-<tr>
-<td style="text-align:center">物理层</td>
-<td style="text-align:center">负责光/电信号的传递方式. 比如现在以太网通用的网线(双绞 线)、早期以太网采用的的同轴电缆(现在主要用于有线电视)、光纤, 现在的wifi无线网使用电磁波等都属于物理层的概念。物理层的能力决定了最大传输速率、传输距离、抗干扰性等. 集线器(Hub)工作在物理层</td>
-</tr>
-</tbody>
-</table>
-<p>由于物理层我们考虑的比较少，因此很多时候也可以称为TCP/IP四层模型。</p>
-<h4 id="网络传输基本流程"><a href="#网络传输基本流程" class="headerlink" title="网络传输基本流程"></a>网络传输基本流程</h4><p>网络协议分4层，但是下面的3层是由操作系统中的内核来实现，用来完成通信中的细节，我们的用户不用关心，只用使用系统调用接口来实现数据的收发。</p>
-<p>TCP/IP通讯过程：</p>
-<p>从上到下的过程叫做封装，从下到上的过程叫做解包，解包中必须分用。 </p>
-<p>不同的协议层对数据包有不同的称谓,在传输层叫做段(segment),在网络层叫做数据报 (datagram),在链<br>路层叫做帧(frame).</p>
-<p>应用层数据通过协议栈发到网络上时,每层协议都要加上一个数据首部(header),称为封装<br>(Encapsulation).<br>首部信息中包含了一些类似于首部有多长, 载荷(payload)有多长, 上层协议是什么等信息.<br>数据封装成帧后发到传输介质上,到达目的主机后每层协议再剥掉相应的首部, 根据首部中的 “上层协议<br>字段” 将数据交给对应的上层协议处理。</p>
-<h4 id="认识IP地址"><a href="#认识IP地址" class="headerlink" title="认识IP地址"></a>认识IP地址</h4><p>IP地址有俩个版本，我们现在谈论的IP协议，没有特殊说明的，默认都是指IPv4。</p>
-<p>IP地址是在IP协议中，用来标识网络中不同主机的地址。</p>
-<p>对于IPv4来说，IP地址是一个4字节，32比特位的整数。</p>
-<p>通常也使用“点分十进制”的字符串表示IP地址，例如192.168.0.1；用点分割的每一个数字表示一个字节，范围是0  - 255；</p>
-<h4 id="认识MAC地址"><a href="#认识MAC地址" class="headerlink" title="认识MAC地址"></a>认识MAC地址</h4><p>MAC地址用来识别数据链路层中相连的节点；</p>
-<p>长度为48个比特位，6个字节，一般用16进制数字加上冒号的形式来表示（例如：  08:00:27:03：fb：19）</p>
-<p>在网卡出厂时就确定了，不能修改，MAC地址通常是唯一的（虚拟机中的MAC地址不是真实的MAC地址，可能会冲突，也有些网卡支持用户配置MAC地址）</p>
+                <h3 id="模板进阶"><a href="#模板进阶" class="headerlink" title="模板进阶"></a>模板进阶</h3><h4 id="1-非类型模板参数"><a href="#1-非类型模板参数" class="headerlink" title="1.非类型模板参数"></a>1.非类型模板参数</h4><p>模板参数分为：类型形参和非类型形参。</p>
+<ul>
+<li>类型形参：出现在模板参数列表中，跟在class或者typename之后的参数类型名称。</li>
+<li>非类型形参：用一个常量作为类（函数）模板的一个参数，在类（函数）模板中可将该参数当成常量来使用。</li>
+</ul>
+<p>注：浮点数、类对象以及字符串是不允许作为非类型模板参数。非类型的模板参数必须在编译器就能确定结果。</p>
+<h4 id="2-模板特化"><a href="#2-模板特化" class="headerlink" title="2.模板特化"></a>2.模板特化</h4><h5 id="函数模板特化"><a href="#函数模板特化" class="headerlink" title="函数模板特化"></a>函数模板特化</h5><p>必须有一个基础的函数模板；关键字template后面接一对空的尖括号&lt;&gt;；函数名后跟一对尖括号，尖括号中指定需要特化的类型；函数形参表：必须要和模板函数的基础类型完全相同，如果不同编译器可能会报一些奇怪的错误。</p>
+<h5 id="类模板特化"><a href="#类模板特化" class="headerlink" title="类模板特化"></a>类模板特化</h5><p>  全特化</p>
+<pre><code>template&lt;class T1, class T2&gt;
+{}
+
+template&lt;&gt;
+class Date&lt;int, char&gt;
+</code></pre><p>  偏特化</p>
+<pre><code>template&lt;class T1, class T2&gt;
+{}
+
+template&lt;class T1&gt;                    //第一种部分特化
+class Date&lt;T1, int&gt;
+
+template&lt;typename T1, typename T2&gt;    //第二种针对模板参数类型的特化
+class Date&lt;T1*, T2*&gt;
+
+template&lt;typename T1, typename T2&gt;
+class Date&lt;T1&amp;, T2&amp;&gt;
+</code></pre><h4 id="3-类型萃取"><a href="#3-类型萃取" class="headerlink" title="3.类型萃取"></a>3.类型萃取</h4><p>传统C++的拷贝函数：</p>
+<p>内置类型：使用memcpy拷贝</p>
+<p>自定义类型：使用赋值方式拷贝</p>
+<pre><code>struct TrueType
+{
+    static bool Get()
+    {
+    return true ;
+    }
+};
+struct FalseType
+{
+    static bool Get()
+    {
+        return false ;
+    }
+};
+
+template&lt;class T&gt;     //类模板
+struct TypeTraits
+{
+    typedef FalseType IsPODType;
+};
+
+template&lt;&gt;            // ... 所有内置类型都特化一下
+struct TypeTraits&lt;char&gt;
+{
+    typedef TrueType IsPODType;
+};
+template&lt;&gt;
+struct TypeTraits&lt;short&gt;
+{
+    typedef TrueType IsPODType;
+};
+template&lt;&gt;
+struct TypeTraits&lt;int&gt;
+{
+    typedef TrueType IsPODType;
+};
+template&lt;&gt;
+struct TypeTraits&lt;long&gt;
+{
+    typedef TrueType IsPODType;
+};
+
+
+T为int：TypeTraits&lt;int&gt;已经特化过，程序运行时就会使用已经特化过的TypeTraits&lt;int&gt;, 该类中的IsPODType刚好为类TrueType，而TrueType中Get函数返回true，内置类型使用memcpy方式拷贝。
+T为string：TypeTraits&lt;string&gt;没有特化过，程序运行时使用TypeTraits类模板, 该类模板中的IsPODType刚好为类FalseType，而FalseType中Get函数返回true，自定义类型使用赋值方式拷贝。
+
+template&lt;class T&gt;
+void Copy(T* dst, const T* src, size_t size)
+{
+    if(TypeTraits&lt;T&gt;::IsPODType::Get())
+        memcpy(dst, src, sizeof(T)*size);
+    else
+    {
+        for(size_t i = 0; i &lt; size; ++i)
+            dst[i] = src[i];
+    }
+}
+
+int main()
+{
+    int a1[] = {1,2,3,4,5,6,7,8,9,0};
+    int a2[10];
+    Copy(a2, a1, 10);
+    string s1[] = {&quot;1111&quot;, &quot;2222&quot;, &quot;3333&quot;, &quot;4444&quot;};
+    string s2[4];
+    Copy(s2, s1, 4);
+    return 0;
+}
+</code></pre><h4 id="4-模板分离编译"><a href="#4-模板分离编译" class="headerlink" title="4.模板分离编译"></a>4.模板分离编译</h4><p>一个项目由若干个源文件共同实现，而每个源文件单独编译生成目标文件，最后将所有的目标文件链接起来形成单一的可执行文件的过程称为分离编译模式。</p>
 
             </div>
             <hr>
@@ -623,7 +641,7 @@
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/29/网络基础（一）/" class="b-link-green">网络基础（一）</a>
+                    <a href="/2019/05/01/模板进阶/" class="b-link-green">模板进阶</a>
                 </p>
             </div>
         </div>
@@ -646,7 +664,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/01/模板进阶/">
                     <div class="card-image">
@@ -663,9 +682,9 @@
 类型形参：出现在模板参数列表中，跟在class或者typename之后的参数类型名称。
 非类型形参：用一个常量作为类（函数）模板的一个参数，在类（函数）模板中可将该参数当成常</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -678,6 +697,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -696,30 +716,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/25/多态/">
+                <a href="/2019/04/29/网络基础（一）/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="多态">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="网络基础（一）">
                         
-                        <span class="card-title">多态</span>
+                        <span class="card-title">网络基础（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
-也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
-2.多态的实现在继承中构成多态的俩个条件：
-调用函数的对象必须是指针或者引用；被调用的函数必须是虚</div>
+                    <div class="summary">网络基础（一）协议协议本质上是一种约定，让通信双方彼此遵守。
+两台主机约定好协议就可以了吗？当然不行，主机的生产厂家、操作系统、网络硬件设备…都不一样，这时候约定了一个共同的标准，大家都来遵守，这就是网络协议。
+网络协议为什么要分层？
+答：</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                    C++
+                            <a href="/categories/网络/" class="post-category" target="_blank">
+                                    网络
                                 </a>
                             
                             

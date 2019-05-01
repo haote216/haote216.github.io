@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>模板进阶</title>
+      <link href="/2019/05/01/%E6%A8%A1%E6%9D%BF%E8%BF%9B%E9%98%B6/"/>
+      <url>/2019/05/01/%E6%A8%A1%E6%9D%BF%E8%BF%9B%E9%98%B6/</url>
+      
+        <content type="html"><![CDATA[<h3 id="模板进阶"><a href="#模板进阶" class="headerlink" title="模板进阶"></a>模板进阶</h3><h4 id="1-非类型模板参数"><a href="#1-非类型模板参数" class="headerlink" title="1.非类型模板参数"></a>1.非类型模板参数</h4><p>模板参数分为：类型形参和非类型形参。</p><ul><li>类型形参：出现在模板参数列表中，跟在class或者typename之后的参数类型名称。</li><li>非类型形参：用一个常量作为类（函数）模板的一个参数，在类（函数）模板中可将该参数当成常量来使用。</li></ul><p>注：浮点数、类对象以及字符串是不允许作为非类型模板参数。非类型的模板参数必须在编译器就能确定结果。</p><h4 id="2-模板特化"><a href="#2-模板特化" class="headerlink" title="2.模板特化"></a>2.模板特化</h4><h5 id="函数模板特化"><a href="#函数模板特化" class="headerlink" title="函数模板特化"></a>函数模板特化</h5><p>必须有一个基础的函数模板；关键字template后面接一对空的尖括号&lt;&gt;；函数名后跟一对尖括号，尖括号中指定需要特化的类型；函数形参表：必须要和模板函数的基础类型完全相同，如果不同编译器可能会报一些奇怪的错误。</p><h5 id="类模板特化"><a href="#类模板特化" class="headerlink" title="类模板特化"></a>类模板特化</h5><p>  全特化</p><pre><code>template&lt;class T1, class T2&gt;{}template&lt;&gt;class Date&lt;int, char&gt;</code></pre><p>  偏特化</p><pre><code>template&lt;class T1, class T2&gt;{}template&lt;class T1&gt;                    //第一种部分特化class Date&lt;T1, int&gt;template&lt;typename T1, typename T2&gt;    //第二种针对模板参数类型的特化class Date&lt;T1*, T2*&gt;template&lt;typename T1, typename T2&gt;class Date&lt;T1&amp;, T2&amp;&gt;</code></pre><h4 id="3-类型萃取"><a href="#3-类型萃取" class="headerlink" title="3.类型萃取"></a>3.类型萃取</h4><p>传统C++的拷贝函数：</p><p>内置类型：使用memcpy拷贝</p><p>自定义类型：使用赋值方式拷贝</p><pre><code>struct TrueType{    static bool Get()    {    return true ;    }};struct FalseType{    static bool Get()    {        return false ;    }};template&lt;class T&gt;     //类模板struct TypeTraits{    typedef FalseType IsPODType;};template&lt;&gt;            // ... 所有内置类型都特化一下struct TypeTraits&lt;char&gt;{    typedef TrueType IsPODType;};template&lt;&gt;struct TypeTraits&lt;short&gt;{    typedef TrueType IsPODType;};template&lt;&gt;struct TypeTraits&lt;int&gt;{    typedef TrueType IsPODType;};template&lt;&gt;struct TypeTraits&lt;long&gt;{    typedef TrueType IsPODType;};T为int：TypeTraits&lt;int&gt;已经特化过，程序运行时就会使用已经特化过的TypeTraits&lt;int&gt;, 该类中的IsPODType刚好为类TrueType，而TrueType中Get函数返回true，内置类型使用memcpy方式拷贝。T为string：TypeTraits&lt;string&gt;没有特化过，程序运行时使用TypeTraits类模板, 该类模板中的IsPODType刚好为类FalseType，而FalseType中Get函数返回true，自定义类型使用赋值方式拷贝。template&lt;class T&gt;void Copy(T* dst, const T* src, size_t size){    if(TypeTraits&lt;T&gt;::IsPODType::Get())        memcpy(dst, src, sizeof(T)*size);    else    {        for(size_t i = 0; i &lt; size; ++i)            dst[i] = src[i];    }}int main(){    int a1[] = {1,2,3,4,5,6,7,8,9,0};    int a2[10];    Copy(a2, a1, 10);    string s1[] = {&quot;1111&quot;, &quot;2222&quot;, &quot;3333&quot;, &quot;4444&quot;};    string s2[4];    Copy(s2, s1, 4);    return 0;}</code></pre><h4 id="4-模板分离编译"><a href="#4-模板分离编译" class="headerlink" title="4.模板分离编译"></a>4.模板分离编译</h4><p>一个项目由若干个源文件共同实现，而每个源文件单独编译生成目标文件，最后将所有的目标文件链接起来形成单一的可执行文件的过程称为分离编译模式。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 概念 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网络基础（一）</title>
       <link href="/2019/04/29/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/"/>
       <url>/2019/04/29/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/</url>
