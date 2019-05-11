@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="多态, haote216">
-    <meta name="description" content="多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
-也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
-2.多态的实现在继承中构成多态的俩个条件：
-调用函数的对象必须是指针或者引用；被调用的函数必须是虚">
+    <meta name="keywords" content="多线程, haote216">
+    <meta name="description" content="Linux线程概念什么是线程在一个程序里的一个执行路线叫做线程，更准确点，线程是一个进程内部的控制序列。
+一切进程至少有一个线程。
+线程在进程内部运行，本质是在进程地址空间内运行。
+在Linux系统中，在CPU眼里，看到的PCB都要比传统的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>多态 | haote216</title>
+    <title>多线程 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +266,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        多态
+                        多线程
                     </div>
                 </div>
             </div>
@@ -364,8 +364,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/概念/" target="_blank">
-                                <span class="chip bg-color">概念</span>
+                            <a href="/tags/线程/" target="_blank">
+                                <span class="chip bg-color">线程</span>
                             </a>
                         
                     </div>
@@ -376,8 +376,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                C++
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                Linux
                             </a>
                         
                     </div>
@@ -388,7 +388,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-25
+                    2019-05-11
                 </div>
 
                 
@@ -404,43 +404,202 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h4><p>多态就是不同的对象完成某个动作，产生不同的状态。</p>
-<p>也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。</p>
-<h4 id="2-多态的实现"><a href="#2-多态的实现" class="headerlink" title="2.多态的实现"></a>2.多态的实现</h4><p>在继承中构成多态的俩个条件：</p>
-<p>调用函数的对象必须是指针或者引用；被调用的函数必须是虚函数，且完成了虚函数的重写。</p>
-<p>虚函数：就是在类的成员函数的前面加上virtual。    只有成员函数才能做虚函数，全局函数、静态函数都不可以。</p>
-<p>虚函数的重写：派生类中有一个跟基类完全相同（函数名、参数、返回值）的虚函数，称子类的虚函数重写了基类的虚函数，也叫做虚函数的覆盖。</p>
-<p>虚函数的协变：虚函数重写有一个例外，重写的虚函数的返回值可以不同，但必须是基类指针和派生类指针或者基类引用和派生类引用。</p>
-<p>析构函数的重写：基类的析构函数最好写成虚函数。</p>
-<table>
+                <h4 id="Linux线程概念"><a href="#Linux线程概念" class="headerlink" title="Linux线程概念"></a>Linux线程概念</h4><h5 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h5><p>在一个程序里的一个执行路线叫做线程，更准确点，线程是一个进程内部的控制序列。</p>
+<p>一切进程至少有一个线程。</p>
+<p>线程在进程内部运行，本质是在进程地址空间内运行。</p>
+<p>在Linux系统中，在CPU眼里，看到的PCB都要比传统的进程更加轻量化。</p>
+<p>透过进程虚拟地址空间，可以看到进程的大部分资源，将进程资源合理分配给每个执行流，就形成了线程的执行流。</p>
+<p>在系统层面上，Linux没有真正意义上的线程，Linux线程是由进程模拟的。</p>
+<h5 id="线程的优点"><a href="#线程的优点" class="headerlink" title="线程的优点"></a>线程的优点</h5><ol>
+<li>创建一个新线程的代价要比创建一个新进程小得多。</li>
+<li>与进程之间的切换相比，线程之间的切换需要操作系统做的工作要少很多。</li>
+<li>线程占用的资源要比进程少很多。</li>
+<li>在等待慢速IO操作结束的同时，程序可执行其他的计算任务。</li>
+<li>计算密集型应用，为了能在多处理器系统上运行，将计算分解到多个线程中实现。</li>
+<li>I/O密集型应用，为了提高性能，将I/O操作重叠。线程可以同时等待不同的I/O操作。</li>
+</ol>
+<h5 id="线程的缺点"><a href="#线程的缺点" class="headerlink" title="线程的缺点"></a>线程的缺点</h5><ol>
+<li>性能损失：一个很少被外部事件阻塞的计算密集型线程往往无法与共它线程共享同一个服务器。如果计算密集型线程的数量比可用的处理器多，那么可能会有较大的性能损失，这里的性能损失指的是增加了额外的同步和调度开销，而可用的资源不变。</li>
+<li>健壮性降低：编写多线程需要更全面更深入的考虑，在一个多线程程序里，因时间分配上的细微偏差或者因共享了不该共享的变量而造成不良影响的可能性是很大的，换句话说线程之间是缺乏保护的。</li>
+<li>缺乏访问控制：进程是访问控制的基本粒度，在一个线程中调用某些OS函数会对整个进程造成影响。</li>
+<li>编程难度提高：编写与调试一个多线程程序比单线程程序困难得多。</li>
+</ol>
+<h5 id="线程异常"><a href="#线程异常" class="headerlink" title="线程异常"></a>线程异常</h5><p>单个线程如果出现除零，野指针问题导致线程崩溃，进程也会崩溃。进而触发信号机制，终止进程，进程终止，该进程内的所有线程也就随即退出。</p>
+<h5 id="线程用途"><a href="#线程用途" class="headerlink" title="线程用途"></a>线程用途</h5><p>合理的使用多线程，能提高CPU密集型程序的执行效率，能提高IO密集型程序的用户体验。</p>
+<h5 id="Linux-进程-VS-线程"><a href="#Linux-进程-VS-线程" class="headerlink" title="Linux 进程 VS 线程"></a>Linux 进程 VS 线程</h5><p>进程是资源分配的基本单位。有独立的PCB，有独立的进程地址空间。</p>
+<p>线程是调度的基本单位。有独立的PCB，但没有独立的进程地址空间。</p>
+<p>线程共享进程数据，但也拥有自己的一部分数据。（线程ID，一组寄存器，栈，errno，信号屏蔽字，调度优先级）</p>
+<h5 id="进程的多个线程共享"><a href="#进程的多个线程共享" class="headerlink" title="进程的多个线程共享"></a>进程的多个线程共享</h5><p>各线程同一地址空间，因此代码段、数据段都是共享的。可重入函数，各线程都可以调用。全局变量，各线程都可以访问到。除此之外，文件描述符表、每种信号的处理方式（SIG_IGN、SIG_DFL或者自定义的信号处理函数）、当前工作目录、用户id和组id。</p>
+<h4 id="线程控制"><a href="#线程控制" class="headerlink" title="线程控制"></a>线程控制</h4><p>POSIX线程库：要使用这些函数库，要引入头文件&lt;pthread.h&gt;</p>
+<p>链接这些线程函数库时要使用编译器命令的“-lpthread”选项</p>
+<pre><code>//创建一个新线程。对应进程的fork函数。
+int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine)(void*), void *arg);
+参数：
+    thread:传出参数，返回线程ID
+    attr:设置线程的属性，attr为NULL表示使用默认属性
+    start_routine:子线程回调函数，线程启动后要调用的函数
+    arg:传给线程启动函数的参数
+返回值：成功返回0，失败返回错误码
+</code></pre><pre><code>//获取线程ID。对应进程中的getpid函数。
+线程ID是标识同一个进程下不同线程的。而线程号LWP是标识线程身份，CPU划分时间片的。
+pthread_t pthread_self(void);
+</code></pre><p>只终止某个线程而不终止整个进程，有三种方法：</p>
+<p>1.从线程函数return。这种方法对主线程不适用，从main函数return相当于调用exit。</p>
+<p>2.线程自己调用pthread_exit终止自己。</p>
+<p>3.一个线程可以调用pthread_cancel终止同一进程的另一个线程。</p>
+<pre><code>//终止当前单个线程
+void pthread_exit(void *retval);
+参数：
+    retval:不要指向一个局部变量
+pthread_exit 和return返回的指针指向的内存单元单元必须是全局的或者上malloc出来的，不能是线程函数的栈上分配的，因为当其他线程得到这个返回指针时线程函数已经退出了。
+</code></pre><pre><code>//杀死一个执行中的线程。
+int pthread_cancel(pthread_t thread)
+参数：
+    thread:线程ID
+返回值：
+    成功返回0，失败返回错误码
+//需要取消点（保存点），如果子线程没有到达取消点，那么pthread_cancel无效，可以在程序中手动添加取消点，使用pthread_testcancel();
+//成功被pthread_cancel()杀死的线程，返回-1，使用pthread_join回收。
+</code></pre><pre><code>//等待线程结束
+int pthread_join(pthread_t thread, void **retval)
+参数：
+    thread:等待的线程ID
+    retval:它指向一个指针，后者指向线程的返回值
+返回值:
+    成功返回0，失败返回错误码
+//为什么需要线程等待？
+因为已经退出的线程，其空间没有被释放，仍然在进程的地址空间内，创建新的线程不会复用刚才退出线程的地址空间。
+</code></pre><pre><code>//设置线程分离
+int pthread_detach(pthread_t thread)
+参数：
+    thread：待分离的线程ID
+返回值：
+    成功返回0，失败返回错误码
+</code></pre><p>避免僵尸线程三个方法：</p>
+<p>1.pthread_join回收  2.pthread_detach分离  3.pthread_create指定分离属性</p>
+<p>应避免在多线程模型中调用fork，除非马上调用exec。子进程中只有调用fork的线程存在，其他线程在子进程中均pthread_exit。</p>
+<h5 id="线程控制和进程控制"><a href="#线程控制和进程控制" class="headerlink" title="线程控制和进程控制"></a>线程控制和进程控制</h5><table>
 <thead>
 <tr>
-<th>函数重载</th>
-<th>俩个函数在同一作用域，函数名、参数相同。</th>
+<th>进程控制原语</th>
+<th>线程控制原语</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>重写(覆盖)</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名、参数、返回值都必须相同（协变例外），俩个函数必须是虚函数。</td>
+<td>fork()</td>
+<td>pthread_create()</td>
 </tr>
 <tr>
-<td>隐藏（重定义）</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名相同，俩个基类和派生类的同名函数不构成重写就是隐藏。</td>
+<td>getpid()</td>
+<td>pthread_self()</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>pthread_exit()</td>
+</tr>
+<tr>
+<td>wait() / waitpid()</td>
+<td>pthread_join()</td>
+</tr>
+<tr>
+<td>kii()</td>
+<td>pthread_cancel()</td>
+</tr>
+<tr>
+<td></td>
+<td>pthread_detach()</td>
 </tr>
 </tbody>
 </table>
-<h4 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3.抽象类"></a>3.抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类（接口类），抽象类不能实例化出对象，派生类继承后也不能实例化出对象，必须重写纯虚函数，这也体现出了接口继承。</p>
-<h4 id="4-C-11-override、final"><a href="#4-C-11-override、final" class="headerlink" title="4.C++11  override、final"></a>4.C++11  override、final</h4><p>final：被final修饰的纯虚函数不能被派生类重写。</p>
-<p>override：修饰派生类虚函数强制完成重写，如果没有重写就会编译报错。</p>
-<p>建议：派生类的纯虚函数搭配上override上使用。</p>
-<h4 id="5-多态的原理"><a href="#5-多态的原理" class="headerlink" title="5.多态的原理"></a>5.多态的原理</h4><p>// 这里常考一道笔试题：sizeof(Base)是多少？<br>class Base<br>{<br>public:<br>    virtual void Func1()<br>    {<br>        cout &lt;&lt; “Func1()” &lt;&lt; endl;<br>    }<br>private:<br>    int _b = 1;<br>};</p>
-<p>b成员，还有一个_vfptr放在对象的前面，叫做虚函数表指针。一个虚函数的类中至少都有一个虚函数表指针，因为虚函数的地址要被放在虚函数表中，虚函数表也叫虚表</p>
-<p>//派生类对象也有虚表指针，其虚表指针一部分存的也是继承下来的，另外一部分存的是自己的。如果派生类中有虚函数的重写，基类对象的虚表和派生类对象的虚表也是不一样的，重写是语法层的叫法，覆盖是原理层的叫法。<br>//虚函数表的本质是存一个虚函数指针的指针数组，这个数组最后放了一个nullptr。<br>//虚表存的是虚函数指针，虚函数和普通函数都时存在代码段的，而且，对象中存的是虚表指针，虚表也是存在代码段的。</p>
-<p>满足多态以后的函数调用，是运行起来以后到对象中去找的。不满足多态的函数调用是编译时就确认好的。也就是说，多态是动态绑定。</p>
-<p>静态绑定（前期绑定、早绑定）：在程序编译期间确定了程序的行为，也称为静态多态，例如：函数重载。</p>
-<p>动态绑定（后期绑定、晚绑定）：在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也成为动态多态。</p>
-<h4 id="6-单继承和多继承关系的虚函数表"><a href="#6-单继承和多继承关系的虚函数表" class="headerlink" title="6.单继承和多继承关系的虚函数表"></a>6.单继承和多继承关系的虚函数表</h4><p>多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中。</p>
+<h5 id="进程ID和线程ID"><a href="#进程ID和线程ID" class="headerlink" title="进程ID和线程ID"></a>进程ID和线程ID</h5><p>线程被称为轻量级进程。引入多线程后，一个用户进程下管辖N个用户态线程，Linux内核引入了线程组的概念。</p>
+<p>多线程的进程，又被称为线程组，线程组内的每一个线程在内核之中都存在一个进程描述符与之对应。进程描述符结构体中的pid看起来是进程ID，其实是线程ID，tgid才是进程ID。</p>
+<table>
+<thead>
+<tr>
+<th>用户态</th>
+<th>系统调用</th>
+<th>进程描述符中对应的结构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进程ID</td>
+<td>pid_getpid(void);</td>
+<td>pid_t tgid</td>
+</tr>
+<tr>
+<td>线程ID</td>
+<td>pid_gettid(void);</td>
+<td>pid_t pid</td>
+</tr>
+</tbody>
+</table>
+<p>线程组内的第一个线程，在用户态被称为主线程（main thread），在内核被称为group leader。内核在创建第一个线程时，会将线程组的ID值设置成第一个线程的线程ID，group_leader指针指向自身，即主线程的进程描述符。所以线程组内存在一个线程ID等于进程ID，该线程也就是线程组的主线程。</p>
+<p>进程有父子进程，但线程不同于进程，所有的线程都是对等关系。</p>
+<h4 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h4><p>临界资源：多线程执行流共享的资源就叫做临界资源。</p>
+<p>临界区：每个线程内部，访问临界自娱的代码，就叫做临界区，加锁和解锁之间的区域是临界区。</p>
+<p>互斥：任何时刻，互斥保证有且只有一个执行流进入临界区，访问临界资源，通常对临界资源起保护作用。<br>原子性（后面讨论如何实现）：不会被任何调度机制打断的操作，该操作只有两态，要么完成，要么未完成。</p>
+<p>原子操作：cpu处理一个命令，线程/进程在处理完这个指令之前是不会失去cpu的。</p>
+<h5 id="互斥量（互斥锁）"><a href="#互斥量（互斥锁）" class="headerlink" title="互斥量（互斥锁）"></a>互斥量（互斥锁）</h5><p>互斥锁类型：pthread_mutex_t mutex；</p>
+<p>操作函数：</p>
+<p>​    初始化：pthread_mutex_init（&amp;mutex, NULL）;</p>
+<p>​    加锁：pthread_mutex_lock(&amp;mutex);</p>
+<p>​    解锁：pthread_mutex_unlock(&amp;mutex);</p>
+<p>互斥锁的特点：多个线程访问共享数据的时候是串行的。如果想使用互斥锁同步线程，所有的线程都需要加锁。</p>
+<p>缺点：效率低</p>
+<p>为什么要加锁？</p>
+<p>答：线程可以随意抢占CPU的资源,谁也不知道下一刻谁会抢到资源,这导致线程访问共享数据时出现了问题。锁机制是将可能出现问题的代码用锁对象锁起来,被锁起来的代码就叫同步代码块,同一时间只能有一个线程来访问这个同步代码块.这类似于数据库中事务这个概念。</p>
+<p>如何避免死锁？</p>
+<p>答：错做完成之后，一定要解锁。对于多共享资源时，让线程按照一定的顺序去访问共享资源，或者在访问其他锁的时候，需要先将自己的锁解开，再或者使用trylock。</p>
+<h5 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h5><p>读写锁类型：pthread_rwlock_t lock；</p>
+<p>读锁：对内存做读操作。</p>
+<p>写锁：对内存做写操作。</p>
+<p>读写锁的特性：读共享、写独占、读写不能同时，写的优先级高。</p>
+<p>读写锁场景：</p>
+<p>A持有写锁，B请求读锁—&gt;B阻塞</p>
+<p>A持有读锁，B请求写锁—&gt;B阻塞</p>
+<p>A持有读锁，B请求读锁—&gt;B加锁成功</p>
+<p>A持有读锁，B请求写锁，然后C请求读锁—&gt;B、C阻塞（写的优先级高）—&gt;A解锁，B加写锁成功，C继续阻塞—&gt;B解锁，C加读锁成功</p>
+<p>A持有写锁，B请求读锁，然后C请求写锁—&gt;B、C阻塞—&gt;A解锁，C加写锁成功，B继续阻塞—&gt;C解锁，B加读锁成功。</p>
+<p>读写锁适用场景：</p>
+<p>​    互斥锁—&gt;读写串行</p>
+<p>​    读写锁—&gt;读：并行     写：串行</p>
+<p>操作函数</p>
+<p>​    初始化：pthread_rwlock_init(&amp;rwlock, NULL);</p>
+<p>​    销毁读写锁：pthread_rwlock_destroy(&amp;rwlock);</p>
+<p>​    加读锁：pthread_rwlock_rdlock(&amp;rwlock);</p>
+<p>​    尝试加读锁：pthread_rwlock_tryrdlock(&amp;rwlock);</p>
+<p>​    加写锁：pthread_rwlock_wrlock(&amp;rwlock);</p>
+<p>​    尝试加写锁：pthread_rwlock_trywrlock(&amp;rwlock);</p>
+<p>​    解锁：pthread_rwlock_unlock(&amp;rwlock);         </p>
+<h5 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h5><p>条件变量不是锁，但是条件变量能够阻塞线程（不满足条件时）。</p>
+<p>使用条件变量  +  互斥量 可以实现线程同步。</p>
+<p>条件变量类型：pthread_cond_t  cond；</p>
+<p>操作函数：</p>
+<p>​    初始化：pthread_cond_init(&amp;cond, NULL);</p>
+<p>​    销毁条件变量：pthread_cond_destroy(&amp;cond);</p>
+<p>​    阻塞等待一个条件变量：pthread_cond_wait(&amp;cond ,&amp;mutex);</p>
+<p>​                        阻塞线程，将已经上锁的mutex解锁，仍是阻塞，该函数解除阻塞，会对互斥锁加锁。</p>
+<p>​    限时阻塞等待条件变量：pthread_cond_timedwait(&amp;cond, &amp;mutex, &amp;time)</p>
+<p>​    唤醒至少一个阻塞在条件变量上的线程：pthread_cond_signal(&amp;cond);</p>
+<p>​    唤醒全部阻塞在条件变量上的线程：pthread_cond_broadcast(&amp;cond);</p>
+<h5 id="信号量（信号灯）"><a href="#信号量（信号灯）" class="headerlink" title="信号量（信号灯）"></a>信号量（信号灯）</h5><p>头文件：semaphore.h</p>
+<p>信号量是加强版的互斥锁。</p>
+<p>信号量类型：sem_t  sem ;</p>
+<p>操作函数：</p>
+<p>​    初始化：sem_init (&amp;sem , int pshared, unsigned int value);</p>
+<p>​                0—&gt;线程同步</p>
+<p>​                1—&gt;进程同步</p>
+<p>​                value—&gt;最多有几个线程进行操作共享数据</p>
+<p>​    销毁信号量：sem_destroy(&amp;sem);</p>
+<p>​    加锁：sem_wait（&amp;sem）;</p>
+<p>​        调用一次相当于对value做了 –操作；如果value的值为0，线程才会阻塞。</p>
+<p>​    尝试加锁：sem_trywait(&amp;sem);</p>
+<p>​        如果value==0，加锁失败，不阻塞，直接返回。</p>
+<p>​    限时尝试加锁：sem_timedwait(&amp;sem,&amp;time);</p>
+<p>​    解锁 ++：sem_post(&amp;sem);  </p>
+<p>​        对value做了++操作。</p>
 
             </div>
             <hr>
@@ -581,7 +740,7 @@
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/25/多态/" class="b-link-green">多态</a>
+                    <a href="/2019/05/11/多线程/" class="b-link-green">多线程</a>
                 </p>
             </div>
         </div>
@@ -604,74 +763,26 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/29/网络基础（一）/">
+                <a href="/2019/05/11/多线程/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="网络基础（一）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="多线程">
                         
-                        <span class="card-title">网络基础（一）</span>
+                        <span class="card-title">多线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">网络基础（一）协议协议本质上是一种约定，让通信双方彼此遵守。
-两台主机约定好协议就可以了吗？当然不行，主机的生产厂家、操作系统、网络硬件设备…都不一样，这时候约定了一个共同的标准，大家都来遵守，这就是网络协议。
-网络协议为什么要分层？
-答：</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-29
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/网络/" class="post-category" target="_blank">
-                                    网络
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/概念/" target="_blank">
-                        <span class="chip bg-color">概念</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/04/23/进程控制/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="进程控制">
-                        
-                        <span class="card-title">进程控制</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
-#include&lt;unistd.h&gt;
-pid_t fork(void);
-返回值：子进程中返回0，父进程返回子进程id，出错返回-1
-fork之前父进</div>
+                    <div class="summary">Linux线程概念什么是线程在一个程序里的一个执行路线叫做线程，更准确点，线程是一个进程内部的控制序列。
+一切进程至少有一个线程。
+线程在进程内部运行，本质是在进程地址空间内运行。
+在Linux系统中，在CPU眼里，看到的PCB都要比传统的</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-11
                             </span>
                         <span class="publish-author">
                             
@@ -685,11 +796,60 @@ fork之前父进</div>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/进程/" target="_blank">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/线程/" target="_blank">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/05/01/模板进阶/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="模板进阶">
+                        
+                        <span class="card-title">模板进阶</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">模板进阶1.非类型模板参数模板参数分为：类型形参和非类型形参。
+
+类型形参：出现在模板参数列表中，跟在class或者typename之后的参数类型名称。
+非类型形参：用一个常量作为类（函数）模板的一个参数，在类（函数）模板中可将该参数当成常</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/概念/" target="_blank">
+                        <span class="chip bg-color">概念</span>
                     </a>
                     
                 </div>
