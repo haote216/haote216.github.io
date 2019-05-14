@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="多态, haote216">
-    <meta name="description" content="多态1.多态的概念多态就是不同的对象完成某个动作，产生不同的状态。
-也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。
-2.多态的实现在继承中构成多态的俩个条件：
-调用函数的对象必须是指针或者引用；被调用的函数必须是虚">
+    <meta name="keywords" content="智能指针, haote216">
+    <meta name="description" content="智能指针1.为什么需要智能指针？malloc出来的空间，没有进行释放，存在内存泄漏的问题。
+异常安全问题。如果在malloc和free之间存在抛异常，那么还是有内存泄漏。
+2.智能指针的使用及原理1）RAIIRAII 是一种利用对象生命周期">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>多态 | haote216</title>
+    <title>智能指针 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +265,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        多态
+                        智能指针
                     </div>
                 </div>
             </div>
@@ -388,7 +387,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-25
+                    2019-05-14
                 </div>
 
                 
@@ -404,43 +403,25 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h4><p>多态就是不同的对象完成某个动作，产生不同的状态。</p>
-<p>也就是不同继承关系的类对象，去调用了同一函数，产生了不同行为，就是多态。</p>
-<h4 id="2-多态的实现"><a href="#2-多态的实现" class="headerlink" title="2.多态的实现"></a>2.多态的实现</h4><p>在继承中构成多态的俩个条件：</p>
-<p>调用函数的对象必须是指针或者引用；被调用的函数必须是虚函数，且完成了虚函数的重写。</p>
-<p>虚函数：就是在类的成员函数的前面加上virtual。    只有成员函数才能做虚函数，全局函数、静态函数都不可以。</p>
-<p>虚函数的重写：派生类中有一个跟基类完全相同（函数名、参数、返回值）的虚函数，称子类的虚函数重写了基类的虚函数，也叫做虚函数的覆盖。</p>
-<p>虚函数的协变：虚函数重写有一个例外，重写的虚函数的返回值可以不同，但必须是基类指针和派生类指针或者基类引用和派生类引用。</p>
-<p>析构函数的重写：基类的析构函数最好写成虚函数。</p>
-<table>
-<thead>
-<tr>
-<th>函数重载</th>
-<th>俩个函数在同一作用域，函数名、参数相同。</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>重写(覆盖)</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名、参数、返回值都必须相同（协变例外），俩个函数必须是虚函数。</td>
-</tr>
-<tr>
-<td>隐藏（重定义）</td>
-<td>俩个函数分别在基类和派生类的作用域，函数名相同，俩个基类和派生类的同名函数不构成重写就是隐藏。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3.抽象类"></a>3.抽象类</h4><p>在虚函数的后面写上=0，则这个函数为纯虚函数。包含纯虚函数的类叫做抽象类（接口类），抽象类不能实例化出对象，派生类继承后也不能实例化出对象，必须重写纯虚函数，这也体现出了接口继承。</p>
-<h4 id="4-C-11-override、final"><a href="#4-C-11-override、final" class="headerlink" title="4.C++11  override、final"></a>4.C++11  override、final</h4><p>final：被final修饰的纯虚函数不能被派生类重写。</p>
-<p>override：修饰派生类虚函数强制完成重写，如果没有重写就会编译报错。</p>
-<p>建议：派生类的纯虚函数搭配上override上使用。</p>
-<h4 id="5-多态的原理"><a href="#5-多态的原理" class="headerlink" title="5.多态的原理"></a>5.多态的原理</h4><p>// 这里常考一道笔试题：sizeof(Base)是多少？<br>class Base<br>{<br>public:<br>    virtual void Func1()<br>    {<br>        cout &lt;&lt; “Func1()” &lt;&lt; endl;<br>    }<br>private:<br>    int _b = 1;<br>};</p>
-<p>b成员，还有一个_vfptr放在对象的前面，叫做虚函数表指针。一个虚函数的类中至少都有一个虚函数表指针，因为虚函数的地址要被放在虚函数表中，虚函数表也叫虚表</p>
-<p>//派生类对象也有虚表指针，其虚表指针一部分存的也是继承下来的，另外一部分存的是自己的。如果派生类中有虚函数的重写，基类对象的虚表和派生类对象的虚表也是不一样的，重写是语法层的叫法，覆盖是原理层的叫法。<br>//虚函数表的本质是存一个虚函数指针的指针数组，这个数组最后放了一个nullptr。<br>//虚表存的是虚函数指针，虚函数和普通函数都时存在代码段的，而且，对象中存的是虚表指针，虚表也是存在代码段的。</p>
-<p>满足多态以后的函数调用，是运行起来以后到对象中去找的。不满足多态的函数调用是编译时就确认好的。也就是说，多态是动态绑定。</p>
-<p>静态绑定（前期绑定、早绑定）：在程序编译期间确定了程序的行为，也称为静态多态，例如：函数重载。</p>
-<p>动态绑定（后期绑定、晚绑定）：在程序运行期间，根据具体拿到的类型确定程序的具体行为，调用具体的函数，也成为动态多态。</p>
-<h4 id="6-单继承和多继承关系的虚函数表"><a href="#6-单继承和多继承关系的虚函数表" class="headerlink" title="6.单继承和多继承关系的虚函数表"></a>6.单继承和多继承关系的虚函数表</h4><p>多继承派生类的未重写的虚函数放在第一个继承基类部分的虚函数表中。</p>
+                <h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><h4 id="1-为什么需要智能指针？"><a href="#1-为什么需要智能指针？" class="headerlink" title="1.为什么需要智能指针？"></a>1.为什么需要智能指针？</h4><p>malloc出来的空间，没有进行释放，存在内存泄漏的问题。</p>
+<p>异常安全问题。如果在malloc和free之间存在抛异常，那么还是有内存泄漏。</p>
+<h4 id="2-智能指针的使用及原理"><a href="#2-智能指针的使用及原理" class="headerlink" title="2.智能指针的使用及原理"></a>2.智能指针的使用及原理</h4><h5 id="1）RAII"><a href="#1）RAII" class="headerlink" title="1）RAII"></a>1）RAII</h5><p>RAII 是一种利用对象生命周期来控制程序资源的技术。</p>
+<p>在对象构造时获取资源，控制对资源的访问使之在对象的生命周期内始终保持有效，最后在对象析构的时候释放资源。</p>
+<p>好处：不需要显式的释放资源。对象所需的资源在其生命周期内始终保持有效。</p>
+<h5 id="2）智能指针的原理"><a href="#2）智能指针的原理" class="headerlink" title="2）智能指针的原理"></a>2）智能指针的原理</h5><p>利用RAII特性，重载operator *和operator-&gt;，具有像指针一样的行为。</p>
+<h5 id="3）C-98-auto-ptr（别使用）"><a href="#3）C-98-auto-ptr（别使用）" class="headerlink" title="3）C++98  auto_ptr（别使用）"></a>3）C++98  auto_ptr（别使用）</h5><p>特点：采用管理权转移，拷贝赋值时会导致对象悬空，设计有缺陷，不建议使用。</p>
+<h5 id="4）C-11-unique-ptr（不建议）"><a href="#4）C-11-unique-ptr（不建议）" class="headerlink" title="4）C++11   unique_ptr（不建议）"></a>4）C++11   unique_ptr（不建议）</h5><p>特点：防拷贝，简单粗暴，建议使用。缺点：不能拷贝</p>
+<p>C++98防拷贝的方式：只声明不实现 + 声明成私有</p>
+<p>C++11防拷贝的方式：delete</p>
+<h5 id="5）C-11-shared-ptr（推荐）"><a href="#5）C-11-shared-ptr（推荐）" class="headerlink" title="5）C++11   shared_ptr（推荐）"></a>5）C++11   shared_ptr（推荐）</h5><p>特点：引用计数，设计相对复杂，支持拷贝，没有明显的缺陷。特定场景的缺陷：循环引用。</p>
+<ol>
+<li>shared_ptr在其内部，给每个资源都维护了着一份计数，用来记录该份资源被几个对象共享。</li>
+<li>在对象被销毁时(也就是析构函数调用)，就说明自己不使用该资源了，对象的引用计数减1。</li>
+<li>如果引用计数是0，就说明自己是最后一个使用该资源的对象，必须释放该资源；</li>
+<li>如果不是0，就说明除了自己还有其他对象在使用该份资源，不能释放该资源，否则其他对象就成野指针了。</li>
+</ol>
+<p>shared_ptr里的引用计数 和 string写时拷贝的引用计数区别？</p>
+<p>shared_ptr空间时用户申请的，后面的引用计数部分是系统提供的。而string类的空间时类自己管理的。</p>
 
             </div>
             <hr>
@@ -581,7 +562,7 @@
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/25/多态/" class="b-link-green">多态</a>
+                    <a href="/2019/05/14/智能指针/" class="b-link-green">智能指针</a>
                 </p>
             </div>
         </div>
@@ -604,38 +585,39 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/29/网络基础（一）/">
+                <a href="/2019/05/14/智能指针/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="网络基础（一）">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="智能指针">
                         
-                        <span class="card-title">网络基础（一）</span>
+                        <span class="card-title">智能指针</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">网络基础（一）协议协议本质上是一种约定，让通信双方彼此遵守。
-两台主机约定好协议就可以了吗？当然不行，主机的生产厂家、操作系统、网络硬件设备…都不一样，这时候约定了一个共同的标准，大家都来遵守，这就是网络协议。
-网络协议为什么要分层？
-答：</div>
+                    <div class="summary">智能指针1.为什么需要智能指针？malloc出来的空间，没有进行释放，存在内存泄漏的问题。
+异常安全问题。如果在malloc和free之间存在抛异常，那么还是有内存泄漏。
+2.智能指针的使用及原理1）RAIIRAII 是一种利用对象生命周期</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/网络/" class="post-category" target="_blank">
-                                    网络
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -654,24 +636,23 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/23/进程控制/">
+                <a href="/2019/05/11/多线程/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="进程控制">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="多线程">
                         
-                        <span class="card-title">进程控制</span>
+                        <span class="card-title">多线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">进程控制进程创建fork函数：创建新进程，新进程为子进程，而原进程为父进程。
-#include&lt;unistd.h&gt;
-pid_t fork(void);
-返回值：子进程中返回0，父进程返回子进程id，出错返回-1
-fork之前父进</div>
+                    <div class="summary">Linux线程概念什么是线程在一个程序里的一个执行路线叫做线程，更准确点，线程是一个进程内部的控制序列。
+一切进程至少有一个线程。
+线程在进程内部运行，本质是在进程地址空间内运行。
+在Linux系统中，在CPU眼里，看到的PCB都要比传统的</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-11
                             </span>
                         <span class="publish-author">
                             
@@ -688,8 +669,8 @@ fork之前父进</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/进程/" target="_blank">
-                        <span class="chip bg-color">进程</span>
+                    <a href="/tags/线程/" target="_blank">
+                        <span class="chip bg-color">线程</span>
                     </a>
                     
                 </div>
