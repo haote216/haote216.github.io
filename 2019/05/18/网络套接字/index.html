@@ -4,15 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="异常, haote216">
-    <meta name="description" content="异常1.C语言传统的处理错误的方式：
-终止程序
-返回错误码
-C标准库中setjmp和ongjmp组合
-
-2.C++异常错误
-throw：当问题出现时，程序会抛出一个异常。这是通过使用throw关键字来完成的。
-catch：在您想要处理问题的">
+    <meta name="keywords" content="网络套接字, haote216">
+    <meta name="description" content="网络编程套接字认识端口号端口号是传输层协议的内容。
+端口号是一个2字节 16位的整数；
+端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。
+IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +16,7 @@ catch：在您想要处理问题的">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>异常 | haote216</title>
+    <title>网络套接字 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -276,7 +272,7 @@ catch：在您想要处理问题的">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        异常
+                        网络套接字
                     </div>
                 </div>
             </div>
@@ -380,8 +376,8 @@ catch：在您想要处理问题的">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                C++
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                Linux
                             </a>
                         
                     </div>
@@ -392,7 +388,7 @@ catch：在您想要处理问题的">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-16
+                    2019-05-18
                 </div>
 
                 
@@ -408,46 +404,50 @@ catch：在您想要处理问题的">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><h4 id="1-C语言传统的处理错误的方式："><a href="#1-C语言传统的处理错误的方式：" class="headerlink" title="1.C语言传统的处理错误的方式："></a>1.C语言传统的处理错误的方式：</h4><ul>
-<li>终止程序</li>
-<li>返回错误码</li>
-<li>C标准库中setjmp和ongjmp组合</li>
+                <h3 id="网络编程套接字"><a href="#网络编程套接字" class="headerlink" title="网络编程套接字"></a>网络编程套接字</h3><h4 id="认识端口号"><a href="#认识端口号" class="headerlink" title="认识端口号"></a>认识端口号</h4><p>端口号是传输层协议的内容。</p>
+<p>端口号是一个2字节 16位的整数；</p>
+<p>端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。</p>
+<p>IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址   +   端口号   ==  套接字</p>
+<p>一个端口号只能被一个进程占用。</p>
+<h4 id="端口号-和-进程ID"><a href="#端口号-和-进程ID" class="headerlink" title="端口号 和 进程ID"></a>端口号 和 进程ID</h4><p>​    不一定每个进程都有端口号，但是每个进程都有进程ID。</p>
+<h4 id="初识TCP（传输控制协议）协议"><a href="#初识TCP（传输控制协议）协议" class="headerlink" title="初识TCP（传输控制协议）协议"></a>初识TCP（传输控制协议）协议</h4><ul>
+<li>​    传输层协议</li>
+<li>​    有连接</li>
+<li>​    可靠传输</li>
+<li>​    面向字节流</li>
 </ul>
-<h4 id="2-C-异常错误"><a href="#2-C-异常错误" class="headerlink" title="2.C++异常错误"></a>2.C++异常错误</h4><ul>
-<li>throw：当问题出现时，程序会抛出一个异常。这是通过使用throw关键字来完成的。</li>
-<li>catch：在您想要处理问题的地方，通过异常处理程序捕获异常.catch 关键字用于捕获异常，可以有多<br>个catch进行捕获。</li>
-<li>try：try块中的代码标识将被特定异常激活，它后面通常跟着一个或多个catch块。</li>
+<h4 id="初识UDP（用户数据协议）协议"><a href="#初识UDP（用户数据协议）协议" class="headerlink" title="初识UDP（用户数据协议）协议"></a>初识UDP（用户数据协议）协议</h4><ul>
+<li>​    传输层协议</li>
+<li>​    无连接</li>
+<li>​    不可靠传输</li>
+<li>​    面向数据流</li>
 </ul>
-<h4 id="3-异常的使用"><a href="#3-异常的使用" class="headerlink" title="3.异常的使用"></a>3.异常的使用</h4><h5 id="1-异常的抛出和捕获"><a href="#1-异常的抛出和捕获" class="headerlink" title="1)异常的抛出和捕获"></a>1)异常的抛出和捕获</h5><p>异常是通过抛出对象而引发的，对象的类型决定了应该激活哪个catch。</p>
-<p>被选中的处理代码是调用链中与该对象类型匹配且离抛出异常位置最近的那个。</p>
-<p>抛出异常对象后，会生成一个异常对象的拷贝，因为抛出的异常对象可能是一个临时对象，所以会生成一个拷贝对象。（类似于函数的传值返回）</p>
-<p>catch（…）可以捕获任意类型的异常。</p>
-<p>可以抛出个派生类对象，使用基类捕获。</p>
-<p>在函数调用链中异常栈展开匹配原则：</p>
-<p>1.首先检查throw本身是否在try块内部，如果是 再查找匹配的catch语句。如果没有匹配的，则调用catch的地方进行处理。</p>
-<p>2.没有匹配的catch则退出当前函数栈，继续在调用函数的栈中进行查找匹配的catch。</p>
-<p>3.如果到达main函数的栈，依旧没有匹配的，则终止程序。上述这个沿着调用链查找匹配的catch子句的过程称为栈展开。所以实际中我们最后都要加一个catch(…)捕获任意类型的异常，否则当有异常没捕获，程序就会直接终止。</p>
-<p>4.找到匹配的catch子句并处理以后，会继续沿着catch子句后面继续执行。</p>
-<h5 id="2-异常重新抛出"><a href="#2-异常重新抛出" class="headerlink" title="2)异常重新抛出"></a>2)异常重新抛出</h5><p>有可能单个catch不能完全处理一个异常，在执行一些校正处理以后，希望再交给更外层的调用链函数来处理，catch则可以通过重新抛出异常传递给更上层的函数进行处理。</p>
-<h5 id="3）异常安全"><a href="#3）异常安全" class="headerlink" title="3）异常安全"></a>3）异常安全</h5><p>构造函数完成对象的初始化，最好不要在构造函数中抛出异常，否则可能导致对象没有完全初始化。</p>
-<p>析构函数主要完成资源的清理，最好不要在析构函数内抛出异常，否则可能导致资源泄漏（内存泄漏、句柄未关闭）</p>
-<p>在new/delete中抛出异常，导致内存泄漏。</p>
-<p>在lock/unlock中抛出异常，导致死锁。</p>
-<p>解决办法：RALL–智能指针</p>
-<h5 id="4）异常规范"><a href="#4）异常规范" class="headerlink" title="4）异常规范"></a>4）异常规范</h5><p>// 这里表示这个函数会抛出A/B/C/D中的某种类型的异常<br>void fun() throw(A，B，C，D);</p>
-<p>// 这里表示这个函数只会抛出bad_alloc的异常<br>void* operator new (std::size_t size) throw (std::bad_alloc);</p>
-<p>// 这里表示这个函数不会抛出异常<br>void<em> operator new (std::size_t size, void</em> ptr) throw();</p>
-<h4 id="4-自定义异常体系"><a href="#4-自定义异常体系" class="headerlink" title="4.自定义异常体系"></a>4.自定义异常体系</h4><p>一般公司都会自定义自己的异常体系进行规范，这样大家抛出的都是继承的派生类对象，捕获一个基类就可以了。</p>
-<h4 id="5-C-异常的优缺点"><a href="#5-C-异常的优缺点" class="headerlink" title="5.C++异常的优缺点"></a>5.C++异常的优缺点</h4><h5 id="1）优点"><a href="#1）优点" class="headerlink" title="1）优点"></a>1）优点</h5><p>​    异常对象定义好了，相比错误码的方式可以清晰准确的展开出错误的各种信息，甚至可以包含堆栈调用的信息，这样可以帮助更好的定位程序的bug。</p>
-<p>​    返回错误码的传统方式有个很大的问题就是，在函数调用链中，深层的函数返回了错误，那么我们得层层返回错误，最外层才能拿到错误，具体看下面的详细解释。</p>
-<p>​    很多的第三方库都包含异常，比如boost、gtest、gmock等等常用的库，那么我们使用它们也需要使用异常。</p>
-<p>​    很多测试框架都使用异常，这样能更好的使用单元测试等进行白盒的测试。</p>
-<p>​    部分函数使用异常更好处理，比如构造函数没有返回值，不方便使用错误码方式处理。比如T&amp;operator这样的函数，如果pos越界了只能使用异常或者终止程序处理，没办法通过返回值表示错误。</p>
-<h5 id="2）缺点"><a href="#2）缺点" class="headerlink" title="2）缺点"></a>2）缺点</h5><p>​    异常会导致程序的执行流乱跳，并且非常的混乱，并且是运行时出错抛异常就会乱跳。这会导致我们跟踪调试时以及分析程序时，比较困难。</p>
-<p>​    异常会有一些性能的开销，当然在现代硬件速度很快的情况下，这个影响基础忽略不计。</p>
-<p>​    C++没有垃圾回收机制，资源需要自己管理。有了异常非常容易导致内存泄漏、死锁等异常安全问题。这个需要使用RALL来处理资源的管理问题，学习成本较高。</p>
-<p>​    C++标准库的异常体系定义得不好，导致大家各自定义各自的异常体系，非常的混乱。</p>
-<p>​    异常尽量规范使用，否则后果不开设想，随意抛异常，外层捕获的用户苦不堪言。所以异常规范有俩点：一、抛出异常类型都继承自一个基类。二、函数是否抛异常、抛什么异常，都是用func（）throw（）的方式规范化。</p>
+<h4 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h4><p>在网线上的数据都是大端，如果需要转换，再进行转换就行了，这是标准。</p>
+<h3 id="socket编程"><a href="#socket编程" class="headerlink" title="socket编程"></a>socket编程</h3><p>什么是socket？ 答：网络通信的函数接口。封装了传输层协议tcp/udp</p>
+<p>文件（内核的缓冲区）操作</p>
+<h4 id="socket常见API"><a href="#socket常见API" class="headerlink" title="socket常见API"></a>socket常见API</h4><pre><code>int socket(int domain, int type, int protocol);
+
+int bind(int socket, const struct sockaddr *address, socklen_t address_len);
+
+int listen(int socket, int backlog);
+
+int accept(int socket, struct sockaddr* address, socklen_t *address_len);
+
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+</code></pre><h4 id="sockaddr结构"><a href="#sockaddr结构" class="headerlink" title="sockaddr结构"></a>sockaddr结构</h4><h4 id="简单的UDP网络程序"><a href="#简单的UDP网络程序" class="headerlink" title="简单的UDP网络程序"></a>简单的UDP网络程序</h4><p>127.0.0.1     —&gt;本地回送地址</p>
+<h4 id="地址转换函数"><a href="#地址转换函数" class="headerlink" title="地址转换函数"></a>地址转换函数</h4><h5 id="字符串转in-addr的函数："><a href="#字符串转in-addr的函数：" class="headerlink" title="字符串转in_addr的函数："></a>字符串转in_addr的函数：</h5><pre><code>int inet_aton(const char *strptr, struct in_addr *addrptr);
+in_addr_t inet_addr(const char *strptr);
+int inet_pton(int family, const char *strptr, void *addrptr);
+</code></pre><h5 id="in-addr转字符串的函数："><a href="#in-addr转字符串的函数：" class="headerlink" title="in_addr转字符串的函数："></a>in_addr转字符串的函数：</h5><pre><code>char *inet_ntoa(struct in_addr inaddr);
+const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len);
+</code></pre><p>注：inet_ntoa函数，是把这个返回结果放到了静态存储区，这个时候不需要手动释放。</p>
+<p>inet_ntoa把结果放到自己内部的一个静态存储区，这样第二次调用时的结果会覆盖掉上一次的结果。</p>
+<p>如果多个线程调用inet_ntoa，是会出现异常情况的。APUE中，明确提出inet_ntoa不是线程安全函数。</p>
+<p>但是在centos7上测试，并没有出现问题，可能内部的实现加了互斥锁。</p>
+<p>多进程服务器比较浪费内存资源，时间比较慢；当客户量足够多时，会导致CPU进行进程间切换调用的压力增大，进而导致性能的下降。</p>
+<p>#define   INADDR_ANY   ((unsigned long int) 0x00000000)</p>
+<p>listen（listened , 连接队列长度）</p>
+<p>注：连接队列长度不能为0，且不能长度太长。类比如餐馆，排队的队列不能没有（就餐效率达不到100%），也不能太长（后面的人花费太长的时间，效率也低）</p>
 
             </div>
             <hr>
@@ -588,7 +588,7 @@ catch：在您想要处理问题的">
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/05/16/异常/" class="b-link-green">异常</a>
+                    <a href="/2019/05/18/网络套接字/" class="b-link-green">网络套接字</a>
                 </p>
             </div>
         </div>
@@ -611,7 +611,8 @@ catch：在您想要处理问题的">
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/18/网络套接字/">
                     <div class="card-image">
@@ -628,9 +629,9 @@ catch：在您想要处理问题的">
 端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。
 IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址 </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -643,6 +644,7 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -661,22 +663,27 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/14/智能指针/">
+                <a href="/2019/05/16/异常/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="智能指针">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="异常">
                         
-                        <span class="card-title">智能指针</span>
+                        <span class="card-title">异常</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">智能指针1.为什么需要智能指针？malloc出来的空间，没有进行释放，存在内存泄漏的问题。
-异常安全问题。如果在malloc和free之间存在抛异常，那么还是有内存泄漏。
-2.智能指针的使用及原理1）RAIIRAII 是一种利用对象生命周期</div>
+                    <div class="summary">异常1.C语言传统的处理错误的方式：
+终止程序
+返回错误码
+C标准库中setjmp和ongjmp组合
+
+2.C++异常错误
+throw：当问题出现时，程序会抛出一个异常。这是通过使用throw关键字来完成的。
+catch：在您想要处理问题的</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-14
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-16
                             </span>
                         <span class="publish-author">
                             
