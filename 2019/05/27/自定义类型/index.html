@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="网络套接字, haote216">
-    <meta name="description" content="网络编程套接字认识端口号端口号是传输层协议的内容。
-端口号是一个2字节 16位的整数；
-端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。
-IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址 ">
+    <meta name="keywords" content="自定义类型, haote216">
+    <meta name="description" content="结构体对齐规则：1.第一个成员在与结构体变量偏移量为0的地址处。
+2.其他成员变量要对齐到对齐数的整数倍的地址处。
+3.结构体总大小为最大对齐数的整数倍。
+4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网络套接字 | haote216</title>
+    <title>自定义类型 | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +266,13 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网络套接字
+                        自定义类型
                     </div>
                 </div>
             </div>
@@ -376,8 +376,8 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                C++
                             </a>
                         
                     </div>
@@ -388,7 +388,7 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-18
+                    2019-05-27
                 </div>
 
                 
@@ -404,50 +404,30 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="网络编程套接字"><a href="#网络编程套接字" class="headerlink" title="网络编程套接字"></a>网络编程套接字</h3><h4 id="认识端口号"><a href="#认识端口号" class="headerlink" title="认识端口号"></a>认识端口号</h4><p>端口号是传输层协议的内容。</p>
-<p>端口号是一个2字节 16位的整数；</p>
-<p>端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。</p>
-<p>IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址   +   端口号   ==  套接字</p>
-<p>一个端口号只能被一个进程占用。</p>
-<h4 id="端口号-和-进程ID"><a href="#端口号-和-进程ID" class="headerlink" title="端口号 和 进程ID"></a>端口号 和 进程ID</h4><p>​    不一定每个进程都有端口号，但是每个进程都有进程ID。</p>
-<h4 id="初识TCP（传输控制协议）协议"><a href="#初识TCP（传输控制协议）协议" class="headerlink" title="初识TCP（传输控制协议）协议"></a>初识TCP（传输控制协议）协议</h4><ul>
-<li>​    传输层协议</li>
-<li>​    有连接</li>
-<li>​    可靠传输</li>
-<li>​    面向字节流</li>
-</ul>
-<h4 id="初识UDP（用户数据协议）协议"><a href="#初识UDP（用户数据协议）协议" class="headerlink" title="初识UDP（用户数据协议）协议"></a>初识UDP（用户数据协议）协议</h4><ul>
-<li>​    传输层协议</li>
-<li>​    无连接</li>
-<li>​    不可靠传输</li>
-<li>​    面向数据流</li>
-</ul>
-<h4 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h4><p>在网线上的数据都是大端，如果需要转换，再进行转换就行了，这是标准。</p>
-<h3 id="socket编程"><a href="#socket编程" class="headerlink" title="socket编程"></a>socket编程</h3><p>什么是socket？ 答：网络通信的函数接口。封装了传输层协议tcp/udp</p>
-<p>文件（内核的缓冲区）操作</p>
-<h4 id="socket常见API"><a href="#socket常见API" class="headerlink" title="socket常见API"></a>socket常见API</h4><pre><code>int socket(int domain, int type, int protocol);
-
-int bind(int socket, const struct sockaddr *address, socklen_t address_len);
-
-int listen(int socket, int backlog);
-
-int accept(int socket, struct sockaddr* address, socklen_t *address_len);
-
-int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
-</code></pre><h4 id="sockaddr结构"><a href="#sockaddr结构" class="headerlink" title="sockaddr结构"></a>sockaddr结构</h4><h4 id="简单的UDP网络程序"><a href="#简单的UDP网络程序" class="headerlink" title="简单的UDP网络程序"></a>简单的UDP网络程序</h4><p>127.0.0.1     —&gt;本地回送地址</p>
-<h4 id="地址转换函数"><a href="#地址转换函数" class="headerlink" title="地址转换函数"></a>地址转换函数</h4><h5 id="字符串转in-addr的函数："><a href="#字符串转in-addr的函数：" class="headerlink" title="字符串转in_addr的函数："></a>字符串转in_addr的函数：</h5><pre><code>int inet_aton(const char *strptr, struct in_addr *addrptr);
-in_addr_t inet_addr(const char *strptr);
-int inet_pton(int family, const char *strptr, void *addrptr);
-</code></pre><h5 id="in-addr转字符串的函数："><a href="#in-addr转字符串的函数：" class="headerlink" title="in_addr转字符串的函数："></a>in_addr转字符串的函数：</h5><pre><code>char *inet_ntoa(struct in_addr inaddr);
-const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len);
-</code></pre><p>注：inet_ntoa函数，是把这个返回结果放到了静态存储区，这个时候不需要手动释放。</p>
-<p>inet_ntoa把结果放到自己内部的一个静态存储区，这样第二次调用时的结果会覆盖掉上一次的结果。</p>
-<p>如果多个线程调用inet_ntoa，是会出现异常情况的。APUE中，明确提出inet_ntoa不是线程安全函数。</p>
-<p>但是在centos7上测试，并没有出现问题，可能内部的实现加了互斥锁。</p>
-<p>多进程服务器比较浪费内存资源，时间比较慢；当客户量足够多时，会导致CPU进行进程间切换调用的压力增大，进而导致性能的下降。</p>
-<p>#define   INADDR_ANY   ((unsigned long int) 0x00000000)</p>
-<p>listen（listened , 连接队列长度）</p>
-<p>注：连接队列长度不能为0，且不能长度太长。类比如餐馆，排队的队列不能没有（就餐效率达不到100%），也不能太长（后面的人花费太长的时间，效率也低）</p>
+                <h3 id="结构体对齐"><a href="#结构体对齐" class="headerlink" title="结构体对齐"></a>结构体对齐</h3><h4 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h4><p>1.第一个成员在与结构体变量偏移量为0的地址处。</p>
+<p>2.其他成员变量要对齐到对齐数的整数倍的地址处。</p>
+<p>3.结构体总大小为最大对齐数的整数倍。</p>
+<p>4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。</p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>对齐数 = 编译器默认的一个对齐数 与 该成员大小的较小值。</p>
+<p>VS默认的值为8，Linux默认的值为4</p>
+<p>每个成员变量都有一个对齐数。</p>
+<h4 id="为什么存在内存对齐"><a href="#为什么存在内存对齐" class="headerlink" title="为什么存在内存对齐"></a>为什么存在内存对齐</h4><p>1.平台原因：不是所有的硬件平台都能访问任意地址上任意数据；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。</p>
+<p>2.性能原因：数据结构（尤其是栈）应该尽可能地在自然边界对齐。原因在于，为了访问未对齐的内存，处理器需要作俩次内存访问，而对齐的内存访问仅需要一次。</p>
+<h5 id="总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。"><a href="#总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。" class="headerlink" title="总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。"></a>总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。</h5><h4 id="修改默认对齐数"><a href="#修改默认对齐数" class="headerlink" title="修改默认对齐数"></a>修改默认对齐数</h4><p>#pragma pack(8)         //设置默认对齐数为8</p>
+<p>#pragma pack()           //取消设置的默认对齐数，还原为默认</p>
+<h4 id="百度面试题："><a href="#百度面试题：" class="headerlink" title="百度面试题："></a>百度面试题：</h4><p>写一个宏，计算结构体中某变量相对于首地址的偏移？</p>
+<pre><code>#define offsetof (s,m) (size_t)&amp;(((s*)0)-&gt;m)
+</code></pre><h5 id="结构体传参的时候，要传结构体的地址。"><a href="#结构体传参的时候，要传结构体的地址。" class="headerlink" title="结构体传参的时候，要传结构体的地址。"></a>结构体传参的时候，要传结构体的地址。</h5><h3 id="位段"><a href="#位段" class="headerlink" title="位段"></a>位段</h3><p>位段的声明和结构体是类似的：</p>
+<p>1.位段的成员必须是int、unsigned int或signed int或char</p>
+<p>2.位段的成员名后边有一个冒号和一个数字</p>
+<p>3.位段是不跨平台的</p>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>我们可以使用#define定义常量，为什么非要使用枚举？枚举的优点：</p>
+<p>1.增加代码的可读性和可维护性</p>
+<p>2.和#define定义的标识符比较，枚举有类型检查，更加严谨</p>
+<p>3.防止了命名污染（封装）</p>
+<p>4.便于调试</p>
+<p>5.使用方便，一次可以定义多个常量</p>
+<h3 id="联合（共用体）"><a href="#联合（共用体）" class="headerlink" title="联合（共用体）"></a>联合（共用体）</h3><p>联合也是一种特殊的自定义类型，这种类型定义的变量也包含一系列的成员，特征是这些成员公共用同一块空间</p>
 
             </div>
             <hr>
@@ -588,7 +568,7 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/05/18/网络套接字/" class="b-link-green">网络套接字</a>
+                    <a href="/2019/05/27/自定义类型/" class="b-link-green">自定义类型</a>
                 </p>
             </div>
         </div>
@@ -611,7 +591,8 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/27/自定义类型/">
                     <div class="card-image">
@@ -628,9 +609,9 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
 3.结构体总大小为最大对齐数的整数倍。
 4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -643,6 +624,7 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -661,34 +643,30 @@ const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len)
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/16/异常/">
+                <a href="/2019/05/18/网络套接字/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="异常">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="网络套接字">
                         
-                        <span class="card-title">异常</span>
+                        <span class="card-title">网络套接字</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">异常1.C语言传统的处理错误的方式：
-终止程序
-返回错误码
-C标准库中setjmp和ongjmp组合
-
-2.C++异常错误
-throw：当问题出现时，程序会抛出一个异常。这是通过使用throw关键字来完成的。
-catch：在您想要处理问题的</div>
+                    <div class="summary">网络编程套接字认识端口号端口号是传输层协议的内容。
+端口号是一个2字节 16位的整数；
+端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。
+IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址 </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-16
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                    C++
+                            <a href="/categories/Linux/" class="post-category" target="_blank">
+                                    Linux
                                 </a>
                             
                             
