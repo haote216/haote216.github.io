@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="自定义类型, haote216">
-    <meta name="description" content="结构体对齐规则：1.第一个成员在与结构体变量偏移量为0的地址处。
-2.其他成员变量要对齐到对齐数的整数倍的地址处。
-3.结构体总大小为最大对齐数的整数倍。
-4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小">
+    <meta name="keywords" content="网络基础（二）, haote216">
+    <meta name="description" content="网络基础（二）应用层HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP/IP通信协议来传递数据。URL：统一资源标识符，也就是平常我们使用的网址。
+​      h">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>自定义类型 | haote216</title>
+    <title>网络基础（二） | haote216</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -266,13 +264,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        自定义类型
+                        网络基础（二）
                     </div>
                 </div>
             </div>
@@ -376,8 +374,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/C/" class="post-category" target="_blank">
-                                C++
+                            <a href="/categories/网络/" class="post-category" target="_blank">
+                                网络
                             </a>
                         
                     </div>
@@ -388,7 +386,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-27
+                    2019-05-28
                 </div>
 
                 
@@ -404,30 +402,66 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="结构体对齐"><a href="#结构体对齐" class="headerlink" title="结构体对齐"></a>结构体对齐</h3><h4 id="规则："><a href="#规则：" class="headerlink" title="规则："></a>规则：</h4><p>1.第一个成员在与结构体变量偏移量为0的地址处。</p>
-<p>2.其他成员变量要对齐到对齐数的整数倍的地址处。</p>
-<p>3.结构体总大小为最大对齐数的整数倍。</p>
-<p>4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小就是所有最大对齐数（含嵌套结构体的对齐数）的整数倍。</p>
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>对齐数 = 编译器默认的一个对齐数 与 该成员大小的较小值。</p>
-<p>VS默认的值为8，Linux默认的值为4</p>
-<p>每个成员变量都有一个对齐数。</p>
-<h4 id="为什么存在内存对齐"><a href="#为什么存在内存对齐" class="headerlink" title="为什么存在内存对齐"></a>为什么存在内存对齐</h4><p>1.平台原因：不是所有的硬件平台都能访问任意地址上任意数据；某些硬件平台只能在某些地址处取某些特定类型的数据，否则抛出硬件异常。</p>
-<p>2.性能原因：数据结构（尤其是栈）应该尽可能地在自然边界对齐。原因在于，为了访问未对齐的内存，处理器需要作俩次内存访问，而对齐的内存访问仅需要一次。</p>
-<h5 id="总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。"><a href="#总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。" class="headerlink" title="总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。"></a>总体来说，结构体的内存对齐是拿空间换取时间的做法。那在设计结构体的时候，我们既要满足对齐，又要节省空间，我们让占用空间小的成员尽量集中在一起。</h5><h4 id="修改默认对齐数"><a href="#修改默认对齐数" class="headerlink" title="修改默认对齐数"></a>修改默认对齐数</h4><p>#pragma pack(8)         //设置默认对齐数为8</p>
-<p>#pragma pack()           //取消设置的默认对齐数，还原为默认</p>
-<h4 id="百度面试题："><a href="#百度面试题：" class="headerlink" title="百度面试题："></a>百度面试题：</h4><p>写一个宏，计算结构体中某变量相对于首地址的偏移？</p>
-<pre><code>#define offsetof (s,m) (size_t)&amp;(((s*)0)-&gt;m)
-</code></pre><h5 id="结构体传参的时候，要传结构体的地址。"><a href="#结构体传参的时候，要传结构体的地址。" class="headerlink" title="结构体传参的时候，要传结构体的地址。"></a>结构体传参的时候，要传结构体的地址。</h5><h3 id="位段"><a href="#位段" class="headerlink" title="位段"></a>位段</h3><p>位段的声明和结构体是类似的：</p>
-<p>1.位段的成员必须是int、unsigned int或signed int或char</p>
-<p>2.位段的成员名后边有一个冒号和一个数字</p>
-<p>3.位段是不跨平台的</p>
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>我们可以使用#define定义常量，为什么非要使用枚举？枚举的优点：</p>
-<p>1.增加代码的可读性和可维护性</p>
-<p>2.和#define定义的标识符比较，枚举有类型检查，更加严谨</p>
-<p>3.防止了命名污染（封装）</p>
-<p>4.便于调试</p>
-<p>5.使用方便，一次可以定义多个常量</p>
-<h3 id="联合（共用体）"><a href="#联合（共用体）" class="headerlink" title="联合（共用体）"></a>联合（共用体）</h3><p>联合也是一种特殊的自定义类型，这种类型定义的变量也包含一系列的成员，特征是这些成员公共用同一块空间</p>
+                <h3 id="网络基础（二）"><a href="#网络基础（二）" class="headerlink" title="网络基础（二）"></a>网络基础（二）</h3><h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><h5 id="HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP-IP通信协议来传递数据。"><a href="#HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP-IP通信协议来传递数据。" class="headerlink" title="HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP/IP通信协议来传递数据。"></a>HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP/IP通信协议来传递数据。</h5><p>URL：统一资源标识符，也就是平常我们使用的网址。</p>
+<p>​      http:         //user:pass        @<a href="http://www.example.jp" target="_blank" rel="noopener">www.example.jp</a>     :80            /dir/index.htm             ?uid=1        #ch1</p>
+<p>协议方案名     登录信息（认证）   服务器网址    服务器端口号   带层次的文件路径    查寻字符串     片段标识符</p>
+<pre><code>客户端发送一个HTTP请求到服务器的请求消息包括：请求行、请求头部、空行、请求数据。
+
+​    请求行：GET为请求类型，请求类型后面的URL，也就是要访问的资源，最后一个是HTTP协议版本号
+        HTTP1.0定义了3种请求类型GET（获取资源）/POST（传输实体主体）/HEAD（获取报文头部）；
+        HTTP1.1新增了5种：OPTIONS（询问支持的方法）/PUT（传输文件）/DELETE（删除文件）/TRACE（追踪路径）/CONNECT（要求用隧道协议连接代理）。
+​    请求头部：HOST指请求的目的地（主机域名）；User-Agent是客户端的信息，它是检测浏览器类型的信息，由浏览器自己定义，在每个请求中自动发送。    
+</code></pre><pre><code>HTTP响应也由四个部分组成：状态行、响应头、空行、响应正文。
+
+​    状态行：由HTTP协议版本号、状态码、状态消息组成。
+        状态码：HTTP协议的状态码由3位数字组成，第一个数字定义了响应的类别。
+        1xx：指示信息--表示请求已接收，继续处理
+        2xx：成功--表示请求已被成功接收、理解、接受
+        3xx：重定向--要完成请求必须进行更进一步的操作
+        4xx：客户端错误--请求有语法错误 或 请求无法实现
+        5xx：服务器端错误--服务器未能实现合法的请求
+​    响应头：响应头是客户端可以使用的一些信息，比如：Date、Content-Type、Connection等等。
+</code></pre><pre><code>http工作原理
+    HTTP协议采用请求/响应模式，客户端向服务器发送一个请求报文，然后服务器响应请求。下面介绍一下一次HTTP请求的过程：
+    1.在浏览器中输入URL，并按下回车
+    2.浏览器向DNS服务器请求解析该URL中的域名对应的IP地址（如果是IP请求，则不需要该步骤）
+    3.解析IP后，根据IP和端口号，和服务器建立TCP连接
+    4.浏览器向服务器发送请求，该请求报文作为TCP三次握手的第三个报文发送给服务器
+    5.服务器做出响应，把数据发送给浏览器
+    6.通信完成，断开TCP连接
+    7.浏览器解析收到的数据并显示
+</code></pre><p>urlencode：将字符串进行URL编码                  urldecode：将字符串进行URL解码</p>
+<p>参考资料：<a href="https://www.jianshu.com/p/8fe93a14754c" target="_blank" rel="noopener">https://www.jianshu.com/p/8fe93a14754c</a></p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><h5 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h5><p>端口号标识了一个主机上进行通信的不同的应用程序。</p>
+<p>在TCP/IP协议中，用源IP、源端口号、目的IP、目的端口号、协议号这样的五元组来标识一个通信。</p>
+<p>0-1023：知名端口号，HTTP、FTP、SSH等这些广为使用的应用协议，他们的端口号都是固定的。</p>
+<p>1024-65535：操作系统动态分配的端口号，客户端程序的端口号就是由操作系统从这个范围分配的。</p>
+<p>ftp服务器：21端口</p>
+<p>ssh服务器：22端口</p>
+<p>telnet服务器：23端口</p>
+<p>http服务器：80端口</p>
+<p>https服务器：443端口</p>
+<p>一个进程可以bind多个端口号，因为一个进程可以打开多个文件描述符，而每个文件描述符都对应一个端口号，所以一个进程可以绑定多个端口号。</p>
+<p>一个端口号不能被多个进程绑定。但是如果进程先绑定一个端口号，然后fork一个子进程，这样就实现多个进程绑定一个端口号，但是俩个不同进程绑定一个端口号是不可以的。</p>
+<h5 id="UDP协议"><a href="#UDP协议" class="headerlink" title="UDP协议"></a>UDP协议</h5><h5 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h5><p>确认应答（ACK）机制：</p>
+<p>超时重传机制：</p>
+<p>滑动窗口：</p>
+<p>​    窗口大小指的是无需等待确认应答而可以继续发送数据的最大值。</p>
+<p>​    发送前四个段的时候，不需要等待任何ACK，直接发送。</p>
+<p>​    收到第一个ACK后，滑动窗口向后移动，继续发送第五个段的数据，以此类推。</p>
+<p>​    操作系统内核为了维护这个滑动窗口，需要开辟发送缓冲区来记录当前还有哪些数据没有应答，只有确认应答过的数据，才能从缓冲区删掉。</p>
+<p>​    窗口越大，则网络的吞吐率就越高。</p>
+<p>​    3次重复应答机制，再进行重发的机制叫做高速重发控制，也叫快重传。</p>
+<p>流量控制：</p>
+<p>​    TCP支持根据接收端的处理能力，来决定发送端的发送速度，这种机制叫做流量控制。</p>
+<p>​    接收端将自己可以接收的缓冲区大小放入TCP首部中的“窗口大小”字段，通过ACK通知发送端。</p>
+<p>​    接收端一旦发现自己的缓冲区快满了，就会将窗口大小设置成一个更小的值通知给发送端，发送端接收到这个窗口之后，就会减慢自己的发送速度，如果接收缓冲区满了，就会将窗口设置为0，这时发送方不再发送数据，但是需要定期发送一个窗口探测数据段，使接收端把窗口大小告诉发送端。</p>
+<p>​    在3次握手的过程中就已经协商好窗口的大小，为第一次发送数据的大小做准备。</p>
+<p>拥塞控制：</p>
+<p>​    因为网络状态不好，导致大面积丢包的现象叫做网络拥塞。</p>
+<p>​    所以TCP引入慢启动机制，先发少量的数据，探探路，摸清当前的网络状态，再决定按照多大的速度进行传输数据，这叫做拥塞控制。</p>
+<p>​    这里还有一个拥塞窗口，发送开始的时候，定义拥塞窗口大小为1。每次收到一个ACK应答，拥塞窗口加1；每次发送数据包的时候，将拥塞窗口和接收端主机反馈的窗口大小做比较，取较小的值作为实际发送的窗口（滑动窗口）。</p>
+<p>​    为了不增长那么快，因此不能使拥塞窗口单纯的加倍，此处引入慢启动的阈值，当拥塞窗口超过这个阈值的时候，不再按指数方式增长，而是按照线性方式增长。</p>
 
             </div>
             <hr>
@@ -568,7 +602,7 @@
                     </span>
                     <a href="http://www.haote216.top" class="b-link-green">haote216</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/05/27/自定义类型/" class="b-link-green">自定义类型</a>
+                    <a href="/2019/05/28/网络基础（二）/" class="b-link-green">网络基础（二）</a>
                 </p>
             </div>
         </div>
@@ -591,7 +625,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/05/28/网络基础（二）/">
                     <div class="card-image">
@@ -606,9 +641,9 @@
                     <div class="summary">网络基础（二）应用层HTTP协议：超文本传输协议，是因特网上应用最广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准，HTTP是基于TCP/IP通信协议来传递数据。URL：统一资源标识符，也就是平常我们使用的网址。
 ​      h</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -621,6 +656,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -639,30 +675,30 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/05/18/网络套接字/">
+                <a href="/2019/05/27/自定义类型/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="网络套接字">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="自定义类型">
                         
-                        <span class="card-title">网络套接字</span>
+                        <span class="card-title">自定义类型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">网络编程套接字认识端口号端口号是传输层协议的内容。
-端口号是一个2字节 16位的整数；
-端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。
-IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址 </div>
+                    <div class="summary">结构体对齐规则：1.第一个成员在与结构体变量偏移量为0的地址处。
+2.其他成员变量要对齐到对齐数的整数倍的地址处。
+3.结构体总大小为最大对齐数的整数倍。
+4.如果嵌套了结构体，嵌套的结构体对齐到自己的最大对齐数的整数倍处，结构体的整体大小</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category" target="_blank">
-                                    Linux
+                            <a href="/categories/C/" class="post-category" target="_blank">
+                                    C++
                                 </a>
                             
                             
