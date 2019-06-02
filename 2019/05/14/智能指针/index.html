@@ -422,6 +422,12 @@
 </ol>
 <p>shared_ptr里的引用计数 和 string写时拷贝的引用计数区别？</p>
 <p>shared_ptr空间时用户申请的，后面的引用计数部分是系统提供的。而string类的空间时类自己管理的。</p>
+<h5 id="C-11和boost中智能指针的关系"><a href="#C-11和boost中智能指针的关系" class="headerlink" title="C++11和boost中智能指针的关系"></a>C++11和boost中智能指针的关系</h5><ol>
+<li>C++ 98 中产生了第一个智能指针auto_ptr.</li>
+<li>C++ boost给出了更实用的scoped_ptr和shared_ptr和weak_ptr.</li>
+<li>C++ TR1，引入了shared_ptr等。不过注意的是TR1并不是标准版。</li>
+<li>C++ 11，引入了unique_ptr和shared_ptr和weak_ptr。需要注意的是unique_ptr对应boost的<br>scoped_ptr。并且这些智能指针的实现原理是参考boost中的实现的。</li>
+</ol>
 
             </div>
             <hr>
