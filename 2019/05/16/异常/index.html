@@ -431,8 +431,8 @@ catch：在您想要处理问题的">
 <h5 id="2-异常重新抛出"><a href="#2-异常重新抛出" class="headerlink" title="2)异常重新抛出"></a>2)异常重新抛出</h5><p>有可能单个catch不能完全处理一个异常，在执行一些校正处理以后，希望再交给更外层的调用链函数来处理，catch则可以通过重新抛出异常传递给更上层的函数进行处理。</p>
 <h5 id="3）异常安全"><a href="#3）异常安全" class="headerlink" title="3）异常安全"></a>3）异常安全</h5><p>构造函数完成对象的初始化，最好不要在构造函数中抛出异常，否则可能导致对象没有完全初始化。</p>
 <p>析构函数主要完成资源的清理，最好不要在析构函数内抛出异常，否则可能导致资源泄漏（内存泄漏、句柄未关闭）</p>
-<p>在new/delete中抛出异常，导致内存泄漏。</p>
-<p>在lock/unlock中抛出异常，导致死锁。</p>
+<p>在new/delete中抛出异常，导致内存泄漏</p>
+<p>在lock/unlock中抛出异常，导致死锁</p>
 <p>解决办法：RALL–智能指针</p>
 <h5 id="4）异常规范"><a href="#4）异常规范" class="headerlink" title="4）异常规范"></a>4）异常规范</h5><p>// 这里表示这个函数会抛出A/B/C/D中的某种类型的异常<br>void fun() throw(A，B，C，D);</p>
 <p>// 这里表示这个函数只会抛出bad_alloc的异常<br>void* operator new (std::size_t size) throw (std::bad_alloc);</p>
