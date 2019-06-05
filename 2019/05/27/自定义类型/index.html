@@ -418,9 +418,9 @@
 <h4 id="百度面试题："><a href="#百度面试题：" class="headerlink" title="百度面试题："></a>百度面试题：</h4><p>写一个宏，计算结构体中某变量相对于首地址的偏移？</p>
 <pre><code>#define offsetof (s,m) (size_t)&amp;(((s*)0)-&gt;m)
 </code></pre><h5 id="结构体传参的时候，要传结构体的地址。"><a href="#结构体传参的时候，要传结构体的地址。" class="headerlink" title="结构体传参的时候，要传结构体的地址。"></a>结构体传参的时候，要传结构体的地址。</h5><h3 id="位段"><a href="#位段" class="headerlink" title="位段"></a>位段</h3><p>位段的声明和结构体是类似的：</p>
-<p>1.位段的成员必须是int、unsigned int或signed int或char</p>
-<p>2.位段的成员名后边有一个冒号和一个数字</p>
-<p>3.位段是不跨平台的</p>
+<p>1.位段的成员必须是int、unsigned int或signed int或char；</p>
+<p>2.位段的成员名后边有一个冒号和一个数字；</p>
+<p>3.位段是不跨平台的。</p>
 <h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>我们可以使用#define定义常量，为什么非要使用枚举？枚举的优点：</p>
 <p>1.增加代码的可读性和可维护性</p>
 <p>2.和#define定义的标识符比较，枚举有类型检查，更加严谨</p>
