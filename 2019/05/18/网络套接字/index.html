@@ -409,7 +409,7 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
 <p>端口号用来标识一个进程，告诉操作系统，当前的这个数据要交给哪一个进程来处理。</p>
 <p>IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程。IP地址   +   端口号   ==  套接字。</p>
 <p>一个端口号只能被一个进程占用。</p>
-<h4 id="端口号-和-进程ID"><a href="#端口号-和-进程ID" class="headerlink" title="端口号 和 进程ID"></a>端口号 和 进程ID</h4><p>​    不一定每个进程都有端口号，但是每个进程都有进程ID。</p>
+<h4 id="端口号-和-进程ID"><a href="#端口号-和-进程ID" class="headerlink" title="端口号 和 进程ID"></a>端口号 和 进程ID</h4><p>不一定每个进程都有端口号，但是每个进程都有进程ID。</p>
 <h4 id="初识TCP（传输控制协议）协议"><a href="#初识TCP（传输控制协议）协议" class="headerlink" title="初识TCP（传输控制协议）协议"></a>初识TCP（传输控制协议）协议</h4><ul>
 <li>​    传输层协议</li>
 <li>​    有连接</li>
@@ -422,7 +422,16 @@ IP地址 + 端口号  能够标识网络上的某一台主机的某一个进程�
 <li>​    不可靠传输</li>
 <li>​    面向数据流</li>
 </ul>
-<h4 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h4><p>在网线上的数据都是大端，如果需要转换，再进行转换就行了，这是标准。</p>
+<h4 id="网络字节序"><a href="#网络字节序" class="headerlink" title="网络字节序"></a>网络字节序</h4><p>先发出的数据是低地址，后发出的数据是高地址。</p>
+<p>网络数据流都是采用大端字节序（低地址高字节），如果需要转换，再进行转换就行了，这是标准。</p>
+<p>#include&lt;arpa/inet.h&gt;</p>
+<p>uint32_t htonl(uint32_t hostlong);</p>
+<p>uint16_t htons(uint16_t hostshort);</p>
+<p>uint32_t ntotl(uint32_t netlong);</p>
+<p>uint16_t ntots(uint16_t netshort);</p>
+<p>h表示host，n表示network，l表示32位长整数，s表示16位短整数。</p>
+<p>htonl表示将32位的长整数从主机字节序转换为32位的网络字节序。</p>
+<p>主机是小端字节序，将参数进行大小端转换。主机是大端字节序，不需要改变。</p>
 <h3 id="socket编程"><a href="#socket编程" class="headerlink" title="socket编程"></a>socket编程</h3><p>什么是socket？ 答：网络通信的函数接口。封装了传输层协议tcp/udp</p>
 <p>文件（内核的缓冲区）操作</p>
 <h4 id="socket常见API"><a href="#socket常见API" class="headerlink" title="socket常见API"></a>socket常见API</h4><pre><code>int socket(int domain, int type, int protocol);
@@ -442,10 +451,9 @@ int inet_pton(int family, const char *strptr, void *addrptr);
 const char *inet_ntop(int family, const void *addrptr, char *strptr, size_t len);
 </code></pre><p>注：inet_ntoa函数，是把这个返回结果放到了静态存储区，这个时候不需要手动释放。</p>
 <p>inet_ntoa把结果放到自己内部的一个静态存储区，这样第二次调用时的结果会覆盖掉上一次的结果。</p>
-<p>如果多个线程调用inet_ntoa，是会出现异常情况的。APUE中，明确提出inet_ntoa不是线程安全函数。</p>
-<p>但是在centos7上测试，并没有出现问题，可能内部的实现加了互斥锁。</p>
+<p>如果多个线程调用inet_ntoa，是会出现异常情况的。inet_ntoa不是线程安全函数。多线程下推荐inet_ntop，提供一个缓冲区保存结果，可以规避线程安全问题。</p>
 <p>多进程服务器比较浪费内存资源，时间比较慢；当客户量足够多时，会导致CPU进行进程间切换调用的压力增大，进而导致性能的下降。</p>
-<p>#define   INADDR_ANY   ((unsigned long int) 0x00000000)</p>
+<p>#define   INADDR_ANY   ((unsigned long int)   0x00000000)     //表示本地的任意IP</p>
 <p>listen（listened , 连接队列长度）</p>
 <p>注：连接队列长度不能为0，且不能长度太长。类比如餐馆，排队的队列不能没有（就餐效率达不到100%），也不能太长（后面的人花费太长的时间，效率也低）</p>
 
